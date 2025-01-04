@@ -124,6 +124,113 @@
   - [Chart.js for Creating Charts](#chartjs-for-creating-charts)
 
 ---
+## CONTEXT in Javascript
+In JavaScript, **context** refers to the value of `this` within a function or object. It determines which object or value `this` is referring to when the code is executed. Understanding context is key to how JavaScript handles object methods, function invocations, and event handling.
+
+### Types of Context in JavaScript:
+
+1. **Global Context (or Window Context in browsers):**
+   - When JavaScript is executed outside of any function or object, `this` refers to the global object.
+   - In the browser, the global object is `window`.
+   - In Node.js, the global object is `global`.
+   
+   Example:
+   ```javascript
+   console.log(this); // In browsers, this will log the window object
+   ```
+
+2. **Function Context:**
+   - Inside a function, the value of `this` is determined by how the function is called.
+   - If the function is called as a method of an object, `this` refers to the object.
+   - If the function is called without an object (i.e., as a regular function call), `this` refers to the global object in non-strict mode, or `undefined` in strict mode.
+   
+   Example:
+   ```javascript
+   function greet() {
+     console.log(this);
+   }
+   greet();  // In non-strict mode, this will refer to the global object (window in browsers)
+   
+   const person = {
+     name: "Alice",
+     greet: function() {
+       console.log(this.name);
+     }
+   };
+   person.greet();  // this refers to the 'person' object, so it will log "Alice"
+   ```
+
+3. **Object Context:**
+   - When a method is invoked as part of an object (e.g., `obj.method()`), `this` refers to the object the method is a part of.
+   
+   Example:
+   ```javascript
+   const obj = {
+     name: "Bob",
+     greet: function() {
+       console.log(this.name);
+     }
+   };
+   obj.greet(); // "Bob" because 'this' refers to 'obj'
+   ```
+
+4. **Class Context:**
+   - In ES6 classes, `this` refers to the instance of the class.
+   
+   Example:
+   ```javascript
+   class Person {
+     constructor(name) {
+       this.name = name;
+     }
+     greet() {
+       console.log(this.name);
+     }
+   }
+   const person = new Person("Charlie");
+   person.greet();  // "Charlie" because 'this' refers to the instance of the class
+   ```
+
+5. **Arrow Functions Context:**
+   - Arrow functions have **lexical scoping** for `this`, meaning `this` is inherited from the surrounding non-arrow function or context where the arrow function was created.
+   - They don't have their own `this` like regular functions do.
+
+   Example:
+   ```javascript
+   const obj = {
+     name: "David",
+     greet: function() {
+       const arrowFunc = () => {
+         console.log(this.name);
+       };
+       arrowFunc();
+     }
+   };
+   obj.greet();  // "David", because 'this' inside the arrow function refers to 'obj'
+   ```
+
+6. **Explicit Binding (Using `.call()`, `.apply()`, or `.bind()`):**
+   - JavaScript provides methods to explicitly set the value of `this` using `.call()`, `.apply()`, or `.bind()`.
+
+   Example:
+   ```javascript
+   function greet() {
+     console.log(this.name);
+   }
+
+   const person = { name: "Emma" };
+   greet.call(person);  // "Emma" because we explicitly set 'this' to 'person'
+   ```
+
+### Summary:
+
+- **Global Context:** `this` refers to the global object (`window` in browsers).
+- **Function Context:** `this` depends on how the function is called.
+- **Object Context:** `this` refers to the object the method is called on.
+- **Class Context:** `this` refers to the instance of the class.
+- **Arrow Function Context:** `this` is inherited from the surrounding context.
+- **Explicit Binding:** `.call()`, `.apply()`, or `.bind()` can be used to explicitly set `this`.
+
 
 ### Introduction to JavaScript
 
