@@ -2,6 +2,8 @@
 
 ## Table of Contents
 
+- [Context](#context-in-javascript)
+  
 - [Introduction to JavaScript](#introduction-to-javascript)
 
   - [History and Purpose of JavaScript](#history-and-purpose-of-javascript)
@@ -124,7 +126,7 @@
   - [Chart.js for Creating Charts](#chartjs-for-creating-charts)
 
 ---
-## CONTEXT in Javascript
+## Context
 In JavaScript, **context** refers to the value of `this` within a function or object. It determines which object or value `this` is referring to when the code is executed. Understanding context is key to how JavaScript handles object methods, function invocations, and event handling.
 
 ### Types of Context in JavaScript:
@@ -231,6 +233,7 @@ In JavaScript, **context** refers to the value of `this` within a function or ob
 - **Arrow Function Context:** `this` is inherited from the surrounding context.
 - **Explicit Binding:** `.call()`, `.apply()`, or `.bind()` can be used to explicitly set `this`.
 
+---
 
 ### Introduction to JavaScript
 
