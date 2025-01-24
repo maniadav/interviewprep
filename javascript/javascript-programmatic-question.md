@@ -9,7 +9,7 @@ This list contains a longer list of important JavaScript questions. Not all of t
 | No. | Questions                                                                                        | Level |
 | --- | :---------------- | :---- |
 | 1   | [Question 1: Predict the Output](#q1) | Basic |
-| 2   | [Question 2: Private Counter Using Closures](#q2)   | Basic |
+| 2   | [Question 2: Private Counter Using Closures](#question-2-private-counter-using-closures)   | Basic |
 
 ---
 
@@ -31,7 +31,7 @@ The `let` declaration creates a new block-scoped variable for each iteration, so
 
 ---
 
-## Question 2: Private Counter Using Closures
+### Question 2: Private Counter Using Closures
 
 ```javascript
 function privateCounter() {
