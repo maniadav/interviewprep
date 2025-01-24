@@ -281,8 +281,6 @@ let obj1 = { key: 'value' };
 let obj2 = obj1; // Reference copy
 ```
 
----
-
 ### Type Coercion: Implicit vs Explicit
 
 - **Implicit Typing:** Type inferred by the context.
@@ -293,7 +291,6 @@ let obj2 = obj1; // Reference copy
 
 ### Nominal, Structural, and Duck Typinga
 
-#### Value Types and Reference Types
 
 ---
 
@@ -324,6 +321,7 @@ console.log(typeof 42); // Output: number
 ---
 
 ## Expression vs Statement
+
 According to the ECMAScript specification, expressions produce a value, and statements are instructions to perform an action, such as variable assignment or control flow. Function declarations are hoisted and can be called before they are defined in the code, while function expressions are not hoisted and must be defined before being invoked.
 
 - **Expression:** Produces a value.
@@ -358,9 +356,7 @@ According to the ECMAScript specification, expressions produce a value, and stat
 
 ### Function Scope, Block Scope, and Lexical Scope
 
-#### Function Scope
-
-Variables declared with `var` are function-scoped, meaning they are accessible throughout the function where they are defined. This scope isolates variables from being accessed outside of the function where they are declared.
+**Function Scope**: Variables declared with `var` are function-scoped, meaning they are accessible throughout the function where they are defined. This scope isolates variables from being accessed outside of the function where they are declared.
 
 **Example:**
 
@@ -373,11 +369,7 @@ function demoVar() {
 }
 ```
 
----
-
-#### Block Scope
-
-Variables declared with `let` and `const` are block-scoped, meaning they are only accessible within the block where they are defined.
+**Block Scope**: Variables declared with `let` and `const` are block-scoped, meaning they are only accessible within the block where they are defined.
 
 **Example:**
 
@@ -392,11 +384,7 @@ function demoLet() {
 }
 ```
 
----
-
-#### Lexical Scope
-
-Lexical scope means that the scope of a variable is determined by its position in the source code and nested scopes have access to variables from their parent scope.
+**Lexical Scope**: Lexical scope means that the scope of a variable is determined by its position in the source code and nested scopes have access to variables from their parent scope.
 
 **Example:**
 
@@ -411,11 +399,7 @@ function outer() {
 outer();
 ```
 
----
-
-#### Closures
-
-A closure is formed when an inner function "remembers" variables from its outer function even after the outer function has executed.
+**Closures**: A closure is formed when an inner function "remembers" variables from its outer function even after the outer function has executed.
 
 **Example:**
 
@@ -493,6 +477,91 @@ Each invocation of `fn` updates the `count` variable in the closure created by t
 
 ### Hoisting in JavaScript
 
+### **Hoisting in JavaScript**
+
+**Hoisting** is a JavaScript mechanism where variable and function declarations are moved to the top of their scope during the compile phase. This means variables and functions can be used in code before their declaration without causing a runtime error, though their values might not yet be assigned.
+
+---
+
+#### **Example of Hoisting**
+
+```javascript
+console.log(x); // Output: undefined
+var x = 5;
+
+sayHello(); // Output: "Hello!"
+function sayHello() {
+  console.log('Hello!');
+}
+```
+
+**Explanation:**
+
+1. Variable `x` is hoisted, but only its declaration, not its initialization. Therefore, `console.log(x)` outputs `undefined`.
+2. The function `sayHello` is hoisted entirely, so it can be called before its definition.
+
+#### Temporal Dead Zone
+
+The Temporal Dead Zone (TDZ) refers to the time between entering the scope of a variable declared with `let` or `const` and its initialization.
+
+**Example:**
+
+```javascript
+console.log(a); // ReferenceError
+let a = 10;
+```
+
+#### **Key Notes:**
+
+- **Declarations** are hoisted, but **initializations/assignments** are not.
+- Function **declarations** are hoisted completely, but function **expressions** are not.
+  ```javascript
+  console.log(greet); // undefined
+  var greet = function () {
+    console.log('Hi!');
+  };
+  ```
+
+#### **Example: Hoisting with Variables**
+
+```javascript
+console.log(a); // Output: undefined
+var a = 10;
+
+console.log(b); // ReferenceError: Cannot access 'b' before initialization
+let b = 20;
+```
+
+- `var` is hoisted but initialized as `undefined`.
+- `let` and `const` are hoisted but are not initialized, leading to a **Temporal Dead Zone** until their declaration.
+
+### **Expected Outputs in Sample Programs**
+
+1. **Simple Example:**
+   ```javascript
+   console.log(a); // undefined
+   var a = 10;
+   console.log(a); // 10
+   ```
+2. **Order of Execution:**
+   ```javascript
+   console.log('Second greetings');
+   console.log('First greetings');
+   console.log('First greetings');
+   ```
+3. **Variable Hoisting:**
+
+   ```javascript
+   let variable_1 = 35;
+   var variable_2 = 10;
+   const variable_3 = 15;
+
+   console.log(variable_1); // 35
+   console.log(variable_2); // 10
+   console.log(variable_3); // 15
+   console.log(variable_4); // ReferenceError: variable_4 is not defined
+   ```
+
 ### Closures and Practical Use Cases
 
 ---
@@ -518,7 +587,8 @@ first(); // Output: In second function
 ### Understanding the Call Stack
 
 ### Message Queue and Event Loop
-The Event Loop is a critical part of JavaScript’s concurrency model, ensuring non-blocking behavior by processing tasks in an asynchronous manner. 
+
+The Event Loop is a critical part of JavaScript’s concurrency model, ensuring non-blocking behavior by processing tasks in an asynchronous manner.
 JavaScript uses the **Event Loop** to handle asynchronous operations.
 
 Example:
@@ -531,6 +601,7 @@ console.log('End');
 ```
 
 ---
+
 ### Microtasks and Macrotasks
 
 ### Context
@@ -658,6 +729,7 @@ In JavaScript, **context** refers to the value of `this` within a function or ob
 ## Asynchronous JavaScript
 
 ### `setTimeout`, `setInterval`, and `requestAnimationFrame`
+
 1. **setTimeout:** Runs a function after a delay.
    ```javascript
    setTimeout(() => console.log('After 1 second'), 1000);
@@ -676,6 +748,7 @@ In JavaScript, **context** refers to the value of `this` within a function or ob
    ```
 
 ---
+
 ### Promises and Fetch API
 
 ### Async/Await
@@ -995,18 +1068,7 @@ Other objects like `document`, `navigator`, and `history` are properties of the 
 
 <!-- need to manage everything below this -->
 
----
 
-#### Temporal Dead Zone
-
-The Temporal Dead Zone (TDZ) refers to the time between entering the scope of a variable declared with `let` or `const` and its initialization.
-
-**Example:**
-
-```javascript
-console.log(a); // ReferenceError
-let a = 10;
-```
 
 ---
 
@@ -1148,8 +1210,6 @@ showX.call(obj); // Output: 42
   ```
 
 ---
-
-
 
 ### **JavaScript Engines**
 
@@ -1296,41 +1356,6 @@ const Singleton = (function () {
 
 <pre class="vditor-reset" placeholder="" contenteditable="true" spellcheck="false"><hr data-block="0"/></pre>
 
-### **Hoisting in JavaScript**
-
-**Hoisting** is a JavaScript mechanism where variable and function declarations are moved to the top of their scope during the compile phase. This means variables and functions can be used in code before their declaration without causing a runtime error, though their values might not yet be assigned.
-
----
-
-#### **Example of Hoisting**
-
-```javascript
-console.log(x); // Output: undefined
-var x = 5;
-
-sayHello(); // Output: "Hello!"
-function sayHello() {
-  console.log('Hello!');
-}
-```
-
-**Explanation:**
-
-1. Variable `x` is hoisted, but only its declaration, not its initialization. Therefore, `console.log(x)` outputs `undefined`.
-2. The function `sayHello` is hoisted entirely, so it can be called before its definition.
-
----
-
-#### **Key Notes:**
-
-- **Declarations** are hoisted, but **initializations/assignments** are not.
-- Function **declarations** are hoisted completely, but function **expressions** are not.
-  ```javascript
-  console.log(greet); // undefined
-  var greet = function () {
-    console.log('Hi!');
-  };
-  ```
 
 ---
 
@@ -1381,49 +1406,6 @@ person2.greet(); // Output: Hello from prototype!
 | **Constructor Execution** | Runs the constructor function.                                             | No constructor is run.                                    |
 | **Use Case**              | For creating objects with methods and properties defined by a constructor. | For prototypal inheritance or extending existing objects. |
 
----
-
-#### **Example: Hoisting with Variables**
-
-```javascript
-console.log(a); // Output: undefined
-var a = 10;
-
-console.log(b); // ReferenceError: Cannot access 'b' before initialization
-let b = 20;
-```
-
-- `var` is hoisted but initialized as `undefined`.
-- `let` and `const` are hoisted but are not initialized, leading to a **Temporal Dead Zone** until their declaration.
-
----
-
-### **Expected Outputs in Sample Programs**
-
-1. **Simple Example:**
-   ```javascript
-   console.log(a); // undefined
-   var a = 10;
-   console.log(a); // 10
-   ```
-2. **Order of Execution:**
-   ```javascript
-   console.log('Second greetings');
-   console.log('First greetings');
-   console.log('First greetings');
-   ```
-3. **Variable Hoisting:**
-
-   ```javascript
-   let variable_1 = 35;
-   var variable_2 = 10;
-   const variable_3 = 15;
-
-   console.log(variable_1); // 35
-   console.log(variable_2); // 10
-   console.log(variable_3); // 15
-   console.log(variable_4); // ReferenceError: variable_4 is not defined
-   ```
 
 ---
 
