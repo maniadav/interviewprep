@@ -205,12 +205,10 @@ This list contains a longer list of important JavaScript questions. Not all of t
 | 193 | [When would you use `document.write()`?](#when-would-you-use-documentwrite)                                                                                                                                                                                | Advanced     |
 </details>
 
-## Top Questions with Answers
 
-<!-- QUESTIONS:TOP:START -->
 <details>
   <summary>
-    <h3>1. Explain the concept of "hoisting" in JavaScript</h3>
+    <h3>### What are the various data types in JavaScript?</h3>
   </summary>
    
 Hoisting is a JavaScript mechanism where variable and function declarations are moved ("hoisted") to the top of their containing scope during the compile phase.
@@ -239,10 +237,6 @@ The following behavior summarizes the result of accessing the variables before t
 > Read the [detailed answer](https://greatfrontend.com/questions/quiz/explain-hoisting) on [GreatFrontEnd](https://greatfrontend.com/) which allows progress tracking, contains more code samples, and useful resources.
 
 </details>
-
-## All Questions with Answers
-
-<!-- QUESTIONS:ALL:START -->
 
 ### What are the various data types in JavaScript?
 
