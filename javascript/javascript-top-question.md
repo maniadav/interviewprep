@@ -1,76 +1,7 @@
 # Top JavaScript Interview Questions (Updated for 2025)
 
-**Updated for 2025!** This repository contains a few hundred curated JavaScript interview questions with high quality answers for acing your Front End Engineer interviews. The questions are divided into two sections:
-
-1. [**Top questions**](#table-of-contents-top-questions): List of the most important JavaScript interview questions that are commonly-asked during Front End Developer interviews. This README displays the concise version of the answers and links are provided to the full version of answers for further learning. If you are are short on time, start with this section.
-2. [**All questions**](#table-of-contents-all-questions): Comprehensive and elaborate list of JavaScript interview questions that ranges from basic to advanced topics. The answers in this section are more concise. This section is useful if you rusty with JavaScript concepts and need a refresher.
-
-
-<details close>
-<summary><h2>Table of Contents (Top Questions)</h2></summary>   
-<br>
-This list contains the top essential questions that are frequently-asked during Front End Engineer interviews. Concise versions of the answers are presented here with links to elaborate versions for further reading. This section is great if you need a quick refresher of the most important concepts.
-
-| No. | Questions                                                                                                                                                                                                                           | Level        |
-| --- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :----------- |
-| 1   | [Explain the concept of &#34;hoisting&#34; in JavaScript](#explain-the-concept-of-hoisting-in-javascript)                                                                                                                              | Basic        |
-| 2   | [What are the differences between JavaScript variables created using `let`, `var` or `const`?](#what-are-the-differences-between-javascript-variables-created-using-let-var-or-const)                                            | Basic        |
-| 3   | [What is the difference between `==` and `===` in JavaScript?](#what-is-the-difference-between--and--in-javascript)                                                                                                                | Basic        |
-| 4   | [What is the event loop in JavaScript runtimes?](#what-is-the-event-loop-in-javascript-runtimes)                                                                                                                                       | Basic        |
-| 5   | [Explain event delegation in JavaScript](#explain-event-delegation-in-javascript)                                                                                                                                                      | Basic        |
-| 6   | [Explain how `this` works in JavaScript](#explain-how-this-works-in-javascript)                                                                                                                                                      | Basic        |
-| 7   | [Describe the difference between a cookie, `sessionStorage` and `localStorage` in browsers](#describe-the-difference-between-a-cookie-sessionstorage-and-localstorage-in-browsers)                                                 | Basic        |
-| 8   | [Describe the difference between `<script>`, `<script async>` and `<script defer>`](#describe-the-difference-between-script-script-async-and-script-defer)                                                                       | Basic        |
-| 9   | [What&#39;s the difference between a JavaScript variable that is: `null`, `undefined` or undeclared?](#whats-the-difference-between-a-javascript-variable-that-is-null-undefined-or-undeclared)                                    | Basic        |
-| 10  | [What&#39;s the difference between `.call` and `.apply` in JavaScript?](#whats-the-difference-between-call-and-apply-in-javascript)                                                                                                | Basic        |
-| 11  | [Explain `Function.prototype.bind` in JavaScript](#explain-functionprototypebind-in-javascript)                                                                                                                                      | Basic        |
-| 12  | [What advantage is there for using the JavaScript arrow syntax for a method in a constructor?](#what-advantage-is-there-for-using-the-javascript-arrow-syntax-for-a-method-in-a-constructor)                                           | Basic        |
-| 13  | [Explain how prototypal inheritance works in JavaScript](#explain-how-prototypal-inheritance-works-in-javascript)                                                                                                                      | Basic        |
-| 14  | [Difference between: `function Person(){}`, `const person = Person()`, and `const person = new Person()` in JavaScript?](#difference-between-function-person-const-person--person-and-const-person--new-person-in-javascript)    | Basic        |
-| 15  | [Explain the differences on the usage of `foo` between `function foo() {}` and `var foo = function() {}` in JavaScript](#explain-the-differences-on-the-usage-of-foo-between-function-foo--and-var-foo--function--in-javascript) | Basic        |
-| 16  | [What&#39;s a typical use case for anonymous functions in JavaScript?](#whats-a-typical-use-case-for-anonymous-functions-in-javascript)                                                                                                | Intermediate |
-| 17  | [What are the various ways to create objects in JavaScript?](#what-are-the-various-ways-to-create-objects-in-javascript)                                                                                                               | Basic        |
-| 18  | [What is a closure in JavaScript, and how/why would you use one?](#what-is-a-closure-in-javascript-and-howwhy-would-you-use-one)                                                                                                       | Intermediate |
-| 19  | [What is the definition of a higher-order function in JavaScript?](#what-is-the-definition-of-a-higher-order-function-in-javascript)                                                                                                   | Basic        |
-| 20  | [What are the differences between JavaScript ES2015 classes and ES5 function constructors?](#what-are-the-differences-between-javascript-es2015-classes-and-es5-function-constructors)                                                 | Basic        |
-| 21  | [Describe event bubbling in JavaScript and browsers](#describe-event-bubbling-in-javascript-and-browsers)                                                                                                                              | Basic        |
-| 22  | [Describe event capturing in JavaScript and browsers](#describe-event-capturing-in-javascript-and-browsers)                                                                                                                            | Basic        |
-| 23  | [What is the difference between `mouseenter` and `mouseover` event in JavaScript and browsers?](#what-is-the-difference-between-mouseenter-and-mouseover-event-in-javascript-and-browsers)                                         | Basic        |
-| 24  | [What is `'use strict';` in JavaScript for?](#what-is-use-strict-in-javascript-for)                                                                                                                                                  | Advanced     |
-| 25  | [Explain the difference between synchronous and asynchronous functions in JavaScript](#explain-the-difference-between-synchronous-and-asynchronous-functions-in-javascript)                                                            | Basic        |
-| 26  | [What are the pros and cons of using Promises instead of callbacks in JavaScript?](#what-are-the-pros-and-cons-of-using-promises-instead-of-callbacks-in-javascript)                                                                   | Intermediate |
-| 27  | [Explain AJAX in as much detail as possible](#explain-ajax-in-as-much-detail-as-possible)                                                                                                                                              | Basic        |
-| 28  | [What are the advantages and disadvantages of using AJAX?](#what-are-the-advantages-and-disadvantages-of-using-ajax)                                                                                                                   | Basic        |
-| 29  | [What are the differences between `XMLHttpRequest` and `fetch()` in JavaScript and browsers?](#what-are-the-differences-between-xmlhttprequest-and-fetch-in-javascript-and-browsers)                                               | Basic        |
-| 30  | [How do you abort a web request using `AbortController` in JavaScript?](#how-do-you-abort-a-web-request-using-abortcontroller-in-javascript)                                                                                         | Intermediate |
-| 31  | [What are JavaScript polyfills for?](#what-are-javascript-polyfills-for)                                                                                                                                                               | Advanced     |
-| 32  | [Why is extending built-in JavaScript objects not a good idea?](#why-is-extending-built-in-javascript-objects-not-a-good-idea)                                                                                                         | Intermediate |
-| 33  | [Why is it, in general, a good idea to leave the global JavaScript scope of a website as-is and never touch it?](#why-is-it-in-general-a-good-idea-to-leave-the-global-javascript-scope-of-a-website-as-is-and-never-touch-it)         | Intermediate |
-| 34  | [Explain the differences between CommonJS modules and ES modules in JavaScript](#explain-the-differences-between-commonjs-modules-and-es-modules-in-javascript)                                                                        | Intermediate |
-| 35  | [What are the various data types in JavaScript?](#what-are-the-various-data-types-in-javascript)                                                                                                                                       | Basic        |
-| 36  | [What language constructs do you use for iterating over object properties and array items in JavaScript?](#what-language-constructs-do-you-use-for-iterating-over-object-properties-and-array-items-in-javascript)                     | Basic        |
-| 37  | [What are the benefits of using spread syntax in JavaScript and how is it different from rest syntax?](#what-are-the-benefits-of-using-spread-syntax-in-javascript-and-how-is-it-different-from-rest-syntax)                           | Basic        |
-| 38  | [What are iterators and generators in JavaScript and what are they used for?](#what-are-iterators-and-generators-in-javascript-and-what-are-they-used-for)                                                                             | Advanced     |
-| 39  | [Explain the difference between mutable and immutable objects in JavaScript](#explain-the-difference-between-mutable-and-immutable-objects-in-javascript)                                                                              | Intermediate |
-| 40  | [What is the difference between a `Map` object and a plain object in JavaScript?](#what-is-the-difference-between-a-map-object-and-a-plain-object-in-javascript)                                                                     | Basic        |
-| 41  | [What are the differences between `Map`/`Set` and `WeakMap`/`WeakSet` in JavaScript?](#what-are-the-differences-between-mapset-and-weakmapweakset-in-javascript)                                                               | Basic        |
-| 42  | [Why might you want to create static class members in JavaScript?](#why-might-you-want-to-create-static-class-members-in-javascript)                                                                                                   | Intermediate |
-| 43  | [What are `Symbol`s used for in JavaScript?](#what-are-symbols-used-for-in-javascript)                                                                                                                                               | Intermediate |
-| 44  | [What are server-sent events?](#what-are-server-sent-events)                                                                                                                                                                           | Advanced     |
-| 45  | [What are JavaScript object property flags and descriptors?](#what-are-javascript-object-property-flags-and-descriptors)                                                                                                               | Advanced     |
-| 46  | [What are JavaScript object getters and setters for?](#what-are-javascript-object-getters-and-setters-for)                                                                                                                             | Intermediate |
-| 47  | [What are proxies in JavaScript used for?](#what-are-proxies-in-javascript-used-for)                                                                                                                                                   | Advanced     |
-| 48  | [What tools and techniques do you use for debugging JavaScript code?](#what-tools-and-techniques-do-you-use-for-debugging-javascript-code)                                                                                             | Intermediate |
-| 49  | [What are workers in JavaScript used for?](#what-are-workers-in-javascript-used-for)                                                                                                                                                   | Advanced     |
-| 50  | [How does JavaScript garbage collection work?](#how-does-javascript-garbage-collection-work)                                                                                                                                           | Advanced     |
-
-<!-- TABLE_OF_CONTENTS:TOP:END -->
-</details>
-
-
-
-<details close>
-<summary><h2>Table of Contents (All Questions)</h2></summary>   
+<details>
+<summary><h2>Table of Contents</h2></summary>   
 <br>
 
 This list contains a longer list of important JavaScript questions. Not all of them will be asked during Front End Engineer interviews but they provide a well-rounded review of JavaScript concepts ranging from beginner to advanced topics.
