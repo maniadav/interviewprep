@@ -8,12 +8,12 @@ This list contains a longer list of important JavaScript questions. Not all of t
 
 | No. | Questions                                                                                        | Level |
 | --- | :---------------- | :---- |
-| 1   | [Predict the Output](#predict-the-output) | Basic |
-| 2   | [How do you check the data type of a variable?](#how-do-you-check-the-data-type-of-a-variable)   | Basic |
+| 1   | [Question 1: Predict the Output](#q1) | Basic |
+| 2   | [Question 2: Private Counter Using Closures](#q2)   | Basic |
 
 ---
 
-## **Question 1: Predict the Output**
+## Question 1: Predict the Output
 
 ```javascript
 for (let i = 0; i < 5; i++) {
@@ -31,7 +31,7 @@ The `let` declaration creates a new block-scoped variable for each iteration, so
 
 ---
 
-## **Question 2: Private Counter Using Closures**
+## Question 2: Private Counter Using Closures
 
 ```javascript
 function privateCounter() {
@@ -49,7 +49,7 @@ console.log(counter.decrement()); // Output: 0
 console.log(counter.getCount()); // Output: 0
 ```
 
-**Answer:**
+Answer:
 
 The `privateCounter` function creates a closure with a private `count` variable, which is manipulated through the `increment`, `decrement`, and `getCount` methods.
 
