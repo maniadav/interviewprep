@@ -2,6 +2,136 @@
   JavaScript Concept You Should Know
 </h1>
 
+- [Introduction to JavaScript](#introduction-to-javascript)  
+  - [History and Purpose of JavaScript](#history-and-purpose-of-javascript)  
+  - [JavaScript in Web Development](#javascript-in-web-development)  
+
+- [Variables and Data Types](#variables-and-data-types)  
+  - [Declaring Variables](#declaring-variables)  
+  - [Primitive Types](#primitive-types)  
+  - [Value Types vs Reference Types](#value-types-vs-reference-types)  
+  - [Type Coercion: Implicit vs Explicit](#type-coercion-implicit-vs-explicit)  
+  - [Nominal, Structural, and Duck Typing](#nominal-structural-and-duck-typing)  
+
+- [Operators](#operators)  
+  - [Arithmetic Operators](#arithmetic-operators)  
+  - [Comparison Operators (`==` vs `===` vs `typeof`)](#comparison-operators-vs-vs-typeof)  
+  - [Bitwise Operators](#bitwise-operators)  
+  - [Logical Operators](#logical-operators)  
+
+- [Control Flow](#control-flow)  
+  - [If-Else Statements](#if-else-statements)  
+  - [Switch Statements](#switch-statements)  
+  - [Looping Statements (For, While, Do-While)](#looping-statements-for-while-do-while)  
+
+- [Functions](#functions)  
+  - [Function Declarations and Expressions](#function-declarations-and-expressions)  
+  - [Function Scope, Block Scope, and Lexical Scope](#function-scope-block-scope-and-lexical-scope)  
+  - [IIFE (Immediately Invoked Function Expressions)](#iife-immediately-invoked-function-expressions)  
+  - [High-Order Functions](#high-order-functions)  
+  - [Recursion](#recursion)  
+
+- [Scope and Closures](#scope-and-closures)  
+  - [Variable Scope (Global, Local)](#variable-scope-global-local)  
+  - [Hoisting in JavaScript](#hoisting-in-javascript)  
+  - [Closures and Practical Use Cases](#closures-and-practical-use-cases)  
+
+- [Call Stack and Execution Context](#call-stack-and-execution-context)  
+  - [Understanding the Call Stack](#understanding-the-call-stack)  
+  - [Message Queue and Event Loop](#message-queue-and-event-loop)  
+  - [Microtasks and Macrotasks](#microtasks-and-macrotasks)  
+
+- [Asynchronous JavaScript](#asynchronous-javascript)  
+  - [`setTimeout`, `setInterval`, and `requestAnimationFrame`](#settimeout-setinterval-and-requestanimationframe)  
+  - [Promises and Fetch API](#promises-and-fetch-api)  
+  - [Async/Await](#asyncawait)  
+  - [Callback Functions and Callback Hell](#callback-functions-and-callback-hell)  
+
+- [Objects and Arrays](#objects-and-arrays)  
+  - [Object Literals and Properties](#object-literals-and-properties)  
+  - [Methods and Prototype Inheritance](#methods-and-prototype-inheritance)  
+  - [`Object.create` and `Object.assign`](#objectcreate-and-objectassign)  
+  - [Arrays: Creating, Accessing, and Array Methods (`map`, `reduce`, `filter`)](#arrays-creating-accessing-and-array-methods-map-reduce-filter)  
+
+- [DOM and Layout Trees](#dom-and-layout-trees)  
+  - [DOM Manipulation: Selecting and Modifying Elements](#dom-manipulation-selecting-and-modifying-elements)  
+  - [Layout Trees and Reflow](#layout-trees-and-reflow)  
+  - [Event Propagation: Bubbling and Capturing](#event-propagation-bubbling-and-capturing)  
+
+- [ES6 and Beyond](#es6-and-beyond)  
+  - [Arrow Functions](#arrow-functions)  
+  - [Template Literals](#template-literals)  
+  - [Destructuring Assignments](#destructuring-assignments)  
+  - [Modules (Import and Export Syntax)](#modules-import-and-export-syntax)  
+
+- [Object-Oriented Programming (OOP)](#object-oriented-programming-oop)  
+  - [Factories and Classes](#factories-and-classes)  
+  - [Class Definitions and Instances](#class-definitions-and-instances)  
+  - [Prototype Inheritance and Prototype Chain](#prototype-inheritance-and-prototype-chain)  
+  - [`this`, `call`, `apply`, and `bind`](#this-call-apply-and-bind)  
+  - [`new`, Constructor, `instanceof`, and Instances](#new-constructor-instanceof-and-instances)  
+  - [Inheritance, Polymorphism, and Code Reuse](#inheritance-polymorphism-and-code-reuse)  
+
+- [Functional Programming](#functional-programming)  
+  - [Pure Functions and Side Effects](#pure-functions-and-side-effects)  
+  - [State Mutation and Event Propagation](#state-mutation-and-event-propagation)  
+  - [Partial Applications and Currying](#partial-applications-and-currying)  
+  - [Compose and Pipe](#compose-and-pipe)  
+
+- [Data Structures and Algorithms](#data-structures-and-algorithms)  
+  - [Arrays, Maps, Sets, and Typed Arrays](#arrays-maps-sets-and-typed-arrays)  
+  - [Array Buffers](#array-buffers)  
+  - [Collections and Generators](#collections-and-generators)  
+  - [Expensive Operations and Big O Notation](#expensive-operations-and-big-o-notation)  
+  - [Algorithms Basics](#algorithms-basics)  
+
+- [JavaScript Engines and Performance](#javascript-engines-and-performance)  
+  - [JavaScript Engines (V8, SpiderMonkey, etc.)](#javascript-engines-v8-spidermonkey-etc)  
+  - [Performance Optimization Techniques](#performance-optimization-techniques)  
+  - [Reducing DOM Manipulation](#reducing-dom-manipulation)  
+
+- [Error Handling and Debugging](#error-handling-and-debugging)  
+  - [Error Types and Handling](#error-types-and-handling)  
+  - [Debugging Techniques and Tools](#debugging-techniques-and-tools)  
+
+- [Web Storage](#web-storage)  
+  - [LocalStorage and SessionStorage](#localstorage-and-sessionstorage)  
+
+- [API Integration](#api-integration)  
+  - [AJAX (Asynchronous JavaScript and XML)](#ajax-asynchronous-javascript-and-xml)  
+  - [RESTful API Concepts](#restful-api-concepts)  
+  - [Fetch API](#fetch-api)  
+
+- [Design Patterns](#design-patterns)  
+  - [Singleton Pattern](#singleton-pattern)  
+  - [Factory Pattern](#factory-pattern)  
+  - [Observer Pattern](#observer-pattern)  
+
+- [Regular Expressions](#regular-expressions)  
+  - [Pattern Matching and Manipulation](#pattern-matching-and-manipulation)  
+  - [Regular Expression Methods and Modifiers](#regular-expression-methods-and-modifiers)  
+
+- [Event Handling](#event-handling)  
+  - [Event Listeners and the Event Object](#event-listeners-and-the-event-object)  
+  - [Event Delegation](#event-delegation)  
+
+- [Clean Code and Best Practices](#clean-code-and-best-practices)  
+  - [Writing Readable and Maintainable Code](#writing-readable-and-maintainable-code)  
+  - [Reducing Technical Debt](#reducing-technical-debt)  
+  - [Code Reviews and Refactoring](#code-reviews-and-refactoring)  
+
+- [Security Considerations in JavaScript](#security-considerations-in-javascript)  
+  - [Cross-Site Scripting (XSS)](#cross-site-scripting-xss)  
+  - [Cross-Site Request Forgery (CSRF)](#cross-site-request-forgery-csrf)  
+
+- [Server-Side JavaScript](#server-side-javascript)  
+  - [Introduction to Node.js](#introduction-to-nodejs)  
+
+- [Data Visualization with JavaScript Libraries](#data-visualization-with-javascript-libraries)  
+  - [D3.js for Data Visualization](#d3js-for-data-visualization)  
+  - [Chart.js for Creating Charts](#chartjs-for-creating-charts)
+
+---
 1. **[Context](#Context)**
 2. **[Primitive Types](#2-primitive-types)**
 3. **[Value Types and Reference Types](#3-value-types-and-reference-types)**
@@ -37,7 +167,6 @@
 33. **[Clean Code](#33-clean-code)**
   
 - [Introduction to JavaScript](#introduction-to-javascript)
-
   - [History and Purpose of JavaScript](#history-and-purpose-of-javascript)
   - [JavaScript in Web Development](#javascript-in-web-development)
 - [Variables and Data Types](#variables-and-data-types)
