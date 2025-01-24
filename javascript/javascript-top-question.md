@@ -4,10 +4,9 @@
 
 1. [**Top questions**](#table-of-contents-top-questions): List of the most important JavaScript interview questions that are commonly-asked during Front End Developer interviews. This README displays the concise version of the answers and links are provided to the full version of answers for further learning. If you are are short on time, start with this section.
 2. [**All questions**](#table-of-contents-all-questions): Comprehensive and elaborate list of JavaScript interview questions that ranges from basic to advanced topics. The answers in this section are more concise. This section is useful if you rusty with JavaScript concepts and need a refresher.
-3. [**Questions by difficulty**](#questions-by-difficulty): Questions categorized by difficulty – basic, intermediate, advanced.
 
 
-<details open>
+<details close>
 <summary><h2>Table of Contents (Top Questions)</h2></summary>   
 <br>
 This list contains the top essential questions that are frequently-asked during Front End Engineer interviews. Concise versions of the answers are presented here with links to elaborate versions for further reading. This section is great if you need a quick refresher of the most important concepts.
@@ -70,8 +69,8 @@ This list contains the top essential questions that are frequently-asked during 
 
 
 
-<details open>
-<summary><h3>Table of Contents (All Questions)</h3></summary>   
+<details close>
+<summary><h2>Table of Contents (All Questions)</h2></summary>   
 <br>
 
 This list contains a longer list of important JavaScript questions. Not all of them will be asked during Front End Engineer interviews but they provide a well-rounded review of JavaScript concepts ranging from beginner to advanced topics.
@@ -278,11 +277,11 @@ This list contains a longer list of important JavaScript questions. Not all of t
 ## Top Questions with Answers
 
 <!-- QUESTIONS:TOP:START -->
-
-### Explain the concept of "hoisting" in JavaScript
-
-<!-- Update here: /questions/explain-hoisting/en-US.mdx -->
-
+<details>
+  <summary>
+    <h3>1. Explain the concept of "hoisting" in JavaScript</h3>
+  </summary>
+   
 Hoisting is a JavaScript mechanism where variable and function declarations are moved ("hoisted") to the top of their containing scope during the compile phase.
 
 - **Variable declarations (`var`)**: Declarations are hoisted, but not initializations. The value of the variable is `undefined` if accessed before initialization.
@@ -292,7 +291,7 @@ Hoisting is a JavaScript mechanism where variable and function declarations are 
 - **Class declarations (`class`)**: Declarations are hoisted, but not initialized. Accessing them results in `ReferenceError` until the actual declaration is encountered.
 - **Import declarations (`import`)**: Declarations are hoisted, and side effects of importing the module are executed before the rest of the code.
 
-The following behavior summarizes the result of accessing the variables before they are declared.
+The following behavior summarizes the result of accessing the variables before they are declared:
 
 | Declaration                      | Accessing before declaration |
 | -------------------------------- | ---------------------------- |
@@ -304,19 +303,16 @@ The following behavior summarizes the result of accessing the variables before t
 | `function foo() { ... }`       | Normal                       |
 | `import`                       | Normal                       |
 
-<!-- Update here: /questions/explain-hoisting/en-US.mdx -->
-
 <br>
 
 > Read the [detailed answer](https://greatfrontend.com/questions/quiz/explain-hoisting) on [GreatFrontEnd](https://greatfrontend.com/) which allows progress tracking, contains more code samples, and useful resources.
 
-[Back to top ↑](#table-of-contents-top-questions) &nbsp;&nbsp;/&nbsp;&nbsp; [✏️ Edit answer](https://github.com/yangshun/top-javascript-interview-questions/edit/main/questions/explain-hoisting/en-US.mdx)
+</details>
 
-<br>
-
-### What are the differences between JavaScript variables created using `let`, `var` or `const`?
-
-<!-- Update here: /questions/what-are-the-differences-between-variables-created-using-let-var-or-const/en-US.mdx -->
+<details>
+  <summary>
+    <h3>2. What are the differences between JavaScript variables created using `let`, `var` or `const`?</h3>
+  </summary>
 
 In JavaScript, `let`, `var`, and `const` are all keywords used to declare variables, but they differ significantly in terms of scope, initialization rules, whether they can be redeclared or reassigned and the behavior when they are accessed before declaration:
 
@@ -328,41 +324,40 @@ In JavaScript, `let`, `var`, and `const` are all keywords used to declare variab
 | Reassignment                 | Yes                | Yes                | No                 |
 | Accessing before declaration | `undefined`      | `ReferenceError` | `ReferenceError` |
 
-<!-- Update here: /questions/what-are-the-differences-between-variables-created-using-let-var-or-const/en-US.mdx -->
-
 <br>
 
 > Read the [detailed answer](https://greatfrontend.com/questions/quiz/what-are-the-differences-between-variables-created-using-let-var-or-const) on [GreatFrontEnd](https://greatfrontend.com/) which allows progress tracking, contains more code samples, and useful resources.
 
-[Back to top ↑](#table-of-contents-top-questions) &nbsp;&nbsp;/&nbsp;&nbsp; [✏️ Edit answer](https://github.com/yangshun/top-javascript-interview-questions/edit/main/questions/what-are-the-differences-between-variables-created-using-let-var-or-const/en-US.mdx)
+</details>
 
-<br>
 
-### What is the difference between `==` and `===` in JavaScript?
 
-<!-- Update here: /questions/what-is-the-difference-between-double-equal-and-triple-equal/en-US.mdx -->
+
+
+
+<details>
+  <summary><h3>3. What is the difference between `==` and `===` in JavaScript?</h3></summary>
 
 `==` is the abstract equality operator while `===` is the strict equality operator. The `==` operator will compare for equality after doing any necessary type conversions. The `===` operator will not do type conversion, so if two values are not the same type `===` will simply return `false`.
 
 | Operator                | `==`                    | `===`                  |
-| ----------------------- | ------------------------- | ------------------------ |
+| ----------------------- | ----------------------- | ---------------------- |
 | Name                    | (Loose) Equality operator | Strict equality operator |
-| Type coercion           | Yes                       | No                       |
-| Compares value and type | No                        | Yes                      |
-
-<!-- Update here: /questions/what-is-the-difference-between-double-equal-and-triple-equal/en-US.mdx -->
-
-<br>
+| Type coercion           | Yes                     | No                     |
+| Compares value and type | No                      | Yes                    |
 
 > Read the [detailed answer](https://greatfrontend.com/questions/quiz/what-is-the-difference-between-double-equal-and-triple-equal) on [GreatFrontEnd](https://greatfrontend.com/) which allows progress tracking, contains more code samples, and useful resources.
 
-[Back to top ↑](#table-of-contents-top-questions) &nbsp;&nbsp;/&nbsp;&nbsp; [✏️ Edit answer](https://github.com/yangshun/top-javascript-interview-questions/edit/main/questions/what-is-the-difference-between-double-equal-and-triple-equal/en-US.mdx)
+[Back to top ↑](#table-of-contents-top-questions)
+</details>
 
-<br>
 
-### What is the event loop in JavaScript runtimes?
 
-<!-- Update here: /questions/what-is-event-loop-what-is-the-difference-between-call-stack-and-task-queue/en-US.mdx -->
+
+
+
+<details>
+  <summary><h3>4. What is the event loop in JavaScript runtimes?</h3></summary>
 
 The event loop is concept within the JavaScript runtime environment regarding how asynchronous operations are executed within JavaScript engines. It works as such:
 
@@ -378,25 +373,24 @@ The event loop is concept within the JavaScript runtime environment regarding ho
 
 The unfortunate truth is that it is extremely hard to explain the event loop well using only text. We recommend checking out one of the following excellent videos explaining the event loop:
 
-- [JavaScript Visualized - Event Loop, Web APIs, (Micro)task Queue](https://www.youtube.com/watch?v=eiC58R16hb8) (2024): Lydia Hallie is a popular educator on JavaScript and this is the best recent videos explaining the event loop. There's also an [accompanying blog post](https://www.lydiahallie.com/blog/event-loop) for those who prefer detailed text-based explanations.
+- [JavaScript Visualized - Event Loop, Web APIs, (Micro)task Queue](https://www.youtube.com/watch?v=eiC58R16hb8) (2024): Lydia Hallie is a popular educator on JavaScript and this is the best recent video explaining the event loop. There's also an [accompanying blog post](https://www.lydiahallie.com/blog/event-loop) for those who prefer detailed text-based explanations.
 - [In the Loop](https://www.youtube.com/watch?v=cCOL7MC4Pl0) (2018): Jake Archibald previously from the Chrome team provides a visual demonstration of the event loop during JSConf 2018, accounting for different types of tasks.
 - [What the heck is the event loop anyway?](https://www.youtube.com/watch?v=8aGhZQkoFbQ) (2014): Philip Robert's gave this epic talk at JSConf 2014 and it is one of the most viewed JavaScript videos on YouTube.
 
-We recommend watching [Lydia&#39;s video](https://www.youtube.com/watch?v=eiC58R16hb8) as it is the most modern and concise explanation standing at only 13 minutes long whereas the other videos are at least 30 minutes long. Her video is sufficient for the purpose of interviews.
-
-<!-- Update here: /questions/what-is-event-loop-what-is-the-difference-between-call-stack-and-task-queue/en-US.mdx -->
-
-<br>
-
+We recommend watching [Lydia's video](https://www.youtube.com/watch?v=eiC58R16hb8) as it is the most modern and concise explanation standing at only 13 minutes long, whereas the other videos are at least 30 minutes long. Her video is sufficient for the purpose of interviews.
 > Read the [detailed answer](https://greatfrontend.com/questions/quiz/what-is-event-loop-what-is-the-difference-between-call-stack-and-task-queue) on [GreatFrontEnd](https://greatfrontend.com/) which allows progress tracking, contains more code samples, and useful resources.
 
-[Back to top ↑](#table-of-contents-top-questions) &nbsp;&nbsp;/&nbsp;&nbsp; [✏️ Edit answer](https://github.com/yangshun/top-javascript-interview-questions/edit/main/questions/what-is-event-loop-what-is-the-difference-between-call-stack-and-task-queue/en-US.mdx)
+[Back to top ↑](#table-of-contents-top-questions)
 
-<br>
+</details>
 
-### Explain event delegation in JavaScript
 
-<!-- Update here: /questions/explain-event-delegation/en-US.mdx -->
+
+
+
+
+<details>
+  <summary><h3>5. Explain event delegation in JavaScript</h3></summary>
 
 Event delegation is a technique in JavaScript where a single event listener is attached to a parent element instead of attaching event listeners to multiple child elements. When an event occurs on a child element, the event bubbles up the DOM tree, and the parent element's event listener handles the event based on the target element.
 
@@ -410,22 +404,19 @@ However, do note that:
 
 - It is important to identify the target element that triggered the event.
 - Not all events can be delegated because they are not bubbled. Non-bubbling events include: `focus`, `blur`, `scroll`, `mouseenter`, `mouseleave`, `resize`, etc.
-
-<!-- Update here: /questions/explain-event-delegation/en-US.mdx -->
-
-<br>
-
 > Read the [detailed answer](https://greatfrontend.com/questions/quiz/explain-event-delegation) on [GreatFrontEnd](https://greatfrontend.com/) which allows progress tracking, contains more code samples, and useful resources.
 
-[Back to top ↑](#table-of-contents-top-questions) &nbsp;&nbsp;/&nbsp;&nbsp; [✏️ Edit answer](https://github.com/yangshun/top-javascript-interview-questions/edit/main/questions/explain-event-delegation/en-US.mdx)
+[Back to top ↑](#table-of-contents-top-questions)
+</details>
 
-<br>
 
-### Explain how `this` works in JavaScript
 
-<!-- Update here: /questions/explain-how-this-works-in-javascript/en-US.mdx -->
 
-There's no simple explanation for `this`; it is one of the most confusing concepts in JavaScript because it's behavior differs from many other programming languages. The one-liner explanation of the `this` keyword is that it is a dynamic reference to the context in which a function is executed.
+
+<details>
+  <summary><h3>6. Explain how `this` works in JavaScript</h3></summary>
+
+There's no simple explanation for `this`; it is one of the most confusing concepts in JavaScript because its behavior differs from many other programming languages. The one-liner explanation of the `this` keyword is that it is a dynamic reference to the context in which a function is executed.
 
 A longer explanation follows is that `this` follows these rules:
 
@@ -437,17 +428,16 @@ A longer explanation follows is that `this` follows these rules:
 6. If multiple of the above rules apply, the rule that is higher wins and will set the `this` value.
 7. If the function is an ES2015 arrow function, it ignores all the rules above and receives the `this` value of its surrounding scope at the time it is created.
 
-For an in-depth explanation, do check out [Arnav Aggrawal&#39;s article on Medium](https://codeburst.io/the-simple-rules-to-this-in-javascript-35d97f31bde3).
-
-<!-- Update here: /questions/explain-how-this-works-in-javascript/en-US.mdx -->
-
-<br>
-
+For an in-depth explanation, do check out [Arnav Aggrawal's article on Medium](https://codeburst.io/the-simple-rules-to-this-in-javascript-35d97f31bde3).
 > Read the [detailed answer](https://greatfrontend.com/questions/quiz/explain-how-this-works-in-javascript) on [GreatFrontEnd](https://greatfrontend.com/) which allows progress tracking, contains more code samples, and useful resources.
 
-[Back to top ↑](#table-of-contents-top-questions) &nbsp;&nbsp;/&nbsp;&nbsp; [✏️ Edit answer](https://github.com/yangshun/top-javascript-interview-questions/edit/main/questions/explain-how-this-works-in-javascript/en-US.mdx)
+[Back to top ↑](#table-of-contents-top-questions)
 
-<br>
+</details>
+
+
+
+
 
 ### Describe the difference between a cookie, `sessionStorage` and `localStorage` in browsers
 
