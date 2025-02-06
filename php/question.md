@@ -1,54 +1,42 @@
----
-permalink: /php/question
----
+**[<< Go To Home](#what-are-magic-methods-tell-me-3-magic-methods)**
+<div align="center">
+    <h1><span style="color:#f39c12;">PHP</span> Concept <span style="color:#f39c12;">Question</span></h1>
+</div>
 
-# 100 Must-Know PHP Interview Questions
-
-<div>
-<p align="center">
-
-#### You can also find all 100 answers here 👉 [Maniadav - PHP](https://maniadav.vercel.com)
-
-<br>
-
-# PHP Interview Questions (all level)
-
-There is an interview tomorrow?
-Is it your first time or are you a senior? Don't worry. Here is a cheat sheet to do the best on your interview and refresh your memory.
+# Table Of Content
 
 ## Questions
 
-- [What are magic methods? Tell me 3 magic methods.](#what-are-magic-methods-tell-me-3-magic-methods)
-- [PHP support multiple inheritance?](#php-support-multiple-inheritance)
-- [Interface vs abstract class, tell me the difference.](#interface-vs-abstract-class-tell-me-the-diference)
-- [What the final keyword does?](#what-the-final-keyword-does)
-- [What does the following code?](#what-does-the-following-code)
-- [What are namespaces and how to use them?](#what-are-namespaces-and-how-to-use-them)
-- [Explain what are closures?](#explain-what-are-closures)
-- [Tell what we need to know about error handling in PHP](#tell-what-we-need-to-know-about-error-handling-in-php)
-- [Explain SOLID with examples](#explain-solid-with-examples)
-- [Explain Dependency Injection](#explain-dependency-injection)
-- [Composition vs Inheritance](#composition-vs-inheritance)
+1. **[What are magic methods? Tell me 3 magic methods.](#what-are-magic-methods-tell-me-3-magic-methods)**
+1. **[PHP support multiple inheritance?](#php-support-multiple-inheritance)**
+1. **[Interface vs abstract class, tell me the difference.](#interface-vs-abstract-class-tell-me-the-diference)**
+1. **[What the final keyword does?](#what-the-final-keyword-does)**
+1. **[What does the following code?](#what-does-the-following-code)**
+1. **[What are namespaces and how to use them?](#what-are-namespaces-and-how-to-use-them)**
+1. **[Explain what are closures?](#explain-what-are-closures)**
+1. **[Tell what we need to know about error handling in PHP](#tell-what-we-need-to-know-about-error-handling-in-php)**
+1. **[Explain SOLID with examples](#explain-solid-with-examples)**
+1. **[Explain Dependency Injection](#explain-dependency-injection)**
+1. **[Composition vs Inheritance](#composition-vs-inheritance)**
 
 ---
 
 ### What are [magic methods](https://www.php.net/manual/en/language.oop5.magic.php)? Tell me 3 magic methods.
 
 PHP provides a number of 'magic' methods that allow you to do some pretty neat tricks in object-oriented programming.
-These methods, identified by a two underscore prefix (__), function as interceptors that are automatically called when certain conditions are met.
+These methods, identified by a two underscore prefix (\_\_), function as interceptors that are automatically called when certain conditions are met.
 
-- [__toString()](https://www.php.net/manual/en/language.oop5.magic.php#object.tostring)
+- [\_\_toString()](https://www.php.net/manual/en/language.oop5.magic.php#object.tostring)
 
-  > The __toString() method allows a class to decide how it will react when it is treated like a string.
-  >
-- [__call()](https://www.php.net/manual/en/language.oop5.overloading.php#object.call)
+  > The \_\_toString() method allows a class to decide how it will react when it is treated like a string.
+
+- [\_\_call()](https://www.php.net/manual/en/language.oop5.overloading.php#object.call)
 
   > This method is triggered when you try to reach a method what is not in the class.
-  >
-- [__get()](https://www.php.net/manual/en/language.oop5.overloading.php#object.get)
 
-  > This behaves the same as __call() but this one is for class properties, not methods.
-  >
+- [\_\_get()](https://www.php.net/manual/en/language.oop5.overloading.php#object.get)
+
+  > This behaves the same as \_\_call() but this one is for class properties, not methods.
 
 ---
 
@@ -397,7 +385,7 @@ Dependency Injection (DI) in PHP is like giving a class its 'tools' from outside
 // without DI
 class Car {
     private $engine;
-  
+
     public function __construct() {
         $this->engine = new Engine(); // The Car class is directly dependent on the Engine class.
     }
@@ -407,7 +395,7 @@ class Car {
 
 class Car {
     private $engine;
-  
+
     public function __construct(Engine $engine) {
         $this->engine = $engine; // The Engine dependency is injected into the Car class.
     }
@@ -606,11 +594,13 @@ php your_script.php
   ```bash
   php -f script.php
   ```
+
 - Displaying PHP Info:
 
   ```bash
   php -i
   ```
+
 - Running a Single Command:
 
   ```bash
@@ -799,7 +789,7 @@ Here is the PHP code:
 
 ## 5. How would you create a _PHP variable_ and how are they scoped (_global_, _local_, _static_)?
 
-**PHP variables** have diverse scopes, from being accessible globally by all scripts to being confined to defined functions or methods.  They can be local, global, and static.
+**PHP variables** have diverse scopes, from being accessible globally by all scripts to being confined to defined functions or methods. They can be local, global, and static.
 
 ### Local Scope
 
@@ -885,15 +875,19 @@ In PHP, some special predefined arrays, such as `$_POST` and `$_GET`, are **supe
 1. **Integer** (`int` in PHP 7, `integer` in earlier versions): Represents whole numbers, both positive and negative.
 
    - Example: `$age = 30;`
+
 2. **Floating-Point Number** (`float`): Represents decimal numbers, also known as floats or doubles.
 
    - Example: `$price = 9.99;`
+
 3. **String** (`string`): Signifies sequences of characters, enclosed within single or double quotes.
 
    - Example: `$name = "John";`
+
 4. **Boolean** (`bool`): Represents logical states - `true` or `false`.
 
    - Example: `$isStudent = true;`
+
 5. **Resource**: Placeholder for external resources, such as database connections.
 6. **Null**: Denotes the absence of a value.
 
@@ -929,7 +923,7 @@ $person = [
 class Car {
     public $make;
     public $model;
-  
+
     public function __construct($make, $model) {
         $this->make = $make;
         $this->model = $model;
@@ -1091,16 +1085,20 @@ Understanding the detailed **lifecycle of a PHP request** will help you optimize
 1. **Bootstrap**
 
    - Code in your `index.php` file initializes the PHP environment.
+
 2. **Pre-Processing**
 
    - PHP compiles the requested file into opcode, if necessary.
    - The Zend Engine, which powers PHP, loads necessary extensions and sets up internal structures.
+
 3. **Request Processing**
 
    - PHP scripts execute from top to bottom, unless there's a redirect, error, or exit.
+
 4. **Output Buffering**
 
    - The `ob_` family of functions handles application output buffering.
+
 5. **Response**
 
    - When execution completes, the built-up output is sent back to the webserver for final delivery to the client.
@@ -1176,8 +1174,8 @@ Sessions are highly valuable but require vigilance for security. Here are some b
 ### PHP Functions for Cookie Handling
 
 - **setcookie**: Creates a new cookie or modifies an existing one.
-- **\$_COOKIE**: A global associative array that holds all set cookies, accessible from any script.
-- **\$_COOKIE[ 'cookieName' ]**: Particularly useful for reading cookie values.
+- **\$\_COOKIE**: A global associative array that holds all set cookies, accessible from any script.
+- **\$\_COOKIE[ 'cookieName' ]**: Particularly useful for reading cookie values.
 - **Example of Setcookie**: Take a look!
 
 ```php
@@ -1196,15 +1194,15 @@ Sessions are highly valuable but require vigilance for security. Here are some b
 - **HttpOnly**: When set to `true`, the cookie is accessible only through HTTP protocols.
   `<br>`
 
-## 13. Describe the _$_GET, _$_POST_, and _$_REQUEST_ _superglobal arrays_.
+## 13. Describe the _$\_GET, _$_POST_, and _$_REQUEST_ _superglobal arrays_.
 
 Each of these **superglobal arrays** in PHP helps manage input data, but they have distinct characteristics and use-cases.
 
 ### Key Features
 
-- **\$_GET** is URL-based. It extracts data from the query string. In other words, data is visible in the URL.
-- **\$_POST** is form-based. It's suitable for handling sensitive or large data as it's not visible in the URL.
-- **\$_REQUEST** is a combination of \$_GET, \$_POST, and \$_COOKIE. If a parameter is accessible in multiple arrays, \$_REQUEST uses the one with the **highest precedence**. However, its use is largely depreciated because it makes debugging and code maintenance more difficult. It's better to be specific by using \$_GET or \$_POST where applicable.
+- **\$\_GET** is URL-based. It extracts data from the query string. In other words, data is visible in the URL.
+- **\$\_POST** is form-based. It's suitable for handling sensitive or large data as it's not visible in the URL.
+- **\$\_REQUEST** is a combination of \$\_GET, \$\_POST, and \$\_COOKIE. If a parameter is accessible in multiple arrays, \$\_REQUEST uses the one with the **highest precedence**. However, its use is largely depreciated because it makes debugging and code maintenance more difficult. It's better to be specific by using \$\_GET or \$\_POST where applicable.
   `<br>`
 
 ## 14. How can you prevent form submission data from being injected with _malicious code_?
@@ -1230,6 +1228,7 @@ To prevent execution of JavaScript code, you can use:
   ```php
   $sanitized = str_replace(['<', '>'], ['<', '>'], $_POST['input']);
   ```
+
 - **JSON encoding** for non-text data in hidden fields.
 
   ```php
@@ -1275,7 +1274,7 @@ $email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL, $filterOptions
 
 <br>
 
-## 15. What is the significance of "htmlspecialchars" and "strip_tags" in _PHP_?
+## 15. What is the significance of "htmlspecialchars" and "strip*tags" in \_PHP*?
 
 Both **htmlspecialchars** and **strip_tags** are crucial PHP functions that enhance security by mitigating **Cross-Site Scripting (XSS)** risks. They play specialized roles, catering to different requirements within web applications.
 

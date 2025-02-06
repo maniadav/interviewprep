@@ -1,10 +1,9 @@
-<h1 align="center">
-  JavaScript Concept You Should Know
-</h1>
+**[<< Go To Home](#what-are-magic-methods-tell-me-3-magic-methods)**
+<div align="center">
+    <h1><span style="color:#f39c12;">JavaScript</span> Concept You Must<span style="color:#f39c12;">Know</span></h1>
+</div>
 
----
-
-## Table of Content
+# Table of Content
 
 - [Introduction to JavaScript](#introduction-to-javascript)
 
@@ -724,6 +723,8 @@ In JavaScript, **context** refers to the value of `this` within a function or ob
 - **Arrow Function Context:** `this` is inherited from the surrounding context.
 - **Explicit Binding:** `.call()`, `.apply()`, or `.bind()` can be used to explicitly set `this`.
 
+**[⬆ Back to Top](#table-of-content)**
+
 ---
 
 ## Asynchronous JavaScript
@@ -923,7 +924,10 @@ In JavaScript, **context** refers to the value of `this` within a function or ob
 
 ### Chart.js for Creating Charts
 
+**[⬆ Back to Top](#table-of-content)**
+
 ---
+
 
 ## Window Object in JavaScript
 
@@ -1065,6 +1069,7 @@ console.log(window instanceof Object); // true
 Other objects like `document`, `navigator`, and `history` are properties of the `window` object. This hierarchical structure enables easy access to browser functionality.
 
 ---
+**[⬆ Back to Top](#table-of-content)**
 
 <!-- need to manage everything below this -->
 
