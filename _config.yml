@@ -1,1 +1,17 @@
 theme: jekyll-theme-cayman
+include:
+  - php
+exclude:
+  - /node_modules/
+  - Gemfile.*
+  - package.json
+  - yarn.lock
+plugins:
+  - jekyll-feed
+collections: {}
+permalink: "/:path"
+timezone: "Asia/Kolkata"
+multilingual: false
+language: en
+languages:
+  en: English
