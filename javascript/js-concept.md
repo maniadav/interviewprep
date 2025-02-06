@@ -1,7 +1,9 @@
-**[<< Go To Home](#what-are-magic-methods-tell-me-3-magic-methods)**
+**[<< Go To Home](/documentation)**
 <div align="center">
-    <h1><span style="color:#f39c12;">JavaScript</span> Concept You Must<span style="color:#f39c12;">Know</span></h1>
+    <h1><span style="color:#f39c12;">JavaScript</span> Concept All In <span style="color:#f39c12;">One</span></h1>
 </div>
+
+ ---
 
 # Table of Content
 

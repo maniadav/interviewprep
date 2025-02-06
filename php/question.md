@@ -1,4 +1,4 @@
-**[<< Go To Home](#what-are-magic-methods-tell-me-3-magic-methods)**
+**[<< Go To Home](/documentation)**
 <div align="center">
     <h1><span style="color:#f39c12;">PHP</span> Concept <span style="color:#f39c12;">Question</span></h1>
 </div>

@@ -3,11 +3,13 @@
     <p style="color:#34495e; max-width: 800px;">Explore our carefully curated catalog of interview essentials covering full-stack, data structures and algorithms, system design, data science, and machine learning interview questions</p>
 </div>
 
+---
+
 # Table Of Content:
 
 ## Javascript
 
-1. **[Javascript Concept](/documentation/javascript/js-concept)**
+1. **[Javascript Concept All In One](/documentation/javascript/js-concept)**
 1. **[33 JS Concepts Everyone Should Know](/documentation/javascript/js-33-concept)**
 1. **[Javascript Concept Question](/documentation/javascript/js-concept-question)**
 

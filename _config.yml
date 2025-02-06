@@ -1,4 +1,6 @@
 theme: jekyll-theme-cayman
+title: "Interview Prep"
+description: "A community driven platform for interview preparation"
 include:
   - php
   - javascript
