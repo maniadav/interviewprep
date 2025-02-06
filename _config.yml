@@ -1,6 +1,7 @@
 theme: jekyll-theme-cayman
 include:
   - php
+  - javascript
 exclude:
   - /node_modules/
   - Gemfile.*
