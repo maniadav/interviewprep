@@ -6,9 +6,7 @@
   33 Concepts Every JavaScript Developer Should Know
   <br><br>
 </h1>
-Also Checkout
-https://maniadav.github.io/documentation/php/question
-<br>
+
 1. **[Call Stack](#1-call-stack)**
 2. **[Primitive Types](#2-primitive-types)**
 3. **[Value Types and Reference Types](#3-value-types-and-reference-types)**
@@ -44,6 +42,8 @@ https://maniadav.github.io/documentation/php/question
 33. **[Clean Code](#33-clean-code)**
 
 ---
+
+## [PHP/Question](https://maniadav.github.io/documentation/php/question)
 
 ## 1. Call Stack
 
