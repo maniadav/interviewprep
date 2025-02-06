@@ -9,12 +9,12 @@
 
 ## Javascript
 
-1. **[Javascript Concept All In One](/documentation/javascript/js-concept)**
-1. **[33 JS Concepts Everyone Should Know](/documentation/javascript/js-33-concept)**
-1. **[Javascript Concept Question](/documentation/javascript/js-concept-question)**
+1. **[Javascript Concept All In One](/interviewprep/javascript/js-concept)**
+1. **[33 JS Concepts Everyone Should Know](/interviewprep/javascript/js-33-concept)**
+1. **[Javascript Concept Question](/interviewprep/javascript/js-concept-question)**
 
 ## PHP
 
-1. **[PHP Concept](/documentation/php/php-concept)**
-1. **[PHP Question](/documentation/php/question)**
+1. **[PHP Concept](/interviewprep/php/php-concept)**
+1. **[PHP Question](/interviewprep/php/question)**
 

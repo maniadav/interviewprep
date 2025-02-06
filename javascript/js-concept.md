@@ -1,4 +1,4 @@
-**[<< Go To Home](/documentation)**
+**[<< Go To Home](/interviewprep)**
 <div align="center">
     <h1><span style="color:#f39c12;">JavaScript</span> Concept All In <span style="color:#f39c12;">One</span></h1>
 </div>
