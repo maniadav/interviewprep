@@ -1,35 +1,35 @@
-### backend
-1. **[sending gmail with nodemailer](backend/sending-gmail-with-nodemailer)**
+### Backend
+1. **[sending gmail with nodemailer](backend/sending_gmail_with_nodemailer)**
   
-### devops
+### Devops
 1. **[aws](devops/aws)**
 1. **[azure](devops/azure)**
 1. **[docker](devops/docker)**
-1. **[google cloud backend deployment](devops/google-cloud-backend-deployment)**
+1. **[google cloud backend deployment](devops/google_cloud_backend_deployment)**
 1. **[terraform](devops/terraform)**
   
-### dsa
+### Dsa
 1. **[leetcode](dsa/leetcode)**
   
-### google
-1. **[online assesment](google/online-assesment)**
+### Google
+1. **[online assesment](google/online_assesment)**
   
-### javascript
+### Javascript
 1. **[javascript programmatic question](javascript/javascript-programmatic-question)**
 1. **[js 33 concept](javascript/js-33-concept)**
 1. **[js concept question](javascript/js-concept-question)**
 1. **[js concept](javascript/js-concept)**
   
-### next
+### Next
 1. **[concept](next/concept)**
   
-### php
+### Php
 1. **[concept](php/concept)**
 1. **[question](php/question)**
   
-### react
+### React
 1. **[concept](react/concept)**
   
-### scripts
+### Scripts
 1. **[toc](scripts/toc)**
   

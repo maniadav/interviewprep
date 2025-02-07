@@ -26,15 +26,14 @@ directories.forEach((dir) => {
   const dirPath = path.join(rootDir, dir);
   const files = getFiles(dirPath);
 
-  routes.push(`### ${dir.toLocaleLowerCase()}`);
+  routes.push(`### ${String(dir[0]).toUpperCase() + String(dir).slice(1)}`);
 
   files.forEach((fileName) => {
     const { name } = path.parse(fileName); // Extract filename without extension
     if (name?.split(".")[0]) {
-      const urlPath = name.replace(/_/g, "-").toLowerCase();
       const urlName = name.replace(/[-_]/g, " ").toLocaleLowerCase();
 
-      routes.push(`1. **[${urlName}](${dir.toLowerCase()}/${urlPath})**`);
+      routes.push(`1. **[${urlName}](${dir}/${name})**`);
     }
   });
   routes.push(`  `);
@@ -43,6 +42,5 @@ directories.forEach((dir) => {
 // Output the generated routes
 console.log("Generated Routes:");
 console.log(routes.join("\n"));
-
 
 fs.writeFileSync("routes.md", routes.join("\n"), "utf-8");
