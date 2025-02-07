@@ -2,7 +2,7 @@
 
 This README provides an overview of essential Docker commands and concepts, including working with Docker images, containers, and using Docker in development and production environments.
 
-## Table of Contents
+## Table of Content
 
 - [Introduction to Docker](#introduction-to-docker)
 - [Docker Images vs Containers](#docker-images-vs-containers)
@@ -18,6 +18,20 @@ This README provides an overview of essential Docker commands and concepts, incl
 - [Production/Development Docker Environment](#productiondevelopment-docker-environment)
   - [Development Dockerfile](#development-dockerfile)
   - [Production Dockerfile](#production-dockerfile)
+
+
+1. **[Role of Kubernetes and Docker](#role-of-kubernetes-and-docker)**
+2. **[Auto Scaling](#auto-scaling)**
+3. **[Image Pull Policy](#image-pull-policy)**
+4. **[Service and Auto Discovery](#service-and-auto-discovery)**
+5. **[Selector and Labels](#selector-and-labels)**
+6. **[Load Port and Load Balancer](#load-port-and-load-balancer)**
+7. **[External Application Access](#external-application-access)**
+8. **[Deployment Strategies](#deployment-strategies)**
+9. **[Rolling Deployment](#rolling-deployment)**
+10. **[Auto Scaling Deployment](#auto-scaling-deployment)**
+11. **[DaemonSet](#daemonset)**
+
 
 ## Introduction to Docker
 
@@ -306,7 +320,86 @@ docker run -p 5500:5500 <image-name>
 - [Docker Command Cheatsheet](https://www.docker.com/blog/docker-cheat-sheet/)
 - [Docker Hub](https://hub.docker.com/)
 
-```
 
-This updated README provides all the necessary Docker commands and a detailed guide on working with both development and production environments. It includes authentication, building containers, running containers with specific configurations, and using volumes for development.
-```
+---
+
+
+Here are your structured notes for Docker, including a table of contents:
+
+---
+
+## **1. Role of Kubernetes and Docker**
+- **Docker** is a containerization platform that packages applications and dependencies into containers.
+- **Kubernetes** is an orchestration tool that manages containerized applications across multiple nodes.
+- **Kubernetes + Docker**: Kubernetes uses Docker containers to deploy, scale, and manage applications efficiently.
+
+---
+
+## **2. Auto Scaling**
+- **Kubernetes Horizontal Pod Autoscaler (HPA)** automatically scales the number of pods based on CPU/memory usage.
+- **Cluster Autoscaler** scales the number of worker nodes in a cluster.
+
+---
+
+## **3. Image Pull Policy**
+- Defines when Kubernetes pulls an image from a registry.
+- **Accepted values**:
+  - `Always`: Always pull the image before running the container.
+  - `Never`: Never pull, only use local images.
+  - `IfNotPresent`: Pull only if the image is not available locally.
+
+---
+
+## **4. Service and Auto Discovery**
+- Services provide a stable network endpoint for accessing applications inside a Kubernetes cluster.
+- Auto-discovery enables applications to find and communicate with other services dynamically.
+
+---
+
+## **5. Selector and Labels**
+- **Labels**: Key-value pairs assigned to pods.
+- **Selectors**: Used to filter and group resources based on labels.
+
+---
+
+## **6. Load Port and Load Balancer**
+- **Load Port**: The port exposed by a service to receive traffic.
+- **Load Balancer**: Distributes incoming traffic to multiple pods for better availability and reliability.
+
+---
+
+## **7. External Application Access**
+- Kubernetes provides several options for exposing applications externally:
+  - **NodePort**: Exposes a service on a specific port of each node.
+  - **LoadBalancer**: Creates an external load balancer.
+  - **Ingress**: Manages external access with routing rules.
+
+---
+
+## **8. Deployment Strategies**
+- **Rolling Deployment**: Updates pods gradually to avoid downtime.
+- **Canary Deployment**: Releases updates to a small subset of users before full rollout.
+- **Blue-Green Deployment**: Runs two environments, switching traffic between them.
+
+---
+
+## **9. Rolling Deployment**
+- Gradually replaces old versions of an application with new versions.
+- Ensures zero downtime by incrementally updating pods.
+
+---
+
+## **10. Auto Scaling Deployment**
+- Kubernetes automatically scales pods based on resource usage.
+- Uses Horizontal Pod Autoscaler (HPA) to adjust pod count dynamically.
+
+---
+
+## **11. DaemonSet**
+- Ensures that a pod runs on every node in the cluster.
+- Useful for logging, monitoring, and networking services.
+- Unlike deployments, which scale based on load, **DaemonSets ensure a pod runs on all nodes**.
+
+---
+
+Let me know if you need any modifications or additional details! 🚀

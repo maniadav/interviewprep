@@ -1,4 +1,5 @@
 **[<< Go To Home](/interviewprep)**
+
 <div align="center">
     <h1><span style="color:#f39c12;">PHP</span> Concept <span style="color:#f39c12;">Question</span></h1>
 </div>
@@ -133,6 +134,8 @@ echo $c;
 <p></p>
 <blockquote>
     <p>6</p>
+    <p>The function foo(&$var) takes a reference to $var, meaning any changes to $var inside the function also modify the original variable.</p>
+    <p>foo(&$a); increments $a by 1, so $a becomes 6. Removing `&` will pass a by value instead of reference</p>
 </blockquote>
 <p></p>
 </details>
