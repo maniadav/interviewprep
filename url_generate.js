@@ -26,13 +26,13 @@ directories.forEach((dir) => {
   const dirPath = path.join(rootDir, dir);
   const files = getFiles(dirPath);
 
-  routes.push(`### ${dir.toUpperCase()}`);
+  routes.push(`### ${dir.toLocaleLowerCase()}`);
 
   files.forEach((fileName) => {
     const { name } = path.parse(fileName); // Extract filename without extension
     if (name?.split(".")[0]) {
       const urlPath = name.replace(/_/g, "-").toLowerCase();
-      const urlName = name.replace(/[-_]/g, " ").toUpperCase();
+      const urlName = name.replace(/[-_]/g, " ").toLocaleLowerCase();
 
       routes.push(`1. **[${urlName}](/${dir.toLowerCase()}/${urlPath})**`);
     }
