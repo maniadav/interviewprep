@@ -34,14 +34,15 @@ directories.forEach((dir) => {
       const urlPath = name.replace(/_/g, "-").toLowerCase();
       const urlName = name.replace(/[-_]/g, " ").toLocaleLowerCase();
 
-      routes.push(`1. **[${urlName}](/${dir.toLowerCase()}/${urlPath})**`);
+      routes.push(`1. **[${urlName}](${dir.toLowerCase()}/${urlPath})**`);
     }
   });
+  routes.push(`  `);
 });
 
 // Output the generated routes
 console.log("Generated Routes:");
 console.log(routes.join("\n"));
 
-// Optionally, write to a file
+
 fs.writeFileSync("routes.md", routes.join("\n"), "utf-8");
