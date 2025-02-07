@@ -1,11 +1,3 @@
-<div align="center">
-    <h1><span style="color:#f39c12;">Ace</span> your next tech interview with <span style="color:#f39c12;">confidence</span></h1>
-    <p style="color:#34495e; max-width: 800px;">Explore our carefully curated catalog of interview essentials covering full-stack, data structures and algorithms, system design, data science, and machine learning interview questions</p>
-</div>
-
----
-
-## Table Of Content:
 ### DEVOPS
 1. **[AWS](/devops/aws)**
 1. **[AZURE](/devops/azure)**

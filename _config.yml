@@ -2,8 +2,15 @@ theme: jekyll-theme-cayman
 title: "Ꭵᑎ丅ᗴᖇᐯᎥᗴᗯᑭᖇᗴᑭ"
 description: "A community driven platform for interview preparation"
 include:
+  - backend
+  - DevOps
+  - dsa
+  - google
   - php
   - javascript
+  - next
+  - react
+
 exclude:
   - /node_modules/
   - Gemfile.*
