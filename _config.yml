@@ -3,13 +3,12 @@ title: "Ꭵᑎ丅ᗴᖇᐯᎥᗴᗯᑭᖇᗴᑭ"
 description: "A community driven platform for interview preparation"
 include:
   - backend
-  - devops
   - dsa
-  - google
   - php
   - javascript
   - next
   - react
+  - devops
 
 exclude:
   - /node_modules/

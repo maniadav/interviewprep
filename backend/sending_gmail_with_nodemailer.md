@@ -1,8 +1,8 @@
-Here's a detailed documentation for sending emails in Node.js using Nodemailer and Gmail. This includes the code you've shared, broken into parts with explanations of the process and potential issues you might encounter.
+**[<< Go To Home](/interviewprep)**
 
----
-
-## **Introduction to Sending Emails with Nodemailer and Gmail**
+<div align="center">
+    <h1><span style="color:#f39c12;">Introduction to Sending Emails with Nodemailer and Gmail</span></h1>
+</div>
 
 Nodemailer is a popular Node.js module for sending emails. When combined with Gmail, it requires OAuth2 authentication to ensure secure access.
 

@@ -1,6 +1,15 @@
-Sure! Here’s a sample README file format that includes the question and solutions in both Python and JavaScript:
+**[<< Go To Home](/interviewprep)**
 
----
+<div align="center">
+    <h1><span style="color:#f39c12;">Google</span> Online <span style="color:#f39c12;">Assessment</span></h1>
+</div>
+
+ ---
+
+## Table of Content
+
+1. [Problem: Google OA-14 2024](#Problem:-Google-OA-14-2024)
+1. [Problem: Google OA-1 2023](#Problem:-Google-OA-1-2023)
 
 # Problem: Google OA-14 2024
 
@@ -101,8 +110,9 @@ console.log(maxPartitionsWithChange(arr));  // Output: 3
   2. **Modify Each Element:** For each element in the array, we simulate changing it to `0` and calculate the number of partitions after the change.
   3. **Return the Maximum Partitions:** We return the maximum number of partitions observed.
 
----
+**[⬆ Back to Top](#table-of-content)**
 
+---
 
 # Problem: Google OA-1 2023
 
@@ -252,6 +262,7 @@ solve();
 * **Grouping:** The tree is traversed, and the minimum possible value for each node is updated based on its connections (its parent and its neighbors).
 * **Cost Calculation:** For each test case, the total cost is calculated by summing the differences between node values and their minimal grouped value, which is the cost of forming valid groups.
 
+**[⬆ Back to Top](#table-of-content)**
+
 ---
 
-This README provides both Python and JavaScript solutions with explanations and input/output examples.
