@@ -8,7 +8,7 @@ include:
   - javascript
   - next
   - react
-  - devops
+  - cloud
 
 exclude:
   - /node_modules/
