@@ -126,7 +126,7 @@ A comprehensive guide to mastering PHP with focus on interview-critical concepts
 
 ---
 
-## 1Getting Started with PHP
+## 1. Getting Started with PHP
 
 ### PHP Environment Setup
 
@@ -167,6 +167,8 @@ PHP supports:
 - **Type Juggling**: PHP automatically converts types (e.g., `"5" + 2` results in `7`).
 - **Type Casting**: Explicitly convert types using `(int)`, `(string)`, etc.
 
+**[⬆ Back to Top](#table-of-content)**
+
 ---
 
 ## 2. Control Structures
@@ -205,6 +207,8 @@ Use `:` and `end` for cleaner control structures in templates:
     <p>Welcome back!</p>
 <?php endif; ?>
 ```
+
+**[⬆ Back to Top](#table-of-content)**
 
 ---
 
@@ -254,6 +258,8 @@ try {
 }
 ```
 
+**[⬆ Back to Top](#table-of-content)**
+
 ---
 
 ## 4. Working with Forms
@@ -287,6 +293,8 @@ Prevent CSRF attacks by using tokens:
 ```php
 $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
 ```
+
+**[⬆ Back to Top](#table-of-content)**
 
 ---
 
@@ -325,6 +333,8 @@ Special methods like `__construct`, `__destruct`, and `__toString`.
 
 Automatically load classes using Composer's PSR-4 autoloading.
 
+**[⬆ Back to Top](#table-of-content)**
+
 ---
 
 ## 6. Database Interaction
@@ -361,6 +371,8 @@ Use ORMs like Eloquent or Doctrine for database abstraction.
 
 Implement patterns like Repository and Active Record.
 
+**[⬆ Back to Top](#table-of-content)**
+
 ---
 
 ## 7. Security Practices
@@ -388,6 +400,8 @@ Enforce HTTPS and set cookie flags like `Secure` and `HttpOnly`.
 ### CORS and CSRF Protection
 
 Implement CORS headers and CSRF tokens.
+
+**[⬆ Back to Top](#table-of-content)**
 
 ---
 
@@ -417,6 +431,8 @@ Use OPcache, Redis, and other caching tools.
 
 Optimize PHP performance with PHP-FPM.
 
+**[⬆ Back to Top](#table-of-content)**
+
 ---
 
 ## 9. Frameworks and Tools
@@ -440,6 +456,8 @@ Debug applications with Xdebug and Ray.
 ### Deployment Strategies
 
 Deploy PHP applications using CI/CD pipelines.
+
+**[⬆ Back to Top](#table-of-content)**
 
 ---
 
@@ -465,6 +483,8 @@ Understand PHP's garbage collection mechanism.
 
 Explore the lifecycle of a PHP request.
 
+**[⬆ Back to Top](#table-of-content)**
+
 ---
 
 ## 11. Best Practices
@@ -488,6 +508,8 @@ Write PHPDoc comments for better code understanding.
 ### Performance Optimization
 
 Optimize PHP code and database queries.
+
+**[⬆ Back to Top](#table-of-content)**
 
 ---
 
@@ -513,6 +535,8 @@ Design scalable systems like e-commerce platforms.
 
 Answer scenario-based questions about PHP applications.
 
+**[⬆ Back to Top](#table-of-content)**
+
 ---
 
 ## 13. Projects and Practice
@@ -537,6 +561,8 @@ Build command-line tools for automation.
 
 Design and implement microservices.
 
+**[⬆ Back to Top](#table-of-content)**
+
 ---
 
 ## 14. Resources
@@ -560,6 +586,8 @@ Use platforms like Laracasts and PHP School.
 ### Community Blogs
 
 Follow blogs like PHP.net and Sitepoint.
+
+**[⬆ Back to Top](#table-of-content)**
 
 ---
 
