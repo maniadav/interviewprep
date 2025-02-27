@@ -1,94 +1,315 @@
-**[<< Go To Home](/interviewprep)**
+**[&lt;&lt; Go To Home](/interviewprep)**
 
 <div align="center">
     <h1><span style="color:#f39c12;">PHP</span> Concept <span style="color:#f39c12;">Question</span></h1>
 </div>
+
+<style>
+  h2 {
+    counter-increment: section;
+  }
+  h2::before {
+    content: counter(section) ". ";
+  }
+</style>
 
 # Table Of Content
 
 ## Questions
 
 1. **[What are magic methods? Tell me 3 magic methods.](#what-are-magic-methods-tell-me-3-magic-methods)**
-1. **[PHP support multiple inheritance?](#php-support-multiple-inheritance)**
-1. **[Interface vs abstract class, tell me the difference.](#interface-vs-abstract-class-tell-me-the-diference)**
-1. **[What the final keyword does?](#what-the-final-keyword-does)**
-1. **[What does the following code?](#what-does-the-following-code)**
-1. **[What are namespaces and how to use them?](#what-are-namespaces-and-how-to-use-them)**
-1. **[Explain what are closures?](#explain-what-are-closures)**
-1. **[Tell what we need to know about error handling in PHP](#tell-what-we-need-to-know-about-error-handling-in-php)**
-1. **[Explain SOLID with examples](#explain-solid-with-examples)**
-1. **[Explain Dependency Injection](#explain-dependency-injection)**
-1. **[Composition vs Inheritance](#composition-vs-inheritance)**
+2. **[PHP support multiple inheritance?](#php-support-multiple-inheritance)**
+3. **[Interface vs abstract class, tell me the difference.](#interface-vs-abstract-class-tell-me-the-diference)**
+4. **[What the final keyword does?](#what-the-final-keyword-does)**
+5. **[What does the following code?](#what-does-the-following-code)**
+6. **[What are namespaces and how to use them?](#what-are-namespaces-and-how-to-use-them)**
+7. **[Explain what are closures?](#explain-what-are-closures)**
+8. **[Tell what we need to know about error handling in PHP](#tell-what-we-need-to-know-about-error-handling-in-php)**
+9. **[Explain SOLID with examples](#explain-solid-with-examples)**
+10. **[Explain Dependency Injection](#explain-dependency-injection)**
+11. **[Composition vs Inheritance](#composition-vs-inheritance)**
+12. 
 
 ---
 
-### What are [magic methods](https://www.php.net/manual/en/language.oop5.magic.php)? Tell me 3 magic methods.
+## 1. What are [magic methods](https://www.php.net/manual/en/language.oop5.magic.php)? Tell me 3 magic methods.
 
 PHP provides a number of 'magic' methods that allow you to do some pretty neat tricks in object-oriented programming.
 These methods, identified by a two underscore prefix (\_\_), function as interceptors that are automatically called when certain conditions are met.
 
-- [\_\_toString()](https://www.php.net/manual/en/language.oop5.magic.php#object.tostring)
+### [**\_\_toString()**](https://www.php.net/manual/en/language.oop5.magic.php#object.tostring)
 
-  > The \_\_toString() method allows a class to decide how it will react when it is treated like a string.
+> The \_\_toString() method allows a class to decide how it will react when it is treated like a string. This allows and object to be converted into a string when it is treated like a string.
 
-- [\_\_call()](https://www.php.net/manual/en/language.oop5.overloading.php#object.call)
+**Example**
 
-  > This method is triggered when you try to reach a method what is not in the class.
+```
+class User {
+    private $name;
 
-- [\_\_get()](https://www.php.net/manual/en/language.oop5.overloading.php#object.get)
-
-  > This behaves the same as \_\_call() but this one is for class properties, not methods.
-
----
-
-### PHP support multiple [inheritance](https://www.php.net/manual/en/language.oop5.inheritance.php)?
-
-PHP do not support multiple inheritance. To allow this feature, you can use interfaces in PHP or you can use "Traits" in PHP instead of classes for implementing multiple inheritance in PHP.
-
----
-
-### [Interface](https://www.php.net/manual/en/language.oop5.interfaces.php) vs [abstract class](https://www.php.net/manual/en/language.oop5.abstract.php), tell me the diference.
-
-An interface is an OOP element that groups a set of function declarations without implementing them, that is, it specifies the name, return type, and arguments, but not the block of code.
-
-An interface is always an agreement or a promise. When a class says "I implement interface Y", it is saying "I promise to have the same public methods that any object with interface Y has".
-
-```php
-    //This is saying that "X" agrees to speak the language "Y" with your code.
-    class X implements YInterface { }
-    interface YInterface
-    {
-        // You can't define functionality here for methods (just in class X), these are just skeletons.
-        public function setVariable($name, $var);
-        public function getHtml($template);
+    public function __construct($name) {
+        $this->name = $name;
     }
+
+    public function __toString() {
+        return "User Name: " . $this->name;
+    }
+}
+
+$user = new User("Manish");
+echo $user; // Automatically calls __toString()
+
 ```
 
-On the other hand, an Abstract Class is like a partially built class. It is much like a document with blanks to fill in.
+**Output**
 
-An abstract class is the foundation for another object. When a class says "I extend abstract class Y", it is saying "I use some methods or properties already defined in this other class named Y".
+```
+User Name: Manish
 
-```php
-    // this is saying that "X" is going to complete the partial class "Y".
-    class X extends YAbstract { }
-    abstract class YAbstract
-    {
-        // These are just skeletons like in the YInterface
-        abstract protected function setVariable($name, $var);
-        abstract protected function getHtml($template);
-
-        // But in an abstract class you can give functionality for the method.
-        public function printOut() {
-            print $this->getValue() . "\n";
-        }
-    }
 ```
 
-Very important point: In an abstract class you can predefine the working method, but you can't in an interface.
+### [**\_\_call()**](https://www.php.net/manual/en/language.oop5.overloading.php#object.call)
+
+> This method is triggered when you try to reach a method what is not in the class. So, it triggers when invoking inaccessible or undefined methods on an object.
+
+**Example**
+
+```
+class Demo {
+    public function __call($name, $arguments) {
+        return "Method '$name' does not exist. Arguments: " . implode(", ", $arguments);
+    }
+}
+
+$obj = new Demo();
+echo $obj->undefinedMethod("arg1", "arg2");
+
+```
+
+**Output**
+
+```
+Method 'undefinedMethod' does not exist. Arguments: arg1, arg2
+```
+
+### [**\_\_get()**](https://www.php.net/manual/en/language.oop5.overloading.php#object.get)
+
+> This behaves the same as \_\_call() but this one is for class properties, not methods. The \_\_get() magic method is called when accessing an inaccessible or non-existent property.
+
+**Example**
+
+```
+class Person {
+    private $data = ["name" => "John", "age" => 25];
+
+    public function __get($property) {
+        return isset($this->data[$property]) ? $this->data[$property] : "Property '$property' not found!";
+    }
+}
+
+$p = new Person();
+echo $p->name . "\n";  // Accesses 'name' from $data
+echo $p->city;         // Accesses a non-existent property
+
+
+```
+
+**Output**
+
+```
+John
+Property 'city' not found!
+```
 
 ---
 
-### What the [final](https://www.php.net/manual/en/language.oop5.final.php) keyword does?
+## 2. PHP support multiple [inheritance](https://www.php.net/manual/en/language.oop5.inheritance.php)?
+
+Multiple inheritance is an object-oriented programming (OOP) feature where a class can inherit properties and methods from more than one parent class. This allows a child class to have characteristics from multiple sources.
+PHP do not support multiple inheritance. A class cannot inherit from multiple classes. However, PHP provides two alternative approaches to achieve similar functionality:
+
+1. **Using Interfaces**
+2. **Using Traits**
+
+### **Using Interfaces**
+
+PHP allows a class to implement multiple interfaces, providing a way to achieve multiple inheritance behavior.
+
+#### **Example:**
+
+```php
+interface Logger {
+    public function log($message);
+}
+
+interface Database {
+    public function connect();
+}
+
+class MySQL implements Logger, Database {
+    public function log($message) {
+        echo "Log: $message\n";
+    }
+
+    public function connect() {
+        echo "Connected to MySQL Database\n";
+    }
+}
+
+$db = new MySQL();
+$db->log("Database initialized");
+$db->connect();
+```
+
+#### **Output:**
+
+```
+Log: Database initialized
+Connected to MySQL Database
+```
+
+### **Using Traits**
+
+Traits allow code reuse across multiple classes without requiring inheritance.
+
+#### **Example:**
+
+```php
+trait Logger {
+    public function log($message) {
+        echo "Log: $message\n";
+    }
+}
+
+trait Database {
+    public function connect() {
+        echo "Connected to Database\n";
+    }
+}
+
+class MySQL {
+    use Logger, Database; // Using multiple traits
+}
+
+$db = new MySQL();
+$db->log("Database started");
+$db->connect();
+```
+
+#### **Output:**
+
+```
+Log: Database started
+Connected to Database
+```
+
+### **Key Differences:**
+
+| Feature                        | Interfaces                       | Traits           |
+| ------------------------------ | -------------------------------- | ---------------- |
+| Can have method implementation | ❌ No                            | ✅ Yes           |
+| Can have properties            | ❌ No                            | ✅ Yes           |
+| Supports multiple inclusion    | ✅ Yes                           | ✅ Yes           |
+| Used for                       | Structure & contract enforcement | Code reusability |
+
+### **Conclusion**
+
+- **PHP does not support multiple inheritance** directly.
+- **Use interfaces** when enforcing method signatures across multiple classes.
+- **Use traits** to reuse methods across multiple classes.
+
+---
+
+## 3. [Interface](https://www.php.net/manual/en/language.oop5.interfaces.php) vs [abstract class](https://www.php.net/manual/en/language.oop5.abstract.php), tell me the diference.
+
+### What is an Interface?
+
+An **interface** is like a **contract** that a class must follow. It only defines **method names** but **not their implementation** . Any class that implements an interface **must** provide its own implementation of the methods.
+
+🔹 Think of an interface as a **rulebook** that a class must follow.
+
+### Example of an Interface in PHP
+
+```php
+interface Animal {
+    public function makeSound(); // No implementation, just a method signature
+}
+
+class Dog implements Animal {
+    public function makeSound() {
+        return "Bark!";
+    }
+}
+
+class Cat implements Animal {
+    public function makeSound() {
+        return "Meow!";
+    }
+}
+
+$dog = new Dog();
+echo $dog->makeSound(); // Output: Bark!
+
+$cat = new Cat();
+echo $cat->makeSound(); // Output: Meow!
+```
+
+---
+
+### What is an Abstract Class?
+
+An **abstract class** is a **partially built class** . It can have both:
+
+1. **Abstract methods** (like an interface, without implementation)
+2. **Concrete methods** (with full implementation)
+
+🔹 Think of an abstract class as a **template** that other classes can build upon.
+
+### Example of an Abstract Class in PHP
+
+```php
+abstract class Vehicle {
+    abstract public function move(); // Must be implemented in child class
+
+    public function start() {
+        return "Engine started!";
+    }
+}
+
+class Car extends Vehicle {
+    public function move() {
+        return "The car is moving!";
+    }
+}
+
+$myCar = new Car();
+echo $myCar->start(); // Output: Engine started!
+echo $myCar->move();  // Output: The car is moving!
+```
+
+---
+
+### Key Differences: Interface vs. Abstract Class
+
+| Feature                            | Interface                                       | Abstract Class                                    |
+| ---------------------------------- | ----------------------------------------------- | ------------------------------------------------- |
+| **Method Implementation**    | No (only method names)                          | Yes (can have both abstract and concrete methods) |
+| **Multiple Inheritance?**    | Yes (A class can implement multiple interfaces) | No (A class can extend only one abstract class)   |
+| **Default Method Behavior?** | No (must be implemented in child class)         | Yes (can have default method implementation)      |
+
+---
+
+### Summary:
+
+✔ Use an **interface** when you want to enforce a structure across multiple classes.
+
+✔ Use an **abstract class** when you want to provide some default behavior but also enforce method implementation in child classes.
+
+Would you like further examples or modifications? 🚀
+
+---
+
+## 4. What the [final](https://www.php.net/manual/en/language.oop5.final.php) keyword does?
 
 If you prefix a function in a class with the final keyword, the child class cannot overwrite that function.
 
@@ -110,7 +331,7 @@ class ChildClass extends BaseClass {
 
 ---
 
-### What does the following code?
+## 5. What does the following code?
 
 ```php
 function foo(&$var)
@@ -160,7 +381,7 @@ echo $c;
 
 ---
 
-### What are namespaces and how to use them?
+## 6. What are namespaces and how to use them?
 
 Namespaces in PHP prevent naming conflicts by encapsulating entities like classes, interfaces, functions, and constants. They're like directories for file systems, ensuring that two classes with the same name can coexist if they're in different namespaces.
 
@@ -179,7 +400,7 @@ $connection = new \MyProject\Database\Connection();
 
 ---
 
-### Explain what are [closures](https://www.php.net/manual/en/functions.anonymous.php)?
+## 7. Explain what are [closures](https://www.php.net/manual/en/functions.anonymous.php)?
 
 A closure in PHP is an anonymous function that can capture variables from its surrounding scope. This means you can create a function without a name and pass it around as if it were a regular variable. Closures are useful for creating callback functions.
 
@@ -198,98 +419,182 @@ $exampleClosure(); // Outputs 'Hello'
 
 ---
 
-### Tell what we need to know about error handling in PHP
+## 8. Error handling in PHP
 
-**Error Types:**
+PHP provides different ways to handle errors, from simple warnings to fatal crashes. Understanding error types and handling mechanisms can help build **more stable and secure applications** .
 
-- _Notices_: Minor issues, like accessing undefined variables. They don't stop script execution.
-- _Warnings_: More significant issues, like including a missing file. The script continues to run.
-- _Fatal Errors_: Critical problems, like calling undefined functions or classes. The script stops.
+### Types of Errors in PHP
 
-**Error Reporting**
+#### ✅ **1. Notices**
 
-- In a development environment, you might want to see all errors and warnings for debugging: error_reporting(E_ALL); or error_reporting(E_ERROR | E_WARNING | E_PARSE);
-- In a production environment, you might want to suppress error messages to avoid displaying them to the user: error_reporting(0);
+➡ Minor issues like accessing **undefined variables** .
 
-**set_error_handler()**
+➡ They **don't stop script execution** .
 
-- The set_error_handler() function in PHP allows you to define a custom function to handle errors instead of using PHP's built-in error handling. This gives you more control over error management and allows for more robust error processing and logging.
+🔹 **Example:**
 
 ```php
+echo $undefinedVar; // Notice: Undefined variable
+```
 
+#### ⚠️ **2. Warnings**
+
+➡ More significant issues, like **including a missing file** .
+
+➡ The script **continues to run** , but there might be unexpected behavior.
+
+🔹 **Example:**
+
+```php
+include("nonexistentfile.php"); // Warning: include(): Failed opening file
+echo "This line still executes.";
+```
+
+#### ❌ **3. Fatal Errors**
+
+➡ **Critical issues** like calling **undefined functions or classes** .
+
+➡ The script **stops immediately** .
+
+🔹 **Example:**
+
+```php
+undefinedFunction(); // Fatal error: Uncaught Error: Call to undefined function
+echo "This line will not execute.";
+```
+
+### Error Reporting in PHP
+
+PHP provides the `error_reporting()` function to **control which types of errors are displayed** .
+
+#### 📌 Development Mode (Show All Errors)
+
+Useful during development to debug issues:
+
+```php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+```
+
+#### 🚀 Production Mode (Hide Errors)
+
+For security reasons, **hide errors from users** and log them instead:
+
+```php
+error_reporting(0); // Suppresses error messages
+ini_set('log_errors', 1);
+ini_set('error_log', 'errors.log'); // Logs errors to a file
+```
+
+### Handling Errors with `set_error_handler()`
+
+PHP allows defining a **custom error handler** using `set_error_handler()`.
+
+#### Custom Error Handler Example
+
+```php
 function customErrorHandler($errno, $errstr, $errfile, $errline) {
-    echo "Error: [$errno] $errstr - $errfile:$errline";
-    // Save error to a log file or database
-    return true; // To prevent PHP's default error handler from running
+    echo "⚠ Error [$errno]: $errstr in $errfile on line $errline \n";
+    return true; // Prevents PHP from executing its default error handler
 }
 
+// Set custom error handler
 set_error_handler("customErrorHandler");
 
-// $errno - holds the level of the error.
-// $errstr - holds the error message.
-// $errfile - holds the filename in which the error occurred.
-// $errline - holds the line number in the file where the error occurred.
-
+// Trigger an error
+echo $undefinedVar; // Calls customErrorHandler()
 ```
+
+### Exception Handling with `try-catch`
+
+For handling **runtime errors gracefully** , PHP uses `try-catch` blocks.
+
+#### Example: Handling Division by Zero
+
+```php
+function divide($a, $b) {
+    if ($b == 0) {
+        throw new Exception("Division by zero is not allowed.");
+    }
+    return $a / $b;
+}
+
+try {
+    echo divide(10, 0);
+} catch (Exception $e) {
+    echo "Caught exception: " . $e->getMessage();
+}
+```
+
+### Key Takeaways
+
+✅ **Notices, Warnings, and Fatal Errors** define severity levels.
+
+✅ **Use `error_reporting()`** to control which errors are shown.
+
+✅ **Custom error handlers (`set_error_handler()`)** allow better control.
+
+✅ **Use `try-catch` for exceptions** to manage runtime errors properly.
 
 ---
 
-### Explain SOLID with examples
+## 9. SOLID Principles in PHP
 
-**Single Responsibility principle**
+The SOLID principles are five design principles that help developers write maintainable and scalable object-oriented code.
 
-The Single Responsibility Principle means each class should have just one job. Think of it like a worker in a team, where every person has their own clear task. This keeps things simple and organized, making it easier to manage and update the system.
+### 1. Single Responsibility Principle (SRP)
 
-```php
-class User {
-    function getUserData() { /* ... */ }
-    function saveUserData() { /* ... */ }
-}
-
-class UserReportGenerator {
-    function generateReport(User $user) { /* ... */ }
-}
-```
-
-**Open/Closed Principle**
-
-The Open/Closed Principle is about designing your classes so that they are open for extension but closed for modification. In simpler terms, it means you should be able to add new features or behaviors to a class without changing its existing code.
+Each class should have only **one reason to change**.
 
 ```php
-interface Shape {
-    public function area();
-}
-
-class Circle implements Shape {
-    private $radius;
-
-    public function area() {
-        return pi() * $this->radius * $this->radius;
+class Report {
+    public function generate() {
+        return "Report data";
     }
 }
 
-class Square implements Shape {
-    private $length;
-
-    public function area() {
-        return $this->length * $this->length;
+class ReportPrinter {
+    public function print(Report $report) {
+        echo $report->generate();
     }
 }
 ```
 
-**Liskov Substitution Principle**
+**Why?** The `Report` class only handles report generation, while `ReportPrinter` handles output.
 
-A child class should be able to do everything what a parent class can.
+**---------**
 
-The Liskov Substitution Principle ensures that objects of a superclass can be replaced with objects of its subclasses without affecting the application's correctness.
+### 2. Open/Closed Principle (OCP)
 
-It's like saying, if you have a program that uses a bird, you should be able to swap in a different kind of bird, like a sparrow or a pigeon, and everything should still work just fine. It ensures that a subclass can stand in for its parent class without any errors or unexpected behavior.
+A class should be **open for extension but closed for modification**.
 
 ```php
+interface PaymentMethod {
+    public function pay($amount);
+}
 
-// In this setup, Bird is the superclass. Sparrow and Penguin are subclasses.
-// According to LSP, you should be able to replace instances of Bird with instances of its subclasses (Sparrow or Penguin) without altering the correctness of the program.
+class PayPal implements PaymentMethod {
+    public function pay($amount) {
+        echo "Paying $amount via PayPal";
+    }
+}
 
+class CreditCard implements PaymentMethod {
+    public function pay($amount) {
+        echo "Paying $amount via Credit Card";
+    }
+}
+```
+
+**Why?** We can add new payment methods without modifying existing code.
+
+**---------**
+
+### 3. Liskov Substitution Principle (LSP)
+
+Subtypes must be **substitutable** for their base types.
+
+```php
 class Bird {
     public function fly() {
         echo "I can fly!";
@@ -315,237 +620,204 @@ $bird2 = new Penguin();
 
 makeBirdFly($bird1); // Works fine
 makeBirdFly($bird2); // Error: breaks LSP
-
-
 ```
 
-**Interface Segregation Principle**
+**Problem:** `Penguin` violates LSP because it changes expected behavior.
 
-It means designing your interfaces in such a way that your classes don't have to implement methods they don't need. It encourages splitting large, multipurpose interfaces into smaller, more specific ones so that clients only need to know about the methods that are of interest to them. This leads to a cleaner, more organized codebase and reduces the impact of changes.
+**---------**4. Interface Segregation Principle (ISP)
 
-```php
-// Split into two interfaces: Workable and Eatable. Classes implement only the interfaces that are relevant to them.
-
-interface Workable {
-    function work();
-}
-
-interface Eatable {
-    function eat();
-}
-
-class HumanWorker implements Workable, Eatable {
-    function work() { /* ... */ }
-    function eat() { /* ... */ }
-}
-
-class RobotWorker implements Workable {
-    function work() { /* ... */ }
-    // No need to implement eat()
-}
-```
-
-**Dependency Inversion Principle**
-
-DIP is focusing on decoupling high-level modules from low-level modules by introducing an abstraction layer.
-
-- High-level modules should not depend on low-level modules. Both should depend on abstractions.
-- Abstractions should not depend on details. Details should depend on abstractions
+No class should be forced to **implement methods it does not use**.
 
 ```php
-// Imagine you have a TV remote (the UserDataProcessor) that needs batteries (the DatabaseInterface) to work.
-// It doesn't matter what brand of batteries you use (like MySQLDatabase or any other database), as long as they fit the remote.
-
-interface DatabaseInterface {
-    function fetchData();
+interface Printer {
+    public function printDocument();
 }
 
-class MySQLDatabase implements DatabaseInterface {
-    function fetchData() { /* ... */ }
+interface Scanner {
+    public function scanDocument();
 }
 
-class UserDataProcessor {
-    private $database;
-
-    function __construct(DatabaseInterface $db) {
-        $this->database = $db;
-    }
-
-    function processData() {
-        $data = $this->database->fetchData();
-        // process data
+class SimplePrinter implements Printer {
+    public function printDocument() {
+        echo "Printing document";
     }
 }
 ```
+
+**Why?** The `SimplePrinter` class does not need to implement `scanDocument`.
+
+**---------**
+
+### 5. Dependency Inversion Principle (DIP)
+
+High-level modules should **not depend on low-level modules**.
+
+```php
+interface Notification {
+    public function send($message);
+}
+
+class EmailNotification implements Notification {
+    public function send($message) {
+        echo "Sending Email: $message";
+    }
+}
+
+class UserService {
+    private $notification;
+
+    public function __construct(Notification $notification) {
+        $this->notification = $notification;
+    }
+
+    public function notifyUser() {
+        $this->notification->send("Hello User!");
+    }
+}
+```
+
+**Why?** `UserService` depends on an abstraction (`Notification`) rather than a concrete class.
+
+**---------**
+
+Following SOLID principles makes PHP applications **scalable, maintainable, and easier to test**.
 
 ---
 
-### Explain Dependency Injection
+## 10. What is Dependency Injection?
 
-Dependency Injection (DI) in PHP is like giving a class its 'tools' from outside rather than building them inside. It makes your code flexible (easy to change), clear (easy to understand), and test-friendly (easy to check if it's working).
+Dependency Injection (DI) is a design pattern that promotes loose coupling by injecting dependencies (objects) into a class rather than having the class create them itself. This makes the code more maintainable, testable, and flexible.
+
+### Example Without Dependency Injection
+
+Here, the `UserService` class creates a `DatabaseConnection` instance internally, making it tightly coupled.
 
 ```php
-// without DI
-class Car {
-    private $engine;
-
-    public function __construct() {
-        $this->engine = new Engine(); // The Car class is directly dependent on the Engine class.
+class DatabaseConnection {
+    public function connect() {
+        return "Connected to the database";
     }
 }
 
-// with DI
+class UserService {
+    private $db;
+
+    public function __construct() {
+        $this->db = new DatabaseConnection(); // Hardcoded dependency
+    }
+
+    public function getUser() {
+        return $this->db->connect();
+    }
+}
+
+$userService = new UserService();
+echo $userService->getUser();
+```
+
+### Example With Dependency Injection
+
+Now, the `DatabaseConnection` is passed into `UserService`, making it more flexible.
+
+```php
+class DatabaseConnection {
+    public function connect() {
+        return "Connected to the database";
+    }
+}
+
+class UserService {
+    private $db;
+
+    public function __construct(DatabaseConnection $db) {
+        $this->db = $db; // Injecting the dependency
+    }
+
+    public function getUser() {
+        return $this->db->connect();
+    }
+}
+
+// Dependency Injection in action
+$dbConnection = new DatabaseConnection();
+$userService = new UserService($dbConnection);
+echo $userService->getUser();
+```
+
+### Benefits of Dependency Injection
+
+* **Loose Coupling** : The class doesn’t need to create its dependencies.
+* **Easier Testing** : Mock dependencies can be injected during unit testing.
+* **Improved Maintainability** : Dependencies can be swapped out with minimal code changes.
+* **Better Scalability** : Encourages modular and reusable components.
+
+---
+
+## 11. Composition vs Inheritance
+
+### Inheritance ("is-a" Relationship)
+
+Inheritance allows a class to derive from another class, inheriting its properties and methods. However, it creates a tight coupling between parent and child classes, which can limit flexibility.
+
+#### Example:
+
+```php
+class Animal {
+    public function makeSound() {
+        return "Some sound";
+    }
+}
+
+class Dog extends Animal {
+    public function makeSound() {
+        return "Bark";
+    }
+}
+
+$dog = new Dog();
+echo $dog->makeSound(); // Output: Bark
+```
+
+### Composition ("has-a" Relationship)
+
+Composition involves creating objects with references to other objects instead of extending classes. This promotes flexibility and code reuse.
+
+#### Example:
+
+```php
+class Engine {
+    public function start() {
+        return "Engine started";
+    }
+}
 
 class Car {
     private $engine;
 
     public function __construct(Engine $engine) {
-        $this->engine = $engine; // The Engine dependency is injected into the Car class.
+        $this->engine = $engine;
+    }
+
+    public function startCar() {
+        return $this->engine->start();
     }
 }
 
-// Creating an Engine instance and injecting it into the Car class.
 $engine = new Engine();
 $car = new Car($engine);
+echo $car->startCar(); // Output: Engine started
 ```
 
----
+### When to Use Composition Over Inheritance?
 
-### Composition vs Inheritance
+* **More Flexibility** : Composition allows dynamic behavior changes without modifying the base class.
+* **Avoiding Deep Hierarchies** : Deep inheritance chains can make maintenance difficult.
+* **Reusability** : Components can be reused across multiple classes without extending them.
+* **Better Testing** : Individual components can be tested separately.
 
-- Inheritance is “is-a” relationship.
-- Composition is “has-a” relationship.
-
-Most of the time use composition over inheritance because composition is much more flexible.
+In most cases, **composition is preferred over inheritance** because it provides better modularity and maintainability. 🚀
 
 [Detailed explonation](https://www.youtube.com/watch?v=hxGOiiR9ZKg)
-
-##### Inheritance example code
-
-```php
-
-<?php
-
-class Image {
-    protected $filename;
-    protected $size;
-
-    public function __construct($filename) {
-        $this->filename = $filename;
-    }
-
-    public function setSize($size) {
-        $this->size = $size;
-    }
-
-    public function getSize() {
-        return $this->size;
-    }
-
-    // A general method for preparing an image. It could be overridden by subclasses.
-    public function prepareForSave() {
-        echo "Preparing image for save. Filename: " . $this->filename . "\n";
-    }
-}
-
-class PngImage extends Image {
-    // Specific implementation for PNG images
-    public function prepareForSave() {
-        $this->setSize("1024x768");
-        echo "Preparing PNG image for save. Size set to: " . $this->getSize() . ". Filename: " . $this->filename . "\n";
-    }
-}
-
-class JpegImage extends Image {
-    // Specific implementation for JPEG images
-    public function prepareForSave() {
-        $this->setSize("800x600");
-        echo "Preparing JPEG image for save. Size set to: " . $this->getSize() . ". Filename: " . $this->filename . "\n";
-    }
-}
-
-class BmpImage extends Image {
-    // Specific implementation for BMP images
-    public function prepareForSave() {
-        $this->setSize("640x480");
-        echo "Preparing BMP image for save. Size set to: " . $this->getSize() . ". Filename: " . $this->filename . "\n";
-    }
-}
-
-// Example Usage
-$png = new PngImage("example.png");
-$png->prepareForSave();
-
-$jpeg = new JpegImage("example.jpeg");
-$jpeg->prepareForSave();
-
-$bmp = new BmpImage("example.bmp");
-$bmp->prepareForSave();
-
-```
-
-##### Composition example code
-
-```php
-
-class Image {
-    protected $filename;
-    protected $size;
-
-    public function __construct($filename) {
-        $this->filename = $filename;
-    }
-
-    public function setSize($size) {
-        $this->size = $size;
-    }
-
-    public function getSize() {
-        return $this->size;
-    }
-}
-
-interface ImageSaver {
-    public function prepareForSave();
-}
-
-class PngImage implements ImageSaver {
-    protected $image;
-
-    // Dependency Injection through the constructor
-    public function __construct(Image $image) {
-        $this->image = $image;
-    }
-
-    public function prepareForSave() {
-        $this->image->setSize("1024x768");
-        echo "Preparing PNG image for save. Size set to: " . $this->image->getSize() . "\n";
-    }
-}
-
-class JpegImage implements ImageSaver {
-    protected $image;
-
-    // Dependency Injection through the constructor
-    public function __construct(Image $image) {
-        $this->image = $image;
-    }
-
-    public function prepareForSave() {
-        $this->image->setSize("800x600");
-        echo "Preparing JPEG image for save. Size set to: " . $this->image->getSize() . "\n";
-    }
-}
-
-// Example Usage
-$pngImage = new Image("example.png");
-$png = new PngImage($pngImage);
-$png->prepareForSave();
-
-$jpegImage = new Image("example.jpeg");
-$jpeg = new JpegImage($jpegImage);
-$jpeg->prepareForSave();
-```
 
 ---
 
@@ -569,7 +841,6 @@ $jpeg->prepareForSave();
 - **HTML Embedding Compatibility**: Its syntax within web documents is reminiscent of HTML, interleaving with the content for seamless integration.
 - **Not Purely Object-Oriented**: While it now supports object-oriented programming paradigms, it continues to offer primarily procedural constructs.
 - **Text Pre-Processor and Interpreter**: PHP initially parses embedded code within text via the pre-processor, swiftly executing it to yield HTML or other output.
-  `<br>`
 
 ## 2. How do you execute a _PHP_ script from the _command line_?
 
@@ -597,13 +868,11 @@ php your_script.php
   ```bash
   php -f script.php
   ```
-
 - Displaying PHP Info:
 
   ```bash
   php -i
   ```
-
 - Running a Single Command:
 
   ```bash
@@ -878,19 +1147,15 @@ In PHP, some special predefined arrays, such as `$_POST` and `$_GET`, are **supe
 1. **Integer** (`int` in PHP 7, `integer` in earlier versions): Represents whole numbers, both positive and negative.
 
    - Example: `$age = 30;`
-
 2. **Floating-Point Number** (`float`): Represents decimal numbers, also known as floats or doubles.
 
    - Example: `$price = 9.99;`
-
 3. **String** (`string`): Signifies sequences of characters, enclosed within single or double quotes.
 
    - Example: `$name = "John";`
-
 4. **Boolean** (`bool`): Represents logical states - `true` or `false`.
 
    - Example: `$isStudent = true;`
-
 5. **Resource**: Placeholder for external resources, such as database connections.
 6. **Null**: Denotes the absence of a value.
 
@@ -1088,20 +1353,16 @@ Understanding the detailed **lifecycle of a PHP request** will help you optimize
 1. **Bootstrap**
 
    - Code in your `index.php` file initializes the PHP environment.
-
 2. **Pre-Processing**
 
    - PHP compiles the requested file into opcode, if necessary.
    - The Zend Engine, which powers PHP, loads necessary extensions and sets up internal structures.
-
 3. **Request Processing**
 
    - PHP scripts execute from top to bottom, unless there's a redirect, error, or exit.
-
 4. **Output Buffering**
 
    - The `ob_` family of functions handles application output buffering.
-
 5. **Response**
 
    - When execution completes, the built-up output is sent back to the webserver for final delivery to the client.
@@ -1231,7 +1492,6 @@ To prevent execution of JavaScript code, you can use:
   ```php
   $sanitized = str_replace(['<', '>'], ['<', '>'], $_POST['input']);
   ```
-
 - **JSON encoding** for non-text data in hidden fields.
 
   ```php
@@ -1311,3 +1571,182 @@ $clean_text = strip_tags($input);
 echo "Clean HTML: $clean_html\n";  // Outputs: <a href='#'>Malicious Link</a><script>alert('You have been hacked!')</script>
 echo "Clean Text: $clean_text\n";  // Outputs: Malicious Linkalert('You have been hacked!')
 ```
+
+## 16. PHP Interview Questions and Answers
+
+### Table of Contents
+
+- [Language Features](#language-features)
+- [Traits](#traits)
+- [PHP Versions](#php-versions)
+- [Tools](#tools)
+- [Tricky Questions](#tricky-questions)
+- [Testing and Running Code](#testing-and-running-code)
+
+---
+
+### Language Features
+
+### 1. Data types in PHP. Describe Resource and Callable types.
+
+**Answer:**
+PHP provides several data types, including scalar, compound, and special types. `Resource` is a special type that holds references to external resources like database connections or file handles. `Callable` represents a reference to a function or method.
+
+**Example:**
+
+```php
+$resource = fopen("test.txt", "w"); // Resource type
+$callable = function() { return "Hello"; }; // Callable type
+var_dump($resource);
+var_dump(is_callable($callable));
+```
+
+---
+
+### 2. `this` VS `self`, `self` VS `static`, `parent` VS `self`
+
+**Answer:**
+
+- `this` refers to the current object instance.
+- `self` refers to the class where it is used.
+- `static` enables late static binding, referring to the called class.
+- `parent` calls a method from the parent class.
+
+**Example:**
+
+```php
+class Base {
+    public function test() {
+        return self::class;
+    }
+}
+class Child extends Base {
+    public function test() {
+        return parent::test();
+    }
+}
+echo (new Child)->test();
+```
+
+---
+
+### 3. Magic constants list. Does magic constant's value depend on the place where it is called?
+
+**Answer:**
+Yes, magic constants like `__LINE__`, `__FILE__`, and `__CLASS__` depend on where they are called.
+
+**Example:**
+
+```php
+echo __LINE__; // Outputs current line number
+```
+
+---
+
+### 4. Generators usage examples. What makes a function become a generator?
+
+**Answer:**
+A function using `yield` becomes a generator.
+
+**Example:**
+
+```php
+function generatorExample() {
+    yield 1;
+    yield 2;
+}
+$gen = generatorExample();
+foreach ($gen as $val) echo $val; // Outputs 12
+```
+
+---
+
+### Traits
+
+### 1. How to add them, inherit, and instantiate traits?
+
+**Answer:**
+Traits allow code reuse across multiple classes.
+
+**Example:**
+
+```php
+trait MyTrait { public function sayHello() { echo "Hello"; } }
+class MyClass { use MyTrait; }
+echo (new MyClass)->sayHello();
+```
+
+---
+
+### PHP Versions
+
+### 1. New features in PHP 8.0
+
+**Answer:**
+PHP 8.0 introduced named arguments, JIT compilation, union types, and match expressions.
+
+**Example:**
+
+```php
+function greet(string $name) { return "Hello, $name"; }
+echo greet(name: "John");
+```
+
+---
+
+### Tricky Questions
+
+### 1. What will be the key for the next value in this array?
+
+```php
+$array = [0 => "A", 1 => "B", "Hello" => "C"];
+$array[] = "D"; // Next key?
+print_r($array);
+```
+
+**Answer:** The next key will be `2`.
+
+---
+
+### 2. How to find the second-largest number in an unsorted list using one iteration?
+
+**Example:**
+
+```php
+function secondLargest($arr) {
+    $max = $second = PHP_INT_MIN;
+    foreach ($arr as $num) {
+        if ($num > $max) {
+            $second = $max;
+            $max = $num;
+        } elseif ($num > $second && $num != $max) {
+            $second = $num;
+        }
+    }
+    return $second;
+}
+```
+
+---
+
+### Testing and Running Code
+
+### Running PHP Code Locally
+
+1. Install PHP (https://www.php.net/downloads)
+2. Create a `test.php` file and write your code inside it.
+3. Run the file in the terminal:
+   ```sh
+   php test.php
+   ```
+
+#### Running Code Online
+
+Use platforms like:
+
+- https://www.phptester.net/
+- https://3v4l.org/
+
+---
+
+This README provides a structured approach to PHP questions and their practical answers with executable code snippets.

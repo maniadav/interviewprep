@@ -1,4 +1,4 @@
-**[<< Go To Home](/interviewprep)**
+**[&lt;&lt; Go To Home](/interviewprep)**
 
 <div align="center">
     <h1><span style="color:#f39c12;">Introduction to Sending Emails with Nodemailer and Gmail</span></h1>
@@ -225,4 +225,4 @@ sendGmail(emailOptions)
 
 ### **Conclusion**
 
-This setup allows you to send emails securely using Nodemailer with Gmail and OAuth2. Ensure proper configuration and handle errors gracefully for a smooth email-sending experience. Let me know if you need further assistance!
+This setup allows you to send emails securely using Nodemailer with Gmail and OAuth2.
