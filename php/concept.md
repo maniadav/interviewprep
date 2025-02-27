@@ -10,83 +10,83 @@ A comprehensive guide to mastering PHP with focus on interview-critical concepts
 
 ## Table of Contents
 
-### 1. [Getting Started with PHP](#getting-started)
+### 1. [Getting Started with PHP](#getting-started-with-php)
 
-- [PHP Environment Setup](#environment-setup)
-- [Basic Syntax and Tags](#basic-syntax)
-- [Variables and Constants](#variables)
+- [PHP Environment Setup](#php-environment-setup)
+- [Basic Syntax and Tags](#basic-syntax-and-tags)
+- [Variables and Constants](#variables-and-constants)
 - [Data Types](#data-types)
-- [Type Juggling and Type Casting](#type-casting)
+- [Type Juggling and Type Casting](#type-juggling-and-type-casting)
 
 ### 2. [Control Structures](#control-structures)
 
 - [Conditional Statements](#conditional-statements)
 - [Looping Structures](#looping-structures)
-- [break/continue Statements](#break-continue)
-- [Alternative Syntax for Control Structures](#alternative-syntax)
+- [break/continue Statements](#break-continue-statements)
+- [Alternative Syntax for Control Structures](#alternative-syntax-for-control-structures)
 
-### 3. [Functions and Error Handling](#functions-errors)
+### 3. [Functions and Error Handling](#functions-and-error-handling)
 
-- [Function Declaration and Arguments](#function-declaration)
-- [Return Types and Type Declarations](#return-types)
+- [Function Declaration and Arguments](#function-declaration-and-arguments)
+- [Return Types and Type Declarations](#return-types-and-type-declarations)
 - [Variable Scope](#variable-scope)
 - [Error Types](#error-types)
 - [Error Handling](#error-handling)
 
-### 4. [Working with Forms](#forms)
+### 4. [Working with Forms](#working-with-forms)
 
-- [$\_GET and $\_POST Superglobals](#get-post)
-- [Form Validation and Sanitization](#form-validation)
-- [File Uploads Handling](#file-uploads)
-- [CSRF Protection Basics](#csrf-protection)
+- [$\_GET and $\_POST Superglobals](#get-and-post-superglobals)
+- [Form Validation and Sanitization](#form-validation-and-sanitization)
+- [File Uploads Handling](#file-uploads-handling)
+- [CSRF Protection Basics](#csrf-protection-basics)
 
-### 5. [Object-Oriented PHP](#oop)
+### 5. [Object-Oriented PHP](#object-oriented-php)
 
-- [Classes and Objects](#classes-objects)
-- [Properties and Methods](#properties-methods)
-- [Inheritance and Polymorphism](#inheritance-polymorphism)
+- [Classes and Objects](#classes-and-objects)
+- [Properties and Methods](#properties-and-methods)
+- [Inheritance and Polymorphism](#inheritance-and-polymorphism)
 - [Magic Methods](#magic-methods)
-- [Interfaces vs Abstract Classes](#interfaces-abstract-classes)
-- [Traits and Namespaces](#traits-namespaces)
-- [Autoloading (PSR-4)](#autoloading)
+- [Interfaces vs Abstract Classes](#interfaces-vs-abstract-classes)
+- [Traits and Namespaces](#traits-and-namespaces)
+- [Autoloading (PSR-4)](#autoloading-psr-4)
 
-### 6. [Database Interaction](#database)
+### 6. [Database Interaction](#database-interaction)
 
-- [MySQLi vs PDO](#mysqli-pdo)
+- [MySQLi vs PDO](#mysqli-vs-pdo)
 - [Prepared Statements](#prepared-statements)
-- [Transactions and Error Handling](#transactions)
+- [Transactions and Error Handling](#transactions-and-error-handling)
 - [ORM Basics](#orm-basics)
 - [Database Design Patterns](#database-design-patterns)
 
-### 7. [Security Practices](#security)
+### 7. [Security Practices](#security-practices)
 
-- [SQL Injection Prevention](#sql-injection)
-- [XSS Prevention and Output Escaping](#xss-prevention)
+- [SQL Injection Prevention](#sql-injection-prevention)
+- [XSS Prevention and Output Escaping](#xss-prevention-and-output-escaping)
 - [Password Hashing](#password-hashing)
 - [Session Security](#session-security)
-- [HTTPS and Secure Cookies](#https-cookies)
-- [CORS and CSRF Protection](#cors-csrf)
+- [HTTPS and Secure Cookies](#https-and-secure-cookies)
+- [CORS and CSRF Protection](#cors-and-csrf-protection)
 
-### 8. [Advanced Concepts](#advanced)
+### 8. [Advanced Concepts](#advanced-concepts)
 
-- [Composer and Dependency Management](#composer)
-- [MVC Architecture Pattern](#mvc)
-- [RESTful API Development](#rest-api)
-- [Middleware and Routing](#middleware-routing)
+- [Composer and Dependency Management](#composer-and-dependency-management)
+- [MVC Architecture Pattern](#mvc-architecture-pattern)
+- [RESTful API Development](#restful-api-development)
+- [Middleware and Routing](#middleware-and-routing)
 - [Caching Strategies](#caching-strategies)
-- [PHP-FPM and Performance Tuning](#php-fpm)
+- [PHP-FPM and Performance Tuning](#php-fpm-and-performance-tuning)
 
-### 9. [Frameworks and Tools](#frameworks)
+### 9. [Frameworks and Tools](#frameworks-and-tools)
 
-- [Laravel Fundamentals](#laravel)
-- [Symfony Components](#symfony)
-- [Testing (PHPUnit, Pest)](#testing)
-- [Debugging (Xdebug, Ray)](#debugging)
-- [Deployment Strategies](#deployment)
+- [Laravel Fundamentals](#laravel-fundamentals)
+- [Symfony Components](#symfony-components)
+- [Testing (PHPUnit, Pest)](#testing-phpunit-pest)
+- [Debugging (Xdebug, Ray)](#debugging-xdebug-ray)
+- [Deployment Strategies](#deployment-strategies)
 
-### 10. [PHP Internals](#internals)
+### 10. [PHP Internals](#php-internals)
 
-- [Zend Engine Basics](#zend-engine)
+- [Zend Engine Basics](#zend-engine-basics)
 - [Memory Management](#memory-management)
 - [Opcode Caching](#opcode-caching)
 - [Garbage Collection](#garbage-collection)
@@ -100,33 +100,33 @@ A comprehensive guide to mastering PHP with focus on interview-critical concepts
 - [Code Documentation](#code-documentation)
 - [Performance Optimization](#performance-optimization)
 
-### 12. [Interview Preparation](#interview)
+### 12. [Interview Preparation](#interview-preparation)
 
-- [Common PHP Interview Questions](#common-questions)
-- [Algorithm Challenges in PHP](#algorithm-challenges)
-- [Whiteboard Coding Tips](#whiteboard-coding)
-- [System Design Concepts](#system-design)
-- [Real-world Scenario Questions](#real-world-scenarios)
+- [Common PHP Interview Questions](#common-php-interview-questions)
+- [Algorithm Challenges in PHP](#algorithm-challenges-in-php)
+- [Whiteboard Coding Tips](#whiteboard-coding-tips)
+- [System Design Concepts](#system-design-concepts)
+- [Real-world Scenario Questions](#real-world-scenario-questions)
 
-### 13. [Projects and Practice](#projects)
+### 13. [Projects and Practice](#projects-and-practice)
 
-- [E-commerce System](#ecommerce)
-- [REST API with Authentication](#rest-api-auth)
-- [CMS Implementation](#cms)
-- [CLI Tool Development](#cli-tool)
-- [Microservices Architecture](#microservices)
+- [E-commerce System](#e-commerce-system)
+- [REST API with Authentication](#rest-api-with-authentication)
+- [CMS Implementation](#cms-implementation)
+- [CLI Tool Development](#cli-tool-development)
+- [Microservices Architecture](#microservices-architecture)
 
 ### 14. [Resources](#resources)
 
-- [Official PHP Documentation](#php-docs)
-- [PHP: The Right Way](#php-right-way)
-- [Recommended Books](#books)
+- [Official PHP Documentation](#official-php-documentation)
+- [PHP: The Right Way](#php-the-right-way)
+- [Recommended Books](#recommended-books)
 - [Learning Platforms](#learning-platforms)
 - [Community Blogs](#community-blogs)
 
 ---
 
-## 1. Getting Started with PHP
+## 1Getting Started with PHP
 
 ### PHP Environment Setup
 
@@ -196,7 +196,7 @@ if ($age > 18) {
 - **break**: Exit a loop.
 - **continue**: Skip to the next iteration.
 
-### Alternative Syntax
+### Alternative Syntax for Control Structures
 
 Use `:` and `end` for cleaner control structures in templates:
 
@@ -497,7 +497,7 @@ Optimize PHP code and database queries.
 
 Prepare for frequently asked PHP interview questions.
 
-### Algorithm Challenges
+### Algorithm Challenges in PHP
 
 Solve problems like reversing strings or finding duplicates.
 
