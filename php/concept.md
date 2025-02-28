@@ -8,7 +8,7 @@ A comprehensive guide to mastering PHP with focus on interview-critical concepts
 
 ---
 
-## Table of Contents
+## Table of Content
 
 ### 1. [Getting Started with PHP](#getting-started-with-php)
 
