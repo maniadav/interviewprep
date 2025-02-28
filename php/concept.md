@@ -264,35 +264,185 @@ try {
 
 ## 4. Working with Forms
 
-### $\_GET and $\_POST Superglobals
+### `$_GET` and `$_POST` Superglobals
 
-- **$\_GET**: Retrieve data from URL parameters.
-- **$\_POST**: Retrieve data from form submissions.
+### `$_GET`: Retrieve Data from URL Parameters
+
+`$_GET` is used to collect data sent via URL parameters (query strings). It is commonly used for search forms or pagination.
+
+#### Example:
+
+```php
+// URL: http://example.com/?name=John&age=25
+if (isset($_GET['name']) && isset($_GET['age'])) {
+    $name = $_GET['name']; // John
+    $age = $_GET['age'];   // 25
+    echo "Name: $name, Age: $age";
+}
+```
+
+#### Key Points:
+
+- Data is visible in the URL.
+- Limited to 2048 characters (browser-dependent).
+- Use for non-sensitive data.
+
+---
+
+### `$_POST`: Retrieve Data from Form Submissions
+
+`$_POST` is used to collect data sent via HTTP POST requests, typically from HTML forms. It is more secure than `$_GET` for sensitive data.
+
+#### Example:
+
+```php
+// HTML Form
+<form method="POST" action="process.php">
+    <input type="text" name="username">
+    <input type="password" name="password">
+    <button type="submit">Submit</button>
+</form>
+
+// process.php
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+    echo "Username: $username, Password: $password";
+}
+```
+
+#### Key Points:
+
+- Data is not visible in the URL.
+- Suitable for sensitive data like passwords.
+- No size limitation (unlike `$_GET`).
+
+---
 
 ### Form Validation and Sanitization
 
-Validate and sanitize inputs to prevent errors and security risks:
+Form validation ensures that user inputs meet specific criteria, while sanitization cleans the data to prevent security risks like XSS (Cross-Site Scripting).
+
+### Example:
 
 ```php
-$name = htmlspecialchars($_POST['name']);
+$errors = [];
+
+// Validate and sanitize input
+if (empty($_POST['name'])) {
+    $errors[] = "Name is required.";
+} else {
+    $name = htmlspecialchars($_POST['name']); // Sanitize input
+}
+
+if (empty($_POST['email'])) {
+    $errors[] = "Email is required.";
+} elseif (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
+    $errors[] = "Invalid email format.";
+} else {
+    $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL); // Sanitize email
+}
+
+if (empty($errors)) {
+    echo "Name: $name, Email: $email";
+} else {
+    foreach ($errors as $error) {
+        echo "<p>$error</p>";
+    }
+}
 ```
+
+#### Key Points:
+
+- Use `htmlspecialchars()` to prevent XSS.
+- Use `filter_var()` for validation and sanitization.
+- Always validate server-side, even if client-side validation exists.
+
+---
 
 ### File Uploads Handling
 
-Use `$_FILES` to handle file uploads:
+PHP uses the `$_FILES` superglobal to handle file uploads. It provides information about the uploaded file, such as its name, size, and temporary location.
+
+### Example:
 
 ```php
-$file = $_FILES['file'];
-move_uploaded_file($file['tmp_name'], 'uploads/' . $file['name']);
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['file'])) {
+    $file = $_FILES['file'];
+
+    // Check for errors
+    if ($file['error'] === UPLOAD_ERR_OK) {
+        $uploadDir = 'uploads/';
+        $uploadPath = $uploadDir . basename($file['name']);
+
+        // Move the file to the upload directory
+        if (move_uploaded_file($file['tmp_name'], $uploadPath)) {
+            echo "File uploaded successfully!";
+        } else {
+            echo "Failed to move the file.";
+        }
+    } else {
+        echo "Error during file upload.";
+    }
+}
 ```
+
+#### Key Points:
+
+- Always validate file types and sizes.
+- Use `move_uploaded_file()` to move the file to a permanent location.
+- Set proper permissions for the upload directory.
+
+---
 
 ### CSRF Protection Basics
 
-Prevent CSRF attacks by using tokens:
+CSRF (Cross-Site Request Forgery) attacks trick users into performing actions they didn’t intend to. To prevent this, use CSRF tokens.
+
+### Example:
 
 ```php
-$_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+// Generate a CSRF token
+session_start();
+if (empty($_SESSION['csrf_token'])) {
+    $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+}
+
+// HTML Form
+<form method="POST" action="process.php">
+    <input type="hidden" name="csrf_token" value="<?php echo $_SESSION['csrf_token']; ?>">
+    <input type="text" name="username">
+    <button type="submit">Submit</button>
+</form>
+
+// process.php
+session_start();
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (!isset($_POST['csrf_token']) || $_POST['csrf_token'] !== $_SESSION['csrf_token']) {
+        die("CSRF token validation failed.");
+    }
+    // Process the form data
+    echo "Form submitted successfully!";
+}
 ```
+
+#### Key Points:
+
+- Generate a unique token for each session.
+- Include the token in forms as a hidden field.
+- Validate the token on form submission.
+
+---
+
+### Summary of Key Concepts:
+
+1. **`$_GET`**: Use for non-sensitive data passed via URLs.
+2. **`$_POST`**: Use for sensitive data submitted via forms.
+3. **Form Validation and Sanitization**: Ensure data is clean and valid.
+4. **File Uploads**: Handle files securely using `$_FILES`.
+5. **CSRF Protection**: Use tokens to prevent unauthorized form submissions.
+
+These topics are critical for PHP interviews and real-world applications. Practice these concepts with code examples to solidify your understanding!
 
 **[⬆ Back to Top](#table-of-content)**
 
@@ -300,40 +450,623 @@ $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
 
 ## 5. Object-Oriented PHP
 
-### Classes and Objects
+### 1. Classes and Objects
 
-- **Class**: A blueprint for objects.
-- **Object**: An instance of a class.
+#### **Class**
 
-### Properties and Methods
+A **class** is a blueprint for creating objects. It defines properties (variables) and methods (functions) that the objects will have.
 
-- **Properties**: Variables inside a class.
-- **Methods**: Functions inside a class.
+#### **Object**
 
-### Inheritance and Polymorphism
+An **object** is an instance of a class. It can access the properties and methods defined in the class.
 
-- **Inheritance**: Extend a class to reuse code.
-- **Polymorphism**: Override methods in child classes.
+```php
+class Car {
+    // Property
+    public $model;
 
-### Magic Methods
+    // Method
+    public function startEngine() {
+        return "Engine started!";
+    }
+}
 
-Special methods like `__construct`, `__destruct`, and `__toString`.
+// Create an object
+$tesla = new Car();
+$tesla->model = "Model S";
+echo $tesla->startEngine(); // Output: Engine started!
+```
 
-### Interfaces vs Abstract Classes
+**Key Points for Interviews**:
 
-- **Interfaces**: Define method signatures.
-- **Abstract Classes**: Provide partial implementation.
+- Use `new` keyword to instantiate objects.
+- Objects encapsulate data and behavior.
 
-### Traits and Namespaces
+---
 
-- **Traits**: Reuse code across classes.
-- **Namespaces**: Organize code and prevent naming conflicts.
+### 2. Properties and Methods
 
-### Autoloading (PSR-4)
+#### **Properties**
 
-Automatically load classes using Composer's PSR-4 autoloading.
+Variables declared inside a class. They hold the object’s state.
 
-**[⬆ Back to Top](#table-of-content)**
+#### **Methods**
+
+Functions declared inside a class. They define the object’s behavior.
+
+```php
+class BankAccount {
+    // Property (with visibility)
+    private $balance = 0;
+
+    // Method to modify property
+    public function deposit($amount) {
+        $this->balance += $amount;
+    }
+
+    public function getBalance() {
+        return $this->balance;
+    }
+}
+
+$account = new BankAccount();
+$account->deposit(100);
+echo $account->getBalance(); // Output: 100
+```
+
+**Key Points**:
+
+- **Visibility**: Use `public`, `private`, or `protected`.
+- `$this` refers to the current object.
+
+---
+
+### 3. Inheritance and Polymorphism
+
+#### **Inheritance**
+
+A child class inherits properties and methods from a parent class.
+
+#### **Polymorphism**
+
+Child classes can override parent methods to provide specific implementations.
+
+```php
+class Vehicle {
+    public function start() {
+        return "Vehicle started!";
+    }
+}
+
+class Car extends Vehicle {
+    // Override parent method
+    public function start() {
+        return "Car engine started!";
+    }
+}
+
+$vehicle = new Vehicle();
+echo $vehicle->start(); // Output: Vehicle started!
+
+$car = new Car();
+echo $car->start(); // Output: Car engine started!
+```
+
+**Interview Tip**:
+
+- Explain the **Liskov Substitution Principle** (child classes should be substitutable for parent classes).
+
+---
+
+### 4. Magic Methods
+
+Magic methods in PHP are special methods that begin with double underscores (`__`) and allow you to control various behaviors of your objects. Many of these methods interact with the properties of your object—whether to initialize them, control access, or modify them during serialization. Below is a list of key magic methods, their purposes, and code examples.
+
+---
+
+#### 1. `__construct` and `__destruct`
+
+- `__construct`: Called automatically when a new object is created. Often used to initialize properties.
+- `__destruct`: Called when an object is destroyed. Useful for cleanup tasks.
+
+**Example:**
+
+```php
+<?php
+class MagicDemo {
+    public $data;
+
+    public function __construct() {
+        echo "__construct called\n";
+        // Initialize object properties
+        $this->data = ['name' => 'MagicDemo', 'version' => '1.0'];
+    }
+
+    public function __destruct() {
+        echo "__destruct called\n";
+    }
+}
+
+$demo = new MagicDemo();
+?>
+```
+
+##---
+
+#### 2. `__get`, `__set`, `__isset`, and `__unset`
+
+These methods control access to inaccessible or non-existing properties.
+
+- `__get($name)` : Invoked when reading a property that isn’t accessible.
+- `__set($name, $value)` : Invoked when writing to an inaccessible property.
+- `__isset($name)` : Invoked when calling isset() or empty() on an inaccessible property.
+- `__unset($name)` : Invoked when unset() is used on an inaccessible property.
+
+**Example:**
+
+```php
+<?php
+class MagicProperties {
+    // Private property to store data
+    private $data = [];
+
+    public function __get($name) {
+        echo "__get: accessing '$name'\n";
+        return isset($this->data[$name]) ? $this->data[$name] : null;
+    }
+
+    public function __set($name, $value) {
+        echo "__set: setting '$name' to '$value'\n";
+        $this->data[$name] = $value;
+    }
+
+    public function __isset($name) {
+        echo "__isset: checking if '$name' is set\n";
+        return isset($this->data[$name]);
+    }
+
+    public function __unset($name) {
+        echo "__unset: unsetting '$name'\n";
+        unset($this->data[$name]);
+    }
+}
+
+$obj = new MagicProperties();
+$obj->name = "PHP Magic";   // Calls __set
+echo $obj->name . "\n";       // Calls __get
+if (isset($obj->name)) {      // Calls __isset
+    echo "Property 'name' is set\n";
+}
+unset($obj->name);           // Calls __unset
+?>
+```
+
+---
+
+#### 3. `__call` and `__callStatic`
+
+- `__call_(arguments)` : Invoked when calling an undefined or inaccessible instance method.
+- `__callStatic_(arguments)` : Invoked when calling an undefined or inaccessible static method.
+
+**Example:**
+
+```php
+<?php
+class MagicMethodCalls {
+    public function __call($name, $arguments) {
+        echo "__call: Attempt to call instance method '$name' with arguments: " . implode(', ', $arguments) . "\n";
+    }
+
+    public static function __callStatic($name, $arguments) {
+        echo "__callStatic: Attempt to call static method '$name' with arguments: " . implode(', ', $arguments) . "\n";
+    }
+}
+
+$obj = new MagicMethodCalls();
+$obj->nonExistentMethod("arg1", "arg2");   // Triggers __call
+MagicMethodCalls::nonExistentStatic("staticArg");  // Triggers __callStatic
+?>
+```
+
+---
+
+#### 4. `__sleep` and `__wakeup`
+
+These methods handle the serialization and unserialization of objects.
+
+- `__sleep()` : Called when serialize() is used. It can return an array of property names to be serialized.
+- `__wakeup()` : Called when unserialize() is used. It can be used to reinitialize resources.
+
+**Example:**
+
+```php
+<?php
+class SerializableDemo {
+    public $data = "Some data";
+    private $tempResource;
+
+    public function __sleep() {
+        echo "__sleep called\n";
+        // Return only the properties you wish to serialize
+        return ['data'];
+    }
+
+    public function __wakeup() {
+        echo "__wakeup called\n";
+        // Reinitialize properties or resources (e.g., database connection)
+        $this->tempResource = "Reinitialized resource";
+    }
+}
+
+$object = new SerializableDemo();
+$serialized = serialize($object);  // Triggers __sleep
+$unserialized = unserialize($serialized);  // Triggers __wakeup
+?>
+```
+
+---
+
+#### 5. `__toString`
+
+Allows an object to be treated as a string. This method must return a string.
+
+**Example:**
+
+```php
+<?php
+class Stringable {
+    private $data = ['name' => 'Stringable Demo', 'version' => '2.0'];
+
+    public function __toString() {
+        return "__toString: " . json_encode($this->data);
+    }
+}
+
+$obj = new Stringable();
+echo $obj;  // Automatically calls __toString
+?>
+```
+
+---
+
+#### 6. `__invoke`
+
+Invoked when an object is called as a function.
+
+**Example:**
+
+```php
+<?php
+class CallableDemo {
+    public function __invoke(...$args) {
+        echo "__invoke called with arguments: " . implode(', ', $args) . "\n";
+    }
+}
+
+$obj = new CallableDemo();
+$obj("first", "second");  // Treats $obj as a function, calling __invoke
+?>
+```
+
+---
+
+#### 7. `__set_state`
+
+Called when the object is exported with `var_export()`. It allows the recreation of an object with the given state.
+
+**Example:**
+
+```php
+<?php
+class StateDemo {
+    public $data;
+
+    public function __construct($data = null) {
+        $this->data = $data;
+    }
+
+    public static function __set_state($array) {
+        echo "__set_state called\n";
+        $obj = new self();
+        $obj->data = $array['data'];
+        return $obj;
+    }
+}
+
+$state = var_export(new StateDemo("test state"), true);
+echo $state;
+?>
+```
+
+---
+
+#### 8. `__clone`
+
+Invoked when an object is cloned using the `clone` keyword. It is useful for performing deep copies or resetting properties.
+
+**Example:**
+
+```php
+<?php
+class CloneDemo {
+    public $data;
+
+    public function __construct($data) {
+        $this->data = $data;
+    }
+
+    public function __clone() {
+        echo "__clone called\n";
+        // Example: reset a property after cloning
+        $this->data = "Cloned: " . $this->data;
+    }
+}
+
+$original = new CloneDemo("Original Data");
+$cloned = clone $original;
+echo $cloned->data;  // Output includes the modification from __clone
+?>
+```
+
+---
+
+#### 9. `__debugInfo`
+
+Controls what information is shown when using debugging functions like `var_dump()`.
+
+**Example:**
+
+```php
+<?php
+class DebugDemo {
+    private $data = "Secret Data";
+    private $hidden = "Hidden Info";
+
+    public function __debugInfo() {
+        return [
+            'data' => $this->data,
+            // 'hidden' is omitted from the debug info
+        ];
+    }
+}
+
+$obj = new DebugDemo();
+var_dump($obj);  // Only shows 'data' property
+?>
+```
+
+---
+
+#### 10. `__serialize` and `__unserialize` (PHP 7.4+)
+
+Newer magic methods for serialization that offer more control than `__sleep` and `__wakeup`.
+
+- `__serialize()` : Returns an array of data to be serialized.
+- `__unserialize()` : Reconstructs the object from the serialized array.
+
+**Example:**
+
+```php
+<?php
+class NewSerializableDemo {
+    private $data;
+    private $tempResource;
+
+    public function __construct($data) {
+        $this->data = $data;
+        $this->tempResource = "Resource";
+    }
+
+    public function __serialize(): array {
+        echo "__serialize called\n";
+        return ['data' => $this->data];
+    }
+
+    public function __unserialize(array $data): void {
+        echo "__unserialize called\n";
+        $this->data = $data['data'];
+        $this->tempResource = "Reinitialized Resource";
+    }
+}
+
+$obj = new NewSerializableDemo("New Data");
+$serialized = serialize($obj);  // Uses __serialize
+$unserialized = unserialize($serialized);  // Uses __unserialize
+?>
+```
+
+---
+
+**Interview Question**:
+
+- **Q**: Why use `__construct` over a regular method?
+- **A**: Ensures initialization logic runs automatically when objects are created.
+
+---
+
+### 5. Interfaces vs Abstract Classes
+
+#### **Interfaces**
+
+- Define method signatures (**what** to do).
+- No implementation.
+- A class can implement multiple interfaces.
+
+#### **Abstract Classes**
+
+- Provide **partial implementation**.
+- Can have properties and concrete methods.
+- A class can extend only one abstract class.
+
+```php
+// Interface
+interface Movable {
+    public function move();
+}
+
+// Abstract Class
+abstract class Animal {
+    abstract public function makeSound(); // Must be implemented
+    public function eat() {
+        echo "Eating...";
+    }
+}
+
+class Dog extends Animal implements Movable {
+    public function makeSound() {
+        echo "Woof!";
+    }
+    public function move() {
+        echo "Dog is running!";
+    }
+}
+
+$dog = new Dog();
+$dog->move(); // Output: Dog is running!
+```
+
+**Key Differences**:
+
+|                          | **Interface**    | **Abstract Class**       |
+| ------------------------ | ---------------------- | ------------------------------ |
+| **Implementation** | Only method signatures | Partial implementation allowed |
+| **Inheritance**    | Multiple interfaces    | Single abstract class          |
+
+---
+
+### 6. Traits and Namespaces
+
+#### **Traits**
+
+Reusable code units that solve single inheritance limitations.
+
+```php
+trait Loggable {
+    public function log($message) {
+        echo "Log: $message";
+    }
+}
+
+class User {
+    use Loggable; // Include the trait
+}
+
+$user = new User();
+$user->log("User created"); // Output: Log: User created
+```
+
+#### **Namespaces**
+
+Organize code and prevent naming collisions.
+
+```php
+namespace Database;
+
+class Connection {
+    public function connect() {
+        return "Connected to DB!";
+    }
+}
+
+// Usage
+$conn = new \Database\Connection();
+echo $conn->connect(); // Output: Connected to DB!
+```
+
+**Interview Tip**:
+
+- Use traits for cross-cutting concerns (e.g., logging).
+- Namespaces follow **PSR-4** autoloading standards.
+
+---
+
+### 7. Autoloading (PSR-4)
+
+Automatically load classes without `require` statements.
+
+#### Step 1: Directory Structure
+
+```
+src/
+└── Models/
+    └── User.php
+```
+
+#### Step 2: `composer.json`
+
+```json
+{
+  "autoload": {
+    "psr-4": {
+      "App\\": "src/"
+    }
+  }
+}
+```
+
+#### Step 3: Class Definition
+
+```php
+// src/Models/User.php
+namespace App\Models;
+
+class User {
+    public function __construct() {
+        echo "User loaded!";
+    }
+}
+```
+
+#### Step 4: Usage
+
+```php
+require 'vendor/autoload.php';
+
+$user = new \App\Models\User(); // Output: User loaded!
+```
+
+**Interview Question**:
+
+- **Q**: Why use PSR-4 autoloading?
+- **A**: Standardizes class-to-file mapping, reduces manual includes, and improves maintainability.
+
+---
+
+### 💡 **Key OOP Interview Topics**
+
+1. **Encapsulation**: Hide internal state using `private`/`protected` properties.
+2. **Abstraction**: Simplify complexity using interfaces/abstract classes.
+3. **Composition over Inheritance**: Favor object composition for flexibility.
+4. **Dependency Injection**: Pass dependencies to objects instead of hardcoding.
+
+```php
+// Dependency Injection Example
+class Logger {
+    public function log($message) {
+        echo $message;
+    }
+}
+
+class UserService {
+    private $logger;
+
+    public function __construct(Logger $logger) {
+        $this->logger = $logger;
+    }
+}
+
+$logger = new Logger();
+$userService = new UserService($logger);
+```
+
+---
+
+### 📚 **Resources**
+
+- [PHP OOP Official Docs](https://www.php.net/manual/en/language.oop5.php)
+- **Book**: "PHP Objects, Patterns, and Practice" by Matt Zandstra
+
+### **[⬆ Back to Top](#table-of-content)**
 
 ---
 
@@ -341,35 +1074,176 @@ Automatically load classes using Composer's PSR-4 autoloading.
 
 ### MySQLi vs PDO
 
-- **MySQLi**: MySQL-specific extension.
-- **PDO**: Database-agnostic extension.
+#### **MySQLi**
+
+MySQL-specific extension for interacting with MySQL databases.
+
+```php
+// MySQLi Connection
+$mysqli = new mysqli("localhost", "user", "password", "database");
+if ($mysqli->connect_error) {
+    die("Connection failed: " . $mysqli->connect_error);
+}
+```
+
+#### **PDO** (PHP Data Objects)
+
+Database-agnostic extension supporting 12+ databases (MySQL, PostgreSQL, SQLite, etc.).
+
+```php
+// PDO Connection
+try {
+    $pdo = new PDO("mysql:host=localhost;dbname=database", "user", "password");
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (PDOException $e) {
+    die("Connection failed: " . $e->getMessage());
+}
+```
+
+**Key Differences**:
+
+| Feature                       | MySQLi                       | PDO                      |
+| ----------------------------- | ---------------------------- | ------------------------ |
+| **Database Support**    | MySQL only                   | Multiple databases       |
+| **Prepared Statements** | Procedural & Object-oriented | Object-oriented only     |
+| **Error Handling**      | Limited                      | Exceptions & error codes |
+
+---
 
 ### Prepared Statements
 
-Prevent SQL injection by using prepared statements:
+Prevent SQL injection by separating SQL logic from data.
+
+#### Example with MySQLi:
 
 ```php
-$stmt = $pdo->prepare("SELECT * FROM users WHERE id = ?");
-$stmt->execute([$id]);
+$stmt = $mysqli->prepare("SELECT * FROM users WHERE email = ?");
+$stmt->bind_param("s", $email); // "s" = string type
+$stmt->execute();
+$result = $stmt->get_result();
 ```
+
+#### Example with PDO:
+
+```php
+$stmt = $pdo->prepare("SELECT * FROM users WHERE id = :id");
+$stmt->execute([':id' => $id]);
+$user = $stmt->fetch(PDO::FETCH_ASSOC);
+```
+
+**Interview Tip**:
+
+- Always use prepared statements for user inputs.
+- Explain **SQL injection** and how prepared statements mitigate it.
+
+---
 
 ### Transactions and Error Handling
 
-Ensure data integrity with transactions:
+Ensure atomicity for multiple database operations.
 
 ```php
-$pdo->beginTransaction();
-// Execute queries
-$pdo->commit();
+try {
+    $pdo->beginTransaction();
+
+    // Transfer $100 from Alice to Bob
+    $pdo->exec("UPDATE accounts SET balance = balance - 100 WHERE user = 'Alice'");
+    $pdo->exec("UPDATE accounts SET balance = balance + 100 WHERE user = 'Bob'");
+
+    $pdo->commit();
+} catch (Exception $e) {
+    $pdo->rollBack();
+    echo "Transaction failed: " . $e->getMessage();
+}
 ```
+
+**Key Points**:
+
+- Use `beginTransaction()`, `commit()`, and `rollBack()`.
+- Transactions ensure **ACID** properties (Atomicity, Consistency, Isolation, Durability).
+
+---
 
 ### ORM Basics
 
-Use ORMs like Eloquent or Doctrine for database abstraction.
+Object-Relational Mapping (ORM) maps database tables to PHP objects.
+
+#### Example with Eloquent (Laravel):
+
+```php
+// Define a Model
+class User extends Illuminate\Database\Eloquent\Model {
+    protected $table = 'users';
+}
+
+// Fetch a user
+$user = User::find(1);
+echo $user->name;
+
+// Create a user
+User::create(['name' => 'Alice', 'email' => 'alice@example.com']);
+```
+
+**Popular ORMs**:
+
+- **Eloquent** (Laravel)
+- **Doctrine** (Symfony)
+
+**Advantages**:
+
+- Abstracts SQL queries.
+- Simplifies database operations.
+
+---
 
 ### Database Design Patterns
 
-Implement patterns like Repository and Active Record.
+#### **Active Record Pattern**
+
+Objects carry data and database access logic.
+
+```php
+class User {
+    public $id;
+    public $name;
+
+    public function save() {
+        // Save to database
+    }
+}
+```
+
+#### **Repository Pattern**
+
+Separates data access logic from business logic.
+
+```php
+class UserRepository {
+    public function findById($id) {
+        // Fetch user from DB
+    }
+
+    public function save(User $user) {
+        // Save user to DB
+    }
+}
+```
+
+**Comparison**:
+
+| Pattern                 | Use Case                               |
+| ----------------------- | -------------------------------------- |
+| **Active Record** | Simple apps with direct DB access      |
+| **Repository**    | Complex apps with layered architecture |
+
+---
+
+## 💡 **Key Interview Questions**
+
+1. **Q**: Why use PDO over MySQLi?**A**: PDO supports multiple databases and provides better error handling.
+2. **Q**: How do transactions prevent data corruption?**A**: They ensure all operations succeed or fail together.
+3. **Q**: What is the N+1 problem in ORM?
+   **A**: Excessive queries due to lazy loading (fix: eager loading).
 
 **[⬆ Back to Top](#table-of-content)**
 
