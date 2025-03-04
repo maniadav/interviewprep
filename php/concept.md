@@ -10,13 +10,14 @@ A comprehensive guide to mastering PHP with focus on interview-critical concepts
 
 ## Table of Content
 
-### 1. [Getting Started with PHP](#getting-started-with-php)
+### 1. [Getting Started with PHP Basics](#getting-started-with-php-basics)
 
 - [PHP Environment Setup](#php-environment-setup)
 - [Basic Syntax and Tags](#basic-syntax-and-tags)
 - [Variables and Constants](#variables-and-constants)
 - [Data Types](#data-types)
 - [Type Juggling and Type Casting](#type-juggling-and-type-casting)
+- [Language Construct](#language-construct)
 
 ### 2. [Control Structures](#control-structures)
 
@@ -126,15 +127,23 @@ A comprehensive guide to mastering PHP with focus on interview-critical concepts
 
 ---
 
-## 1. Getting Started with PHP
+## 1. Getting Started with PHP Basics
 
 ### PHP Environment Setup
 
 To start coding in PHP, you need a local development environment. Popular options include:
 
-- **XAMPP**: A complete package with Apache, MySQL, and PHP.
-- **WAMP**: Similar to XAMPP but for Windows.
-- **Docker**: A containerized environment for consistent development.
+1. **XAMPP**: A complete package with Apache, MySQL, and PHP.
+2. **WAMP**: Similar to XAMPP but for Windows.
+3. **Docker**: A containerized environment for consistent development.
+
+```php
+<?php
+phpinfo(); // Displays PHP configuration details
+?>
+```
+
+---
 
 ### Basic Syntax and Tags
 
@@ -149,10 +158,14 @@ echo "Hello, World!";
 - Always end statements with a semicolon (`;`).
 - Comments can be added using `//` for single-line or `/* */` for multi-line.
 
+---
+
 ### Variables and Constants
 
 - **Variables**: Declared with a `$` sign (e.g., `$name = "John";`).
 - **Constants**: Defined using `define("CONST_NAME", "value")` or `const CONST_NAME = "value";`.
+
+---
 
 ### Data Types
 
@@ -162,10 +175,293 @@ PHP supports:
 - **Compound Types**: `array`, `object`.
 - **Special Types**: `null`, `resource`.
 
+#### int
+
+Integers are whole numbers (positive/negative) without decimals. PHP uses 32/64-bit integers depending on the system.
+
+```php
+<?php
+$a = 42;        // Decimal
+$b = 0x1A;      // Hexadecimal (26)
+$c = 0b1010;    // Binary (10)
+$d = 0755;      // Octal (493)
+?>
+```
+
+**Tricky Question**:
+_Q: "Why does `(int) '08'` return `0` instead of `8`?"_
+_A: PHP parses numbers starting with `0` as octal, but `8` is invalid in octal (digits 0-7). Use `(int) '8'` or `intval('08', 10)`._
+
+---
+
+#### float
+
+Floating-point numbers (decimals). **Caution**: Precision issues due to binary representation.
+
+```php
+<?php
+$a = 1.234;
+$b = 10.0;      // Float, not integer!
+$c = 2.5e3;     // 2500
+?>
+```
+
+**Tricky Question**:
+_Q: "Why does `0.1 + 0.2 === 0.3` return `false`?"_
+_A: Floating-point precision errors. Use `abs(0.1 + 0.2 - 0.3) < 1e-9` or `bcadd()` for exact comparisons._
+
+---
+
+#### string
+
+Textual data. Supports single quotes (no variable parsing) and double quotes (variable parsing).
+
+```php
+<?php
+$name = "Alice";
+echo 'Hello, $name';    // Outputs "Hello, $name"
+echo "Hello, $name";    // Outputs "Hello, Alice"
+?>
+```
+
+**Tricky Question**:
+_Q: "What is the output of `echo '5' + '2'`?"_
+_A: `7` (PHP performs **type juggling** and converts strings to integers)._
+
+---
+
+#### bool
+
+Boolean (`true`/`false`). **Falsy values**: `0`, `""`, `null`, empty arrays.
+
+```php
+<?php
+$isAdmin = true;
+if ("0") {  // Evaluates to false (string "0" is falsy)
+    // Won't execute
+}
+?>
+```
+
+**Tricky Question**:
+_Q: "Is `'false'` considered `true` or `false`?"_
+_A: `true`—non-empty strings are truthy, even if the content is "false"._
+
+---
+
+#### array
+
+Ordered maps with key-value pairs.
+
+#### Types of Array in PHP
+
+1. **Indexed Array**:
+
+   ```php
+   $arr = ["Apple", "Banana", "Cherry"];
+   echo $arr[0]; // Apple
+   ```
+
+2. **Associative Array**:
+
+   ```php
+   $user = ["name" => "John", "age" => 25];
+   echo $user["name"]; // John
+   ```
+
+3. **Multidimensional Array**:
+
+   ```php
+   $store = [
+       "fruits" => ["Apple", "Banana"],
+       "vegetables" => ["Carrot", "Spinach"]
+   ];
+   echo $store["fruits"][1]; // Banana
+   ```
+
+**Tricky Question**:
+_Q: "What happens if you use `array_push($arr, $item)` vs `$arr[] = $item`?"_
+_A: Both add elements, but `array_push()` incurs function call overhead. Use `[]` for single elements._
+
+---
+
+#### object
+
+Instances of classes. Use `stdClass` for generic objects.
+
+```php
+<?php
+class User {}
+$user = new User();
+$user->name = "Alice";
+
+$obj = (object) ["id" => 1]; // Cast array to object
+?>
+```
+
+**Tricky Question**:
+_Q: "How are objects passed to functions in PHP?"_
+_A: By reference (but explicit cloning is needed to create copies)._
+
+---
+
+#### null
+
+Represents "no value". Variables are `null` if unset or assigned `null`.
+
+```php
+<?php
+$x = null;
+if (is_null($x)) {
+    echo "x is null";
+}
+?>
+```
+
+**Tricky Question**:
+_Q: "What’s the difference between `isset($var)` and `!is_null($var)`?"_
+_A: `isset()` checks if a variable exists and is not `null`. `!is_null()` throws a warning if the variable doesn’t exist._
+
+---
+
+#### resource
+
+Special variables holding references to external resources (e.g., files, databases).
+
+```php
+<?php
+$file = fopen("test.txt", "r"); // Returns a file resource
+?>
+```
+
+**Tricky Question**:
+_Q: "What happens if you serialize a resource?"_
+_A: Serialization fails—resources can’t be serialized as they’re pointers to external states._
+
+#### Key Takeaways for Interviews:
+
+1. **Weak Typing**: PHP converts types implicitly (e.g., `"5"` → `5` in arithmetic).
+2. **Array Flexibility**: Arrays can act as lists, dictionaries, stacks, etc.
+3. **Null Handling**: Use `=== null` for strict checks.
+4. **Resource Limitations**: Resources are temporary handles (e.g., database connections must be closed explicitly).
+
+---
+
 ### Type Juggling and Type Casting
 
 - **Type Juggling**: PHP automatically converts types (e.g., `"5" + 2` results in `7`).
 - **Type Casting**: Explicitly convert types using `(int)`, `(string)`, etc.
+
+### Language Constructs in PHP
+
+Language constructs in PHP are built-in functions or statements that **do not require parentheses** (although they can be used with them). These constructs behave like functions but are part of PHP’s core syntax.
+
+#### Types of Language Constructs in PHP
+
+Language constructs fall under different categories based on their functionality.
+
+**1. Variable and Type Handling Constructs**
+
+| Construct           | Description                                                      |
+| ------------------- | ---------------------------------------------------------------- |
+| `isset()`           | Returns `true` if a variable is set and not `NULL`               |
+| `unset()`           | Destroys a variable                                              |
+| `empty()`           | Returns `true` if a variable is empty (`0, "", NULL, false, []`) |
+| `die()` or `exit()` | Terminates the script execution                                  |
+| `eval()`            | Executes a string as PHP code                                    |
+
+---
+
+**2. Output and Debugging Constructs**
+
+| Construct      | Description                                            |
+| -------------- | ------------------------------------------------------ |
+| `echo`         | Outputs one or more strings (faster than `print`)      |
+| `print`        | Outputs a string (returns `1`, unlike `echo`)          |
+| `print_r()`    | Prints human-readable information about a variable     |
+| `var_dump()`   | Dumps detailed information about a variable            |
+| `var_export()` | Outputs a parsable string representation of a variable |
+
+---
+
+**3. Control Structures (Conditional & Loop Constructs)**
+
+| Construct                   | Description                      |
+| --------------------------- | -------------------------------- |
+| `if`, `else`, `elseif`      | Conditional statements           |
+| `switch`, `case`, `default` | Multi-way conditional statement  |
+| `while`, `do-while`         | Looping constructs               |
+| `for`, `foreach`            | Iteration constructs             |
+| `break`                     | Exits the current loop           |
+| `continue`                  | Skips the current loop iteration |
+| `return`                    | Returns a value from a function  |
+
+---
+
+**4. Function and Class Handling Constructs**
+
+| Construct                     | Description                                |
+| ----------------------------- | ------------------------------------------ |
+| `function`                    | Defines a function                         |
+| `global`                      | Declares global variables inside functions |
+| `static`                      | Declares static variables inside functions |
+| `use`                         | Imports namespaces or traits in PHP        |
+| `class`, `interface`, `trait` | Defines object-oriented components         |
+| `extends`, `implements`       | Establishes inheritance in classes         |
+| `abstract`, `final`           | Defines class behavior                     |
+| `clone`                       | Creates a copy of an object                |
+
+---
+
+**5. File and Directory Constructs**
+
+| Construct      | Description                                                                  |
+| -------------- | ---------------------------------------------------------------------------- |
+| `include`      | Includes and executes a file (produces a warning if the file is missing)     |
+| `require`      | Includes and executes a file (produces a fatal error if the file is missing) |
+| `include_once` | Ensures a file is included only once                                         |
+| `require_once` | Ensures a file is required only once                                         |
+
+---
+
+**6. Exception Handling Constructs**
+
+| Construct                 | Description                  |
+| ------------------------- | ---------------------------- |
+| `try`, `catch`, `finally` | Exception handling mechanism |
+| `throw`                   | Throws an exception          |
+
+---
+
+**7. Miscellaneous Constructs**
+
+| Construct   | Description                                               |
+| ----------- | --------------------------------------------------------- |
+| `list()`    | Assigns variables from an array                           |
+| `array()`   | Creates an array (alternative to `[]`)                    |
+| `isset()`   | Checks if a variable is set                               |
+| `unset()`   | Unsets a variable                                         |
+| `declare()` | Sets execution directives (used with `ticks`)             |
+| `goto`      | Jumps to a specific label in the script (not recommended) |
+
+---
+
+**Why Are Language Constructs Different from Functions?**
+
+- **They are part of PHP’s core syntax**, not user-defined functions.
+- **Parentheses are optional** in most cases.Example:
+  ```php
+  echo "Hello"; // Valid
+  echo("Hello"); // Also valid
+  ```
+- **They are faster** than functions because they do not require function call overhead.
+
+---
+
+### **Conclusion**
+
+1. PHP has several language constructs grouped under **control structures, file handling, function handling, output handling, and more**.
+2. Unlike functions, **language constructs do not always require parentheses**.
 
 **[⬆ Back to Top](#table-of-content)**
 
@@ -239,6 +535,171 @@ function add(int $a, int $b): int {
 - **Local**: Variables inside functions.
 - **Global**: Accessible anywhere using `global` keyword.
 - **Static**: Retains value between function calls.
+
+---
+
+### Types of Function Calls in PHP
+
+#### 1. Call by Value (Default Behavior)
+
+- When a function is called by value, a **copy** of the variable is sent to the function.
+- Any changes made inside the function do **not** affect the original variable.
+
+**Example:**
+
+```php
+<?php
+function callByValue($num) {
+    $num += 10;  // Modify the local copy
+    echo "Inside function: $num\n";
+}
+
+$value = 20;
+callByValue($value);
+echo "Outside function: $value\n"; // Original value remains unchanged
+?>
+```
+
+**Output:**
+
+```
+Inside function: 30
+Outside function: 20
+```
+
+📌 **Explanation:** The function receives a copy of `$value`, so modifying it inside does not change the original `$value`.
+
+---
+
+### 2. Call by Reference
+
+- When you use **`&` (ampersand)** before a parameter, the function works with the original variable's memory reference.
+- Any changes inside the function **affect the original variable**.
+
+**Example:**
+
+```php
+<?php
+function callByReference(&$num) {
+    $num += 10;  // Modify the original variable
+    echo "Inside function: $num\n";
+}
+
+$value = 20;
+callByReference($value);
+echo "Outside function: $value\n"; // Original value is changed
+?>
+```
+
+**Output:**
+
+```
+Inside function: 30
+Outside function: 30
+```
+
+📌 **Explanation:** Since we used `&$num`, the function modifies the actual `$value`, not a copy.
+
+#### **Global Scope**
+
+```php
+<?php
+
+// Using Global Variable
+$globalNum = 50;
+
+function usingGlobal() {
+    global $globalNum; // Access the global variable
+    $globalNum += 20;
+    echo "Inside usingGlobal: $globalNum<br>";
+}
+
+// Static Variable Example
+function staticExample() {
+    static $count = 0; // Static variable retains value across function calls
+    $count++;
+    echo "Static count: $count<br>";
+}
+
+usingGlobal();
+echo "Outside usingGlobal: $globalNum<br><br>";
+
+staticExample();
+staticExample();
+staticExample();
+?>
+```
+
+#### **Answer**
+
+```
+Inside usingGlobal: 70
+Outside usingGlobal: 70
+
+Static count: 1
+Static count: 2
+Static count: 3
+```
+
+---
+
+### **Default Argument Value**
+
+- You can assign a default value to function parameters. If an argument is **not provided**, the default value is used.
+
+#### **Example:**
+
+```php
+<?php
+function greet($name = "Guest") {
+    echo "Hello, $name!\n";
+}
+
+greet();          // Uses default value "Guest"
+greet("Manish");  // Overrides default value
+?>
+```
+
+#### **Output:**
+
+```
+Hello, Guest!
+Hello, Manish!
+```
+
+📌 **Explanation:** If no argument is passed, `"Guest"` is used as the default value.
+
+---
+
+### **4. Type Hinting**
+
+- You can specify the expected type of arguments in PHP (since PHP 7).
+- If a wrong type is passed, PHP throws an error.
+
+#### **Example:**
+
+```php
+<?php
+function sum(int $a, int $b) {
+    return $a + $b;
+}
+
+echo sum(5, 10);   // Works fine
+echo sum("5", "10"); // Works, as PHP auto-converts strings to int
+// echo sum("five", "ten"); // Fatal error!
+?>
+```
+
+📌 **Explanation:**
+
+- `int $a, int $b` ensures only integers are passed.
+- `"5"` is converted to `5`, but `"five"` would cause an error.
+
+---
+
+## **Conclusion**
+
+The function call on **line 8** is **Call by Value**, as arguments are passed without a reference (`&`). You can change it to **Call by Reference** by adding `&` before the parameters in the function definition.
 
 ### Error Types
 
@@ -927,8 +1388,8 @@ $dog->move(); // Output: Dog is running!
 
 **Key Differences**:
 
-|                          | **Interface**    | **Abstract Class**       |
-| ------------------------ | ---------------------- | ------------------------------ |
+|                    | **Interface**          | **Abstract Class**             |
+| ------------------ | ---------------------- | ------------------------------ |
 | **Implementation** | Only method signatures | Partial implementation allowed |
 | **Inheritance**    | Multiple interfaces    | Single abstract class          |
 
@@ -1102,8 +1563,8 @@ try {
 
 **Key Differences**:
 
-| Feature                       | MySQLi                       | PDO                      |
-| ----------------------------- | ---------------------------- | ------------------------ |
+| Feature                 | MySQLi                       | PDO                      |
+| ----------------------- | ---------------------------- | ------------------------ |
 | **Database Support**    | MySQL only                   | Multiple databases       |
 | **Prepared Statements** | Procedural & Object-oriented | Object-oriented only     |
 | **Error Handling**      | Limited                      | Exceptions & error codes |
@@ -1231,8 +1692,8 @@ class UserRepository {
 
 **Comparison**:
 
-| Pattern                 | Use Case                               |
-| ----------------------- | -------------------------------------- |
+| Pattern           | Use Case                               |
+| ----------------- | -------------------------------------- |
 | **Active Record** | Simple apps with direct DB access      |
 | **Repository**    | Complex apps with layered architecture |
 
@@ -1369,7 +1830,22 @@ Follow PSR-1, PSR-12, and other coding standards.
 
 ### SOLID Principles
 
-Apply SOLID principles for clean code.
+1. **S** - Single Responsibility Principle
+2. **O** - Open/Closed Principle
+3. **L** - Liskov Substitution Principle
+4. **I** - Interface Segregation Principle
+5. **D** - Dependency Inversion Principle
+
+#### 1. Single Responsibility Principle
+
+```php
+
+class User {
+    public function saveToDatabase() {
+        // Save logic
+    }
+}
+```
 
 ### Design Patterns
 
