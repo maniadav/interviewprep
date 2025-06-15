@@ -2,12 +2,37 @@
 
 ## Table of Contents
 
-This list contains a longer list of important JavaScript questions. Not all of them will be asked during Front End Engineer interviews but they provide a well-rounded review of JavaScript concepts ranging from beginner to advanced topics.
+This list contains a comprehensive collection of important JavaScript questions. Not all of them will be asked during Front End Engineer interviews, but they provide a well-rounded review of JavaScript concepts ranging from beginner to advanced topics.
 
 <!-- TABLE_OF_CONTENTS:ALL:START -->
 
-| No. | Questions                                                                                                                                                                                                                                                  | Level        |
-| --- | :--------------------------- | :----------- |
+## Categories
+
+- [Basic JavaScript Concepts](#basic-javascript-concepts)
+- [Variables and Data Types](#variables-and-data-types)
+- [Operators and Control Flow](#operators-and-control-flow)
+- [Functions](#functions)
+- [Objects and Arrays](#objects-and-arrays)
+- [Asynchronous JavaScript](#asynchronous-javascript)
+- [Prototypes and Classes](#prototypes-and-classes)
+- [Closures and Scopes](#closures-and-scopes)
+- [DOM and Browser APIs](#dom-and-browser-apis)
+- [JavaScript Modules](#javascript-modules)
+- [Error Handling](#error-handling)
+- [Functional Programming](#functional-programming)
+- [Advanced Data Structures](#advanced-data-structures)
+- [Performance Optimization](#performance-optimization)
+- [Testing](#testing)
+- [Design Patterns](#design-patterns)
+- [Security](#security)
+- [Miscellaneous](#miscellaneous)
+
+## All Questions
+
+<div id="table-of-contents-all-questions"></div>
+
+| No. | Questions | Level |
+| --- | :-------- | :---- |
 | 1   | [What are the various data types in JavaScript?](#what-are-the-various-data-types-in-javascript)                                                                                                                                                           | Basic        |
 | 2   | [How do you check the data type of a variable?](#how-do-you-check-the-data-type-of-a-variable)                                                                                                                                                             | Basic        |
 | 3   | [What&#39;s the difference between a JavaScript variable that is: `null`, `undefined` or undeclared?](#whats-the-difference-between-a-javascript-variable-that-is-null-undefined-or-undeclared)                                                            | Basic        |
@@ -201,43 +226,18 @@ This list contains a longer list of important JavaScript questions. Not all of t
 | 191 | [How do you organize your code?](#how-do-you-organize-your-code)                                                                                                                                                                                           | Intermediate |
 | 192 | [What are some of the advantages/disadvantages of writing JavaScript code in a language that compiles to JavaScript?](#what-are-some-of-the-advantagesdisadvantages-of-writing-javascript-code-in-a-language-that-compiles-to-javascript)                  | Advanced     |
 | 193 | [When would you use `document.write()`?](#when-would-you-use-documentwrite)                                                                                                                                                                                | Advanced     |
+
+<!-- TABLE_OF_CONTENTS:ALL:END -->
+
 ---
 
+<a id="basic-javascript-concepts"></a>
+## Basic JavaScript Concepts
+
+<a id="what-are-the-various-data-types-in-javascript"></a>
 ### What are the various data types in JavaScript?
 
-<details><summary>View</summary>
-   
-Hoisting is a JavaScript mechanism where variable and function declarations are moved ("hoisted") to the top of their containing scope during the compile phase.
-
-- **Variable declarations (`var`)**: Declarations are hoisted, but not initializations. The value of the variable is `undefined` if accessed before initialization.
-- **Variable declarations (`let` and `const`)**: Declarations are hoisted, but not initialized. Accessing them results in `ReferenceError` until the actual declaration is encountered.
-- **Function expressions (`var`)**: Declarations are hoisted, but not initializations. The value of the variable is `undefined` if accessed before initialization.
-- **Function declarations (`function`)**: Both declaration and definition are fully hoisted.
-- **Class declarations (`class`)**: Declarations are hoisted, but not initialized. Accessing them results in `ReferenceError` until the actual declaration is encountered.
-- **Import declarations (`import`)**: Declarations are hoisted, and side effects of importing the module are executed before the rest of the code.
-
-The following behavior summarizes the result of accessing the variables before they are declared:
-
-| Declaration                    | Accessing before declaration |
-| ------------------------------ | ---------------------------- |
-| `var foo`                      | `undefined`                  |
-| `let foo`                      | `ReferenceError`             |
-| `const foo`                    | `ReferenceError`             |
-| `class Foo`                    | `ReferenceError`             |
-| `var foo = function() { ... }` | `undefined`                  |
-| `function foo() { ... }`       | Normal                       |
-| `import`                       | Normal                       |
-
-<br>
-
-> Read the [detailed answer](https://greatfrontend.com/questions/quiz/explain-hoisting) on [GreatFrontEnd](https://greatfrontend.com/) which allows progress tracking, contains more code samples, and useful resources.
-
-</details>
----
-
-### What are the various data types in JavaScript?
-
-<!-- Update here: /questions/what-are-the-various-data-types-in-javascript/en-US.mdx -->
+<details><summary>View Answer</summary>
 
 In JavaScript, data types can be categorized into `primitive` and `non-primitive` types:
 
@@ -248,7 +248,7 @@ In JavaScript, data types can be categorized into `primitive` and `non-primitive
 - **Boolean**: Represents `true` or `false` values.
 - **Undefined**: A variable that has been declared but not assigned a value.
 - **Null**: Represents the intentional absence of any object value.
-- **Symbol**: A unique and immutable value used as object property keys. Read more in our [deep dive on `Symbol`s](https://greatfrontend.com/questions/quiz/what-are-symbols-used-for)
+- **Symbol**: A unique and immutable value used as object property keys.
 - **BigInt**: Represents integers with arbitrary precision.
 
 **Non-primitive (Reference) data types**
@@ -261,6 +261,15 @@ In JavaScript, data types can be categorized into `primitive` and `non-primitive
 - **Map**: A collection of keyed data items.
 - **Set**: A collection of unique values.
 
+</details>
+
+<br>
+
+[Back to top ↑](#table-of-contents) &nbsp;&nbsp;/&nbsp;&nbsp; [✏️ Edit answer](https://github.com/maniadav/interviewprep/edit/master/javascript/js-concept-question.md)
+
+<br>
+---
+
 The primitive types store a single value, while non-primitive types can store collections of data or complex entities.
 
 <!-- Update here: /questions/what-are-the-various-data-types-in-javascript/en-US.mdx -->
@@ -272,40 +281,48 @@ The primitive types store a single value, while non-primitive types can store co
 <br>
 ---
 
+<a id="how-do-you-check-the-data-type-of-a-variable"></a>
 ### How do you check the data type of a variable?
 
-<!-- Update here: /questions/how-do-you-check-the-data-type-of-a-variable/en-US.mdx -->
+<details><summary>View Answer</summary>
 
-To check the data type of a variable in JavaScript, you can use the `typeof` operator. For example, `typeof variableName` will return a string indicating the type of the variable, such as `"string"`, `"number"`, `"boolean"`, `"object"`, `"function"`, `"undefined"`, or `"symbol"`. For arrays and `null`, you can use `Array.isArray(variableName)` and `variableName === null`, respectively.
+To check the data type of a variable in JavaScript, you can use the `typeof` operator. For example, `typeof variableName` will return a string indicating the type of the variable, such as `"string"`, `"number"`, `"boolean"`, `"object"`, `"function"`, `"undefined"`, or `"symbol"`. 
 
-<!-- Update here: /questions/how-do-you-check-the-data-type-of-a-variable/en-US.mdx -->
+For arrays and `null`, you can use additional checks:
+- For arrays: `Array.isArray(variableName)`
+- For null: `variableName === null`
+
+</details>
 
 <br>
 
-[Back to top ↑](#table-of-contents-all-questions) &nbsp;&nbsp;/&nbsp;&nbsp; [✏️ Edit answer](https://github.com/yangshun/top-javascript-interview-questions/edit/main/questions/how-do-you-check-the-data-type-of-a-variable/en-US.mdx)
+[Back to top ↑](#table-of-contents) &nbsp;&nbsp;/&nbsp;&nbsp; [✏️ Edit answer](https://github.com/maniadav/interviewprep/edit/master/javascript/js-concept-question.md)
 
 <br>
 ---
 
+<a id="whats-the-difference-between-a-javascript-variable-that-is-null-undefined-or-undeclared"></a>
+<a id="whats-the-difference-between-a-javascript-variable-that-is-null-undefined-or-undeclared"></a>
 ### What's the difference between a JavaScript variable that is: `null`, `undefined` or undeclared?
 
-<!-- Update here: /questions/whats-the-difference-between-a-variable-that-is-null-undefined-or-undeclared-how-would-you-go-about-checking-for-any-of-these-states/en-US.mdx -->
+<details><summary>View Answer</summary>
 
 | Trait                        | `null`                                                                   | `undefined`                                         | Undeclared                            |
-| ---------------------------- | ----------------------------------- | -------------- | ------------------------------------- |
+| ---------------------------- | ------------------------------------------------------------------------ | --------------------------------------------------- | ------------------------------------- |
 | Meaning                      | Explicitly set by the developer to indicate that a variable has no value | Variable has been declared but not assigned a value | Variable has not been declared at all |
 | Type (via `typeof` operator) | `'object'`                                                               | `'undefined'`                                       | `'undefined'`                         |
 | Equality Comparison          | `null == undefined` is `true`                                            | `undefined == null` is `true`                       | Throws a `ReferenceError`             |
 
-<!-- Update here: /questions/whats-the-difference-between-a-variable-that-is-null-undefined-or-undeclared-how-would-you-go-about-checking-for-any-of-these-states/en-US.mdx -->
+</details>
 
 <br>
 
-[Back to top ↑](#table-of-contents-all-questions) &nbsp;&nbsp;/&nbsp;&nbsp; [✏️ Edit answer](https://github.com/yangshun/top-javascript-interview-questions/edit/main/questions/whats-the-difference-between-a-variable-that-is-null-undefined-or-undeclared-how-would-you-go-about-checking-for-any-of-these-states/en-US.mdx)
+[Back to top ↑](#table-of-contents) &nbsp;&nbsp;/&nbsp;&nbsp; [✏️ Edit answer](https://github.com/maniadav/interviewprep/edit/master/javascript/js-concept-question.md)
 
 <br>
 ---
 
+<a id="what-are-the-differences-between-javascript-variables-created-using-let-var-or-const"></a>
 ### What are the differences between JavaScript variables created using `let`, `var` or `const`?
 
 <!-- Update here: /questions/what-are-the-differences-between-variables-created-using-let-var-or-const/en-US.mdx -->
@@ -329,6 +346,7 @@ In JavaScript, `let`, `var`, and `const` are all keywords used to declare variab
 <br>
 ---
 
+<a id="why-is-it-in-general-a-good-idea-to-leave-the-global-javascript-scope-of-a-website-as-is-and-never-touch-it"></a>
 ### Why is it, in general, a good idea to leave the global JavaScript scope of a website as-is and never touch it?
 
 <!-- Update here: /questions/why-is-it-in-general-a-good-idea-to-leave-the-global-scope-of-a-website-as-is-and-never-touch-it/en-US.mdx -->
@@ -358,6 +376,7 @@ Follow these best practices to avoid global scope pollution:
 <br>
 ---
 
+<a id="how-do-you-convert-a-string-to-a-number-in-javascript"></a>
 ### How do you convert a string to a number in JavaScript?
 
 <!-- Update here: /questions/how-do-you-convert-a-string-to-a-number-in-javascript/en-US.mdx -->
@@ -373,6 +392,7 @@ In JavaScript, you can convert a string to a number using several methods. The m
 <br>
 ---
 
+<a id="what-are-template-literals-and-how-are-they-used"></a>
 ### What are template literals and how are they used?
 
 <!-- Update here: /questions/what-are-template-literals-and-how-are-they-used/en-US.mdx -->
@@ -396,6 +416,7 @@ console.log(greeting); // Output: Hello, John!
 <br>
 ---
 
+<a id="explain-the-concept-of-tagged-templates"></a>
 ### Explain the concept of tagged templates
 
 <!-- Update here: /questions/explain-the-concept-of-tagged-templates/en-US.mdx -->
@@ -420,6 +441,7 @@ console.log(result); // "Hello world! How are you?"
 <br>
 ---
 
+<a id="what-is-the-spread-operator-and-how-is-it-used"></a>
 ### What is the spread operator and how is it used?
 
 <!-- Update here: /questions/what-is-the-spread-operator-and-how-is-it-used/en-US.mdx -->
@@ -445,6 +467,7 @@ const combinedObj = { ...obj1, ...obj2 }; // { a: 1, b: 2, c: 3, d: 4 }
 <br>
 ---
 
+<a id="what-are-symbols-used-for-in-javascript"></a>
 ### What are `Symbol`s used for in JavaScript?
 
 <!-- Update here: /questions/what-are-symbols-used-for/en-US.mdx -->
@@ -471,11 +494,12 @@ console.log(obj[sym]); // "value"
 
 <br>
 
-[Back to top ↑](#table-of-contents-all-questions) &nbsp;&nbsp;/&nbsp;&nbsp; [✏️ Edit answer](https://github.com/yangshun/top-javascript-interview-questions/edit/main/questions/what-are-symbols-used-for/en-US.mdx)
+[Back to top ↑](#table-of-contents-all-questions) &nbsp;&nbsp;/&nbsp;&nbsp; [✏️ Edit answer](https://github.com/maniadav/interviewprep/edit/master/javascript/js-concept-question.md)
 
 <br>
 ---
 
+<a id="what-are-proxies-in-javascript-used-for"></a>
 ### What are proxies in JavaScript used for?
 
 <!-- Update here: /questions/what-are-proxies-in-javascript-used-for/en-US.mdx -->
@@ -526,6 +550,7 @@ Use cases include:
 <br>
 ---
 
+<a id="explain-the-concept-of-hoisting-in-javascript"></a>
 ### Explain the concept of "hoisting" in JavaScript
 
 <!-- Update here: /questions/explain-hoisting/en-US.mdx -->
@@ -560,6 +585,7 @@ The following behavior summarizes the result of accessing the variables before t
 <br>
 ---
 
+<a id="explain-the-difference-in-hoisting-between-var-let-and-const"></a>
 ### Explain the difference in hoisting between `var`, `let`, and `const`
 
 <!-- Update here: /questions/explain-the-difference-in-hoisting-between-var-let-and-const/en-US.mdx -->
@@ -575,6 +601,7 @@ The following behavior summarizes the result of accessing the variables before t
 <br>
 ---
 
+<a id="how-does-hoisting-affect-function-declarations-and-expressions"></a>
 ### How does hoisting affect function declarations and expressions?
 
 <!-- Update here: /questions/how-does-hoisting-affect-function-declarations-and-expressions/en-US.mdx -->
@@ -604,6 +631,7 @@ var bar = function () {
 <br>
 ---
 
+<a id="what-are-the-potential-issues-caused-by-hoisting"></a>
 ### What are the potential issues caused by hoisting?
 
 <!-- Update here: /questions/what-are-the-potential-issues-caused-by-hoisting/en-US.mdx -->
@@ -627,6 +655,7 @@ let b = 10;
 <br>
 ---
 
+<a id="how-can-you-avoid-problems-related-to-hoisting"></a>
 ### How can you avoid problems related to hoisting?
 
 <!-- Update here: /questions/how-can-you-avoid-problems-related-to-hoisting/en-US.mdx -->
@@ -654,6 +683,7 @@ myFunction();
 <br>
 ---
 
+<a id="what-is-the-difference-between-and-in-javascript"></a>
 ### What is the difference between `==` and `===` in JavaScript?
 
 <!-- Update here: /questions/what-is-the-difference-between-double-equal-and-triple-equal/en-US.mdx -->
@@ -675,6 +705,7 @@ myFunction();
 <br>
 ---
 
+<a id="what-language-constructs-do-you-use-for-iterating-over-object-properties-and-array-items-in-javascript"></a>
 ### What language constructs do you use for iterating over object properties and array items in JavaScript?
 
 <!-- Update here: /questions/what-language-constructs-do-you-use-for-iterating-over-object-properties-and-array-items/en-US.mdx -->
@@ -763,6 +794,7 @@ There are also other inbuilt methods available which are suitable for specific s
 <br>
 ---
 
+<a id="what-is-the-purpose-of-the-break-and-continue-statements"></a>
 ### What is the purpose of the `break` and `continue` statements?
 
 <!-- Update here: /questions/what-is-the-purpose-of-the-break-and-continue-statements/en-US.mdx -->
@@ -790,6 +822,7 @@ for (let i = 0; i < 10; i++) {
 <br>
 ---
 
+<a id="what-is-the-ternary-operator-and-how-is-it-used"></a>
 ### What is the ternary operator and how is it used?
 
 <!-- Update here: /questions/what-is-the-ternary-operator-and-how-is-it-used/en-US.mdx -->
@@ -805,6 +838,7 @@ The ternary operator is a shorthand for an `if-else` statement in JavaScript. It
 <br>
 ---
 
+<a id="how-do-you-access-the-index-of-an-element-in-an-array-during-iteration"></a>
 ### How do you access the index of an element in an array during iteration?
 
 <!-- Update here: /questions/how-do-you-access-the-index-of-an-element-in-an-array-during-iteration/en-US.mdx -->
@@ -827,6 +861,7 @@ array.forEach((element, index) => {
 <br>
 ---
 
+<a id="what-is-the-purpose-of-the-switch-statement"></a>
 ### What is the purpose of the `switch` statement?
 
 <!-- Update here: /questions/what-is-the-purpose-of-the-switch-statement/en-US.mdx -->
@@ -855,6 +890,7 @@ switch (expression) {
 <br>
 ---
 
+<a id="what-are-rest-parameters-and-how-are-they-used"></a>
 ### What are rest parameters and how are they used?
 
 <!-- Update here: /questions/what-are-rest-parameters-and-how-are-they-used/en-US.mdx -->
@@ -878,6 +914,7 @@ console.log(sum(1, 2, 3, 4)); // Output: 10
 <br>
 ---
 
+<a id="explain-the-concept-of-the-spread-operator-and-its-uses"></a>
 ### Explain the concept of the spread operator and its uses
 
 <!-- Update here: /questions/explain-the-concept-of-the-spread-operator-and-its-uses/en-US.mdx -->
@@ -916,6 +953,7 @@ console.log(sum(...numbers)); // Output: 6
 <br>
 ---
 
+<a id="what-are-the-benefits-of-using-spread-syntax-in-javascript-and-how-is-it-different-from-rest-syntax"></a>
 ### What are the benefits of using spread syntax in JavaScript and how is it different from rest syntax?
 
 <!-- Update here: /questions/what-are-the-benefits-of-using-spread-syntax-and-how-is-it-different-from-rest-syntax/en-US.mdx -->
@@ -949,6 +987,7 @@ console.log(sum(1, 2, 3)); // Output: 6
 <br>
 ---
 
+<a id="what-are-iterators-and-generators-in-javascript-and-what-are-they-used-for"></a>
 ### What are iterators and generators in JavaScript and what are they used for?
 
 <!-- Update here: /questions/what-are-iterators-and-generators-and-what-are-they-used-for/en-US.mdx -->
@@ -1019,6 +1058,7 @@ Generators are powerful for creating iterators on-demand, especially for infinit
 <br>
 ---
 
+<a id="explain-the-differences-on-the-usage-of-foo-between-function-foo-and-var-foo-function-in-javascript"></a>
 ### Explain the differences on the usage of `foo` between `function foo() {}` and `var foo = function() {}` in JavaScript
 
 <!-- Update here: /questions/explain-the-differences-on-the-usage-of-foo-between-function-foo-and-var-foo-function/en-US.mdx -->
@@ -1065,6 +1105,7 @@ console.log(namedFunc); // undefined
 <br>
 ---
 
+<a id="what-is-the-difference-between-a-parameter-and-an-argument"></a>
 ### What is the difference between a parameter and an argument?
 
 <!-- Update here: /questions/what-is-the-difference-between-a-parameter-and-an-argument/en-US.mdx -->
@@ -1080,6 +1121,7 @@ A parameter is a variable in the declaration of a function, while an argument is
 <br>
 ---
 
+<a id="explain-the-concept-of-hoisting-with-regards-to-functions"></a>
 ### Explain the concept of hoisting with regards to functions
 
 <!-- Update here: /questions/explain-the-concept-of-hoisting-with-regards-to-functions/en-US.mdx -->
@@ -1109,6 +1151,7 @@ var nonHoistedFunction = function () {
 <br>
 ---
 
+<a id="whats-the-difference-between-call-and-apply-in-javascript"></a>
 ### What's the difference between `.call` and `.apply` in JavaScript?
 
 <!-- Update here: /questions/whats-the-difference-between-call-and-apply/en-US.mdx -->
@@ -1138,6 +1181,7 @@ console.log(add.apply(null, [1, 2])); // 3
 <br>
 ---
 
+<a id="can-you-offer-a-use-case-for-the-new-arrow-function-syntax"></a>
 ### Can you offer a use case for the new arrow => function syntax?
 
 <!-- Update here: /questions/can-you-offer-a-use-case-for-the-new-arrow-function-syntax-how-does-this-new-syntax-differ-from-other-functions/en-US.mdx -->
@@ -1159,6 +1203,7 @@ console.log(doubled); // [2, 4, 6]
 <br>
 ---
 
+<a id="difference-between-function-person-const-person-person-and-const-person-new-person-in-javascript"></a>
 ### Difference between: `function Person(){}`, `const person = Person()`, and `const person = new Person()` in JavaScript?
 
 <!-- Update here: /questions/difference-between-function-person-var-person-person-and-var-person-new-person/en-US.mdx -->
@@ -1183,6 +1228,7 @@ console.log(doubled); // [2, 4, 6]
 <br>
 ---
 
+<a id="what-is-the-definition-of-a-higher-order-function-in-javascript"></a>
 ### What is the definition of a higher-order function in JavaScript?
 
 <!-- Update here: /questions/what-is-the-definition-of-a-higher-order-function/en-US.mdx -->
@@ -1230,6 +1276,7 @@ transformNamesToUppercase(names); // ['IRISH', 'DAISY', 'ANNA']
 <br>
 ---
 
+<a id="what-are-callback-functions-and-how-are-they-used"></a>
 ### What are callback functions and how are they used?
 
 <!-- Update here: /questions/what-are-callback-functions-and-how-are-they-used/en-US.mdx -->
@@ -1260,6 +1307,7 @@ fetchData(handleData);
 <br>
 ---
 
+<a id="whats-a-typical-use-case-for-anonymous-functions-in-javascript"></a>
 ### What's a typical use case for anonymous functions in JavaScript?
 
 <!-- Update here: /questions/whats-a-typical-use-case-for-anonymous-functions/en-US.mdx -->
@@ -1301,6 +1349,7 @@ console.log(double); // [2, 4, 6]
 <br>
 ---
 
+<a id="what-is-recursion-and-how-is-it-used-in-javascript"></a>
 ### What is recursion and how is it used in JavaScript?
 
 <!-- Update here: /questions/what-is-recursion-and-how-is-it-used-in-javascript/en-US.mdx -->
@@ -1325,6 +1374,7 @@ function factorial(n) {
 <br>
 ---
 
+<a id="what-are-default-parameters-and-how-are-they-used"></a>
 ### What are default parameters and how are they used?
 
 <!-- Update here: /questions/what-are-default-parameters-and-how-are-they-used/en-US.mdx -->
@@ -1349,6 +1399,7 @@ greet('Alice'); // Output: Hello, Alice!
 <br>
 ---
 
+<a id="explain-why-the-following-doesnt-work-as-an-iife-function-foo-what-needs-to-be-changed-to-properly-make-it-an-iife"></a>
 ### Explain why the following doesn't work as an IIFE: `function foo(){}();`. What needs to be changed to properly make it an IIFE?
 
 <!-- Update here: /questions/explain-why-the-following-doesnt-work-as-an-iife-function-foo--what-needs-to-be-changed-to-properly-make-it-an-iife/en-US.mdx -->
@@ -1364,6 +1415,7 @@ The code `function foo(){}();` doesn't work as an Immediately Invoked Function E
 <br>
 ---
 
+<a id="what-are-the-various-ways-to-create-objects-in-javascript"></a>
 ### What are the various ways to create objects in JavaScript?
 
 <!-- Update here: /questions/what-are-the-various-ways-to-create-objects-in-javascript/en-US.mdx -->
@@ -1385,6 +1437,7 @@ Creating objects in JavaScript offers several methods:
 <br>
 ---
 
+<a id="explain-the-difference-between-dot-notation-and-bracket-notation-for-accessing-object-properties"></a>
 ### Explain the difference between dot notation and bracket notation for accessing object properties
 
 <!-- Update here: /questions/explain-the-difference-between-dot-notation-and-bracket-notation-for-accessing-object-properties/en-US.mdx -->
@@ -1410,6 +1463,7 @@ console.log(obj['favorite color']); // blue
 <br>
 ---
 
+<a id="what-are-the-different-methods-for-iterating-over-an-array"></a>
 ### What are the different methods for iterating over an array?
 
 <!-- Update here: /questions/what-are-the-different-methods-for-iterating-over-an-array/en-US.mdx -->
@@ -1425,6 +1479,7 @@ There are several methods to iterate over an array in JavaScript. The most commo
 <br>
 ---
 
+<a id="how-do-you-add-remove-and-update-elements-in-an-array"></a>
 ### How do you add, remove, and update elements in an array?
 
 <!-- Update here: /questions/how-do-you-add-remove-and-update-elements-in-an-array/en-US.mdx -->
@@ -1457,6 +1512,7 @@ arr[1] = 5; // [1, 5, 3]
 <br>
 ---
 
+<a id="what-are-the-different-ways-to-copy-an-object-or-an-array"></a>
 ### What are the different ways to copy an object or an array?
 
 <!-- Update here: /questions/what-are-the-different-ways-to-copy-an-object-or-an-array/en-US.mdx -->
@@ -1485,6 +1541,7 @@ const deepCopyObject = JSON.parse(JSON.stringify(originalObject));
 <br>
 ---
 
+<a id="explain-the-difference-between-shallow-copy-and-deep-copy"></a>
 ### Explain the difference between shallow copy and deep copy
 
 <!-- Update here: /questions/explain-the-difference-between-shallow-copy-and-deep-copy/en-US.mdx -->
@@ -1513,6 +1570,7 @@ console.log(obj1.b.c); // Outputs: 2
 <br>
 ---
 
+<a id="what-are-the-advantages-of-using-the-spread-operator-with-arrays-and-objects"></a>
 ### What are the advantages of using the spread operator with arrays and objects?
 
 <!-- Update here: /questions/what-are-the-advantages-of-using-the-spread-operator-with-arrays-and-objects/en-US.mdx -->
@@ -1538,6 +1596,7 @@ const obj2 = { ...obj1, c: 3 }; // { a: 1, b: 2, c: 3 }
 <br>
 ---
 
+<a id="how-do-you-check-if-an-object-has-a-specific-property"></a>
 ### How do you check if an object has a specific property?
 
 <!-- Update here: /questions/how-do-you-check-if-an-object-has-a-specific-property/en-US.mdx -->
@@ -1567,6 +1626,7 @@ if (obj.hasOwnProperty('key')) {
 <br>
 ---
 
+<a id="explain-the-difference-between-mutable-and-immutable-objects-in-javascript"></a>
 ### Explain the difference between mutable and immutable objects in JavaScript
 
 <!-- Update here: /questions/explain-the-difference-between-mutable-and-immutable-objects/en-US.mdx -->
@@ -1612,6 +1672,7 @@ The key difference between mutable and immutable objects is modifiability. Immut
 <br>
 ---
 
+<a id="explain-the-concept-of-destructuring-assignment-for-objects-and-arrays"></a>
 ### Explain the concept of destructuring assignment for objects and arrays
 
 <!-- Update here: /questions/explain-the-concept-of-destructuring-assignment-for-objects-and-arrays/en-US.mdx -->
@@ -1635,6 +1696,7 @@ const { name, age } = { name: 'John', age: 30 };
 <br>
 ---
 
+<a id="what-is-objectfreeze-for"></a>
 ### What is `Object.freeze()` for?
 
 <!-- Update here: /questions/what-is-objectfreeze-for/en-US.mdx -->
@@ -1656,6 +1718,7 @@ obj.name = 'Doe'; // This will not change the name property
 <br>
 ---
 
+<a id="what-is-objectseal-for"></a>
 ### What is `Object.seal()` for?
 
 <!-- Update here: /questions/what-is-objectseal-for/en-US.mdx -->
@@ -1680,6 +1743,7 @@ delete obj.name; // Not allowed
 <br>
 ---
 
+<a id="what-is-objectpreventextensions-for"></a>
 ### What is `Object.preventExtensions()` for?
 
 <!-- Update here: /questions/what-is-objectpreventextensions-for/en-US.mdx -->
@@ -1703,6 +1767,7 @@ console.log(obj.age); // undefined
 <br>
 ---
 
+<a id="what-are-javascript-object-getters-and-setters-for"></a>
 ### What are JavaScript object getters and setters for?
 
 <!-- Update here: /questions/what-are-javascript-object-getters-and-setters-for/en-US.mdx -->
@@ -1751,6 +1816,7 @@ console.log(person.name); // Output: 'Jane Smith'
 <br>
 ---
 
+<a id="what-are-javascript-object-property-flags-and-descriptors"></a>
 ### What are JavaScript object property flags and descriptors?
 
 <!-- Update here: /questions/what-are-javascript-object-property-flags-and-descriptors/en-US.mdx -->
@@ -1785,6 +1851,7 @@ The use cases of property descriptors are as follows:
 <br>
 ---
 
+<a id="how-do-you-reliably-determine-whether-an-object-is-empty"></a>
 ### How do you reliably determine whether an object is empty?
 
 <!-- Update here: /questions/how-do-you-reliably-determine-whether-an-object-is-empty/en-US.mdx -->
@@ -1807,6 +1874,7 @@ console.log(isEmpty(obj)); // true
 <br>
 ---
 
+<a id="what-is-the-event-loop-in-javascript-runtimes"></a>
 ### What is the event loop in JavaScript runtimes?
 
 <!-- Update here: /questions/what-is-event-loop-what-is-the-difference-between-call-stack-and-task-queue/en-US.mdx -->
@@ -1840,6 +1908,7 @@ We recommend watching [Lydia&#39;s video](https://www.youtube.com/watch?v=eiC58R
 <br>
 ---
 
+<a id="explain-the-difference-between-synchronous-and-asynchronous-functions-in-javascript"></a>
 ### Explain the difference between synchronous and asynchronous functions in JavaScript
 
 <!-- Update here: /questions/explain-the-difference-between-synchronous-and-asynchronous-functions/en-US.mdx -->
@@ -1892,6 +1961,7 @@ console.log('Call made to fetch data'); // Output: This will be printed first
 <br>
 ---
 
+<a id="explain-the-concept-of-a-callback-function-in-asynchronous-operations"></a>
 ### Explain the concept of a callback function in asynchronous operations
 
 <!-- Update here: /questions/explain-the-concept-of-a-callback-function-in-asynchronous-operations/en-US.mdx -->
@@ -1920,6 +1990,7 @@ fetchData((data) => {
 <br>
 ---
 
+<a id="what-are-promises-and-how-do-they-work"></a>
 ### What are Promises and how do they work?
 
 <!-- Update here: /questions/what-are-promises-and-how-do-they-work/en-US.mdx -->
@@ -1952,6 +2023,7 @@ promise.then(result => {
 <br>
 ---
 
+<a id="explain-the-different-states-of-a-promise"></a>
 ### Explain the different states of a Promise
 
 <!-- Update here: /questions/explain-the-different-states-of-a-promise/en-US.mdx -->
@@ -1978,6 +2050,7 @@ let promise = new Promise((resolve, reject) => {
 <br>
 ---
 
+<a id="what-are-the-pros-and-cons-of-using-promises-instead-of-callbacks-in-javascript"></a>
 ### What are the pros and cons of using Promises instead of callbacks in JavaScript?
 
 <!-- Update here: /questions/what-are-the-pros-and-cons-of-using-promises-instead-of-callbacks/en-US.mdx -->
@@ -1993,6 +2066,7 @@ Promises offer a cleaner alternative to callbacks, helping to avoid callback hel
 <br>
 ---
 
+<a id="what-is-the-use-of-promiseall"></a>
 ### What is the use of `Promise.all()`
 
 <!-- Update here: /questions/what-is-the-use-of-promiseall/en-US.mdx -->
@@ -2020,6 +2094,7 @@ Promise.all([promise1, promise2, promise3]).then((values) => {
 <br>
 ---
 
+<a id="how-is-promiseall-different-from-promiseallsettled"></a>
 ### How is `Promise.all()` different from `Promise.allSettled()`?
 
 <!-- Update here: /questions/how-is-promiseall-different-from-promiseallsettled/en-US.mdx -->
@@ -2035,6 +2110,7 @@ Promise.all([promise1, promise2, promise3]).then((values) => {
 <br>
 ---
 
+<a id="what-is-asyncawait-and-how-does-it-simplify-asynchronous-code"></a>
 ### What is async/await and how does it simplify asynchronous code?
 
 <!-- Update here: /questions/what-is-asyncawait-and-how-does-it-simplify-asynchronous-code/en-US.mdx -->
@@ -2062,6 +2138,7 @@ async function fetchData() {
 <br>
 ---
 
+<a id="how-do-you-handle-errors-in-asynchronous-operations"></a>
 ### How do you handle errors in asynchronous operations?
 
 <!-- Update here: /questions/how-do-you-handle-errors-in-asynchronous-operations/en-US.mdx -->
@@ -2098,6 +2175,7 @@ fetch('https://api.example.com/data')
 <br>
 ---
 
+<a id="explain-the-concept-of-a-microtask-queue"></a>
 ### Explain the concept of a microtask queue
 
 <!-- Update here: /questions/explain-the-concept-of-a-microtask-queue/en-US.mdx -->
@@ -2113,6 +2191,7 @@ The microtask queue is a queue of tasks that need to be executed after the curre
 <br>
 ---
 
+<a id="what-is-the-difference-between-settimeout-setimmediate-and-processnexttick"></a>
 ### What is the difference between `setTimeout()`, `setImmediate()`, and `process.nextTick()`?
 
 <!-- Update here: /questions/what-is-the-difference-between-settimeout-setimmediate-and-processnexttick/en-US.mdx -->
@@ -2136,6 +2215,7 @@ In this example, `process.nextTick()` will execute first, followed by either `se
 <br>
 ---
 
+<a id="explain-how-prototypal-inheritance-works-in-javascript"></a>
 ### Explain how prototypal inheritance works in JavaScript
 
 <!-- Update here: /questions/explain-how-prototypal-inheritance-works/en-US.mdx -->
@@ -2195,6 +2275,7 @@ Things to note are:
 <br>
 ---
 
+<a id="what-is-the-prototype-chain-and-how-does-it-work"></a>
 ### What is the prototype chain and how does it work?
 
 <!-- Update here: /questions/what-is-the-prototype-chain-and-how-does-it-work/en-US.mdx -->
@@ -2225,6 +2306,7 @@ In this example, `alice` inherits the `greet` method from `Person.prototype`.
 <br>
 ---
 
+<a id="explain-the-difference-between-classical-inheritance-and-prototypal-inheritance"></a>
 ### Explain the difference between classical inheritance and prototypal inheritance
 
 <!-- Update here: /questions/explain-the-difference-between-classical-inheritance-and-prototypal-inheritance/en-US.mdx -->
@@ -2240,6 +2322,7 @@ Classical inheritance is a model where classes inherit from other classes, typic
 <br>
 ---
 
+<a id="explain-the-concept-of-inheritance-in-es2015-classes"></a>
 ### Explain the concept of inheritance in ES2015 classes
 
 <!-- Update here: /questions/explain-the-concept-of-inheritance-in-es2015-classes/en-US.mdx -->
@@ -2281,6 +2364,7 @@ dog.speak(); // Rex barks.
 <br>
 ---
 
+<a id="what-is-the-purpose-of-the-new-keyword"></a>
 ### What is the purpose of the `new` keyword?
 
 <!-- Update here: /questions/what-is-the-purpose-of-the-new-keyword/en-US.mdx -->
@@ -2305,6 +2389,7 @@ console.log(person1.name); // Alice
 <br>
 ---
 
+<a id="how-do-you-create-a-constructor-function"></a>
 ### How do you create a constructor function?
 
 <!-- Update here: /questions/how-do-you-create-a-constructor-function/en-US.mdx -->
@@ -2329,6 +2414,7 @@ const john = new Person('John', 30);
 <br>
 ---
 
+<a id="what-are-the-differences-between-javascript-es2015-classes-and-es5-function-constructors"></a>
 ### What are the differences between JavaScript ES2015 classes and ES5 function constructors?
 
 <!-- Update here: /questions/what-are-the-differences-between-es6-class-and-es5-function-constructors/en-US.mdx -->
@@ -2395,6 +2481,7 @@ It's much more verbose to use inheritance in ES5 and the ES2015 version is easie
 <br>
 ---
 
+<a id="what-advantage-is-there-for-using-the-javascript-arrow-syntax-for-a-method-in-a-constructor"></a>
 ### What advantage is there for using the JavaScript arrow syntax for a method in a constructor?
 
 <!-- Update here: /questions/what-advantage-is-there-for-using-the-arrow-syntax-for-a-method-in-a-constructor/en-US.mdx -->
@@ -2448,6 +2535,7 @@ The main takeaway here is that `this` can be changed for a normal function, but 
 <br>
 ---
 
+<a id="why-might-you-want-to-create-static-class-members-in-javascript"></a>
 ### Why might you want to create static class members in JavaScript?
 
 <!-- Update here: /questions/why-you-might-want-to-create-static-class-members/en-US.mdx -->
@@ -2480,6 +2568,7 @@ Static members are useful under the following scenarios:
 <br>
 ---
 
+<a id="what-is-a-closure-in-javascript-and-howwhy-would-you-use-one"></a>
 ### What is a closure in JavaScript, and how/why would you use one?
 
 <!-- Update here: /questions/what-is-a-closure-and-how-why-would-you-use-one/en-US.mdx -->
@@ -2522,6 +2611,7 @@ Key points to remember:
 <br>
 ---
 
+<a id="explain-the-concept-of-lexical-scoping"></a>
 ### Explain the concept of lexical scoping
 
 <!-- Update here: /questions/explain-the-concept-of-lexical-scoping/en-US.mdx -->
@@ -2553,6 +2643,7 @@ In this example, `innerFunction` can access `outerVariable` because of lexical s
 <br>
 ---
 
+<a id="explain-the-concept-of-scope-in-javascript"></a>
 ### Explain the concept of scope in JavaScript
 
 <!-- Update here: /questions/explain-the-concept-of-scope-in-javascript/en-US.mdx -->
@@ -2589,6 +2680,7 @@ console.log(globalVar); // Accessible here
 <br>
 ---
 
+<a id="how-can-closures-be-used-to-create-private-variables"></a>
 ### How can closures be used to create private variables?
 
 <!-- Update here: /questions/how-can-closures-be-used-to-create-private-variables/en-US.mdx -->
@@ -2629,6 +2721,7 @@ console.log(counter.count); // undefined
 <br>
 ---
 
+<a id="what-are-the-potential-pitfalls-of-using-closures"></a>
 ### What are the potential pitfalls of using closures?
 
 <!-- Update here: /questions/what-are-the-potential-pitfalls-of-using-closures/en-US.mdx -->
@@ -2644,6 +2737,7 @@ Closures can lead to memory leaks if not managed properly, especially when they 
 <br>
 ---
 
+<a id="explain-the-difference-between-global-scope-function-scope-and-block-scope"></a>
 ### Explain the difference between global scope, function scope, and block scope
 
 <!-- Update here: /questions/explain-the-difference-between-global-scope-function-scope-and-block-scope/en-US.mdx -->
@@ -2672,6 +2766,7 @@ function myFunction() {
 <br>
 ---
 
+<a id="explain-how-this-works-in-javascript"></a>
 ### Explain how `this` works in JavaScript
 
 <!-- Update here: /questions/explain-how-this-works-in-javascript/en-US.mdx -->
@@ -2699,6 +2794,7 @@ For an in-depth explanation, do check out [Arnav Aggrawal&#39;s article on Mediu
 <br>
 ---
 
+<a id="explain-functionprototypebind-in-javascript"></a>
 ### Explain `Function.prototype.bind` in JavaScript
 
 <!-- Update here: /questions/explain-function-prototype-bind/en-US.mdx -->
@@ -2720,6 +2816,7 @@ The `bind` method is particularly useful in scenarios where you need to ensure t
 <br>
 ---
 
+<a id="explain-the-different-ways-the-this-keyword-can-be-bound"></a>
 ### Explain the different ways the `this` keyword can be bound
 
 <!-- Update here: /questions/explain-the-different-ways-the-this-keyword-can-be-bound/en-US.mdx -->
@@ -2741,6 +2838,7 @@ The `this` keyword in JavaScript can be bound in several ways:
 <br>
 ---
 
+<a id="what-are-the-common-pitfalls-of-using-the-this-keyword"></a>
 ### What are the common pitfalls of using the `this` keyword?
 
 <!-- Update here: /questions/what-are-the-common-pitfalls-of-using-the-this-keyword/en-US.mdx -->
@@ -2756,6 +2854,7 @@ The `this` keyword in JavaScript can be tricky because its value depends on how 
 <br>
 ---
 
+<a id="explain-the-concept-of-this-binding-in-event-handlers"></a>
 ### Explain the concept of `this` binding in event handlers
 
 <!-- Update here: /questions/explain-the-concept-of-this-binding-in-event-handlers/en-US.mdx -->
@@ -2771,6 +2870,7 @@ In JavaScript, the `this` keyword refers to the object that is currently executi
 <br>
 ---
 
+<a id="what-is-the-dom-and-how-is-it-structured"></a>
 ### What is the DOM and how is it structured?
 
 <!-- Update here: /questions/what-is-the-dom-and-how-is-it-structured/en-US.mdx -->
@@ -2786,6 +2886,7 @@ The DOM, or Document Object Model, is a programming interface for web documents.
 <br>
 ---
 
+<a id="whats-the-difference-between-an-attribute-and-a-property-in-the-dom"></a>
 ### What's the difference between an "attribute" and a "property" in the DOM?
 
 <!-- Update here: /questions/whats-the-difference-between-an-attribute-and-a-property/en-US.mdx -->
@@ -2801,6 +2902,7 @@ Attributes are defined in the HTML and provide initial values for properties. Pr
 <br>
 ---
 
+<a id="explain-the-difference-between-documentqueryselector-and-documentgetelementbyid"></a>
 ### Explain the difference between `document.querySelector()` and `document.getElementById()`
 
 <!-- Update here: /questions/explain-the-difference-between-documentqueryselector-and-documentgetelementbyid/en-US.mdx -->
@@ -2824,6 +2926,7 @@ const elementById = document.getElementById('my-id');
 <br>
 ---
 
+<a id="how-do-you-add-remove-and-modify-html-elements-using-javascript"></a>
 ### How do you add, remove, and modify HTML elements using JavaScript?
 
 <!-- Update here: /questions/how-do-you-add-remove-and-modify-html-elements-using-javascript/en-US.mdx -->
@@ -2854,6 +2957,7 @@ elementToModify.innerHTML = 'New Content';
 <br>
 ---
 
+<a id="what-are-event-listeners-and-how-are-they-used"></a>
 ### What are event listeners and how are they used?
 
 <!-- Update here: /questions/what-are-event-listeners-and-how-are-they-used/en-US.mdx -->
@@ -2875,6 +2979,7 @@ document.getElementById('myButton').addEventListener('click', function () {
 <br>
 ---
 
+<a id="explain-the-event-phases-in-a-browser"></a>
 ### Explain the event phases in a browser
 
 <!-- Update here: /questions/explain-the-event-phases-in-a-browser/en-US.mdx -->
@@ -2890,6 +2995,7 @@ In a browser, events go through three phases: capturing, target, and bubbling. D
 <br>
 ---
 
+<a id="describe-event-bubbling-in-javascript-and-browsers"></a>
 ### Describe event bubbling in JavaScript and browsers
 
 <!-- Update here: /questions/describe-event-bubbling/en-US.mdx -->
@@ -2907,6 +3013,7 @@ Event bubbling is essential for event delegation, where a single event handler m
 <br>
 ---
 
+<a id="describe-event-capturing-in-javascript-and-browsers"></a>
 ### Describe event capturing in JavaScript and browsers
 
 <!-- Update here: /questions/describe-event-capturing/en-US.mdx -->
@@ -2924,6 +3031,7 @@ Event capturing is rarely used as compared to event bubbling, but it can be used
 <br>
 ---
 
+<a id="explain-event-delegation-in-javascript"></a>
 ### Explain event delegation in JavaScript
 
 <!-- Update here: /questions/explain-event-delegation/en-US.mdx -->
@@ -2950,6 +3058,7 @@ However, do note that:
 <br>
 ---
 
+<a id="how-do-you-prevent-the-default-behavior-of-an-event"></a>
 ### How do you prevent the default behavior of an event?
 
 <!-- Update here: /questions/how-do-you-prevent-the-default-behavior-of-an-event/en-US.mdx -->
@@ -2973,6 +3082,7 @@ This method stops the default action associated with the event from occurring.
 <br>
 ---
 
+<a id="what-is-the-difference-between-eventpreventdefault-and-eventstoppropagation"></a>
 ### What is the difference between `event.preventDefault()` and `event.stopPropagation()`?
 
 <!-- Update here: /questions/what-is-the-difference-between-eventpreventdefault-and-eventstoppropagation/en-US.mdx -->
@@ -2988,6 +3098,7 @@ This method stops the default action associated with the event from occurring.
 <br>
 ---
 
+<a id="what-is-the-difference-between-mouseenter-and-mouseover-event-in-javascript-and-browsers"></a>
 ### What is the difference between `mouseenter` and `mouseover` event in JavaScript and browsers?
 
 <!-- Update here: /questions/what-is-the-difference-between-mouseenter-and-mouseover-event/en-US.mdx -->
@@ -3012,6 +3123,7 @@ The main difference lies in the bubbling behavior of `mouseenter` and `mouseover
 <br>
 ---
 
+<a id="what-is-the-difference-between-innerhtml-and-textcontent"></a>
 ### What is the difference between `innerHTML` and `textContent`?
 
 <!-- Update here: /questions/what-is-the-difference-between-innerhtml-and-textcontent/en-US.mdx -->
@@ -3035,6 +3147,7 @@ element.textContent = '<strong>Bold Text</strong>'; // Renders as plain text: <s
 <br>
 ---
 
+<a id="how-do-you-manipulate-css-styles-using-javascript"></a>
 ### How do you manipulate CSS styles using JavaScript?
 
 <!-- Update here: /questions/how-do-you-manipulate-css-styles-using-javascript/en-US.mdx -->
@@ -3062,6 +3175,7 @@ document.getElementById('myDiv').classList.toggle('toggleClass');
 <br>
 ---
 
+<a id="describe-the-difference-between-script-script-async-and-script-defer"></a>
 ### Describe the difference between `<script>`, `<script async>` and `<script defer>`
 
 <!-- Update here: /questions/describe-the-difference-between-script-async-and-script-defer/en-US.mdx -->
@@ -3089,6 +3203,7 @@ Here's a table summarizing the 3 ways of loading `<script>`s in a HTML document.
 <br>
 ---
 
+<a id="what-is-the-difference-between-the-window-object-and-the-document-object"></a>
 ### What is the difference between the Window object and the Document object?
 
 <!-- Update here: /questions/what-is-the-difference-between-the-window-object-and-the-document-object/en-US.mdx -->
@@ -3104,6 +3219,7 @@ The `Window` object represents the browser window and provides methods to contro
 <br>
 ---
 
+<a id="describe-the-difference-between-a-cookie-sessionstorage-and-localstorage-in-browsers"></a>
 ### Describe the difference between a cookie, `sessionStorage` and `localStorage` in browsers
 
 <!-- Update here: /questions/describe-the-difference-between-a-cookie-sessionstorage-and-localstorage/en-US.mdx -->
@@ -3135,6 +3251,7 @@ Here's a table summarizing the 3 client storage mechanisms.
 <br>
 ---
 
+<a id="how-do-you-make-an-http-request-using-the-fetch-api"></a>
 ### How do you make an HTTP request using the Fetch API?
 
 <!-- Update here: /questions/how-do-you-make-an-http-request-using-the-fetch-api/en-US.mdx -->
@@ -3172,6 +3289,7 @@ fetch('https://api.example.com/data', {
 <br>
 ---
 
+<a id="what-are-the-different-ways-to-make-an-api-call-in-javascript"></a>
 ### What are the different ways to make an API call in JavaScript?
 
 <!-- Update here: /questions/what-are-the-different-ways-to-make-an-api-call-in-javascript/en-US.mdx -->
@@ -3187,6 +3305,7 @@ In JavaScript, you can make API calls using several methods. The most common one
 <br>
 ---
 
+<a id="explain-ajax-in-as-much-detail-as-possible"></a>
 ### Explain AJAX in as much detail as possible
 
 <!-- Update here: /questions/explain-ajax-in-as-much-detail-as-possible/en-US.mdx -->
@@ -3233,6 +3352,7 @@ fetch('https://jsonplaceholder.typicode.com/todos/1')
 <br>
 ---
 
+<a id="what-are-the-advantages-and-disadvantages-of-using-ajax"></a>
 ### What are the advantages and disadvantages of using AJAX?
 
 <!-- Update here: /questions/what-are-the-advantages-and-disadvantages-of-using-ajax/en-US.mdx -->
@@ -3261,6 +3381,7 @@ AJAX (Asynchronous JavaScript and XML) is a technique in JavaScript that allows 
 <br>
 ---
 
+<a id="what-are-the-differences-between-xmlhttprequest-and-fetch-in-javascript-and-browsers"></a>
 ### What are the differences between `XMLHttpRequest` and `fetch()` in JavaScript and browsers?
 
 <!-- Update here: /questions/what-are-the-differences-between-xmlhttprequest-and-fetch/en-US.mdx -->
@@ -3286,6 +3407,7 @@ These days `fetch()` is preferred for its cleaner syntax and modern features.
 <br>
 ---
 
+<a id="how-do-you-abort-a-web-request-using-abortcontroller-in-javascript"></a>
 ### How do you abort a web request using `AbortController` in JavaScript?
 
 <!-- Update here: /questions/how-do-you-abort-a-web-request-using-abortcontrollers/en-US.mdx -->
@@ -3327,6 +3449,7 @@ Aborting web requests is useful for:
 <br>
 ---
 
+<a id="explain-how-jsonp-works-and-how-its-not-really-ajax"></a>
 ### Explain how JSONP works (and how it's not really Ajax)
 
 <!-- Update here: /questions/explain-how-jsonp-works-and-how-its-not-really-ajax/en-US.mdx -->
@@ -3342,6 +3465,7 @@ JSONP (JSON with Padding) is a technique used to overcome the same-origin policy
 <br>
 ---
 
+<a id="what-are-workers-in-javascript-used-for"></a>
 ### What are workers in JavaScript used for?
 
 <!-- Update here: /questions/what-are-workers-in-javascript-used-for/en-US.mdx -->
@@ -3377,6 +3501,7 @@ There are three main types of workers in JavaScript:
 <br>
 ---
 
+<a id="explain-the-concept-of-the-web-socket-api"></a>
 ### Explain the concept of the Web Socket API
 
 <!-- Update here: /questions/explain-the-concept-of-the-web-socket-api/en-US.mdx -->
@@ -3407,6 +3532,7 @@ socket.addEventListener('message', function (event) {
 <br>
 ---
 
+<a id="what-are-javascript-polyfills-for"></a>
 ### What are JavaScript polyfills for?
 
 <!-- Update here: /questions/what-are-javascript-polyfills-for/en-US.mdx -->
@@ -3445,6 +3571,7 @@ Libraries and services for polyfills:
 <br>
 ---
 
+<a id="how-do-you-detect-if-javascript-is-disabled-on-a-page"></a>
 ### How do you detect if JavaScript is disabled on a page?
 
 <!-- Update here: /questions/how-do-you-detect-if-javascript-is-disabled-on-a-page/en-US.mdx -->
@@ -3469,6 +3596,7 @@ To detect if JavaScript is disabled on a page, you can use the `<noscript>` HTML
 <br>
 ---
 
+<a id="what-is-the-intl-namespace-object-for"></a>
 ### What is the `Intl` namespace object for?
 
 <!-- Update here: /questions/what-is-the-intl-namespace-object-for/en-US.mdx -->
@@ -3490,6 +3618,7 @@ console.log(formatter.format(date)); // Outputs date in 'MM/DD/YYYY' format
 <br>
 ---
 
+<a id="how-do-you-validate-form-elements-using-the-constraint-validation-api"></a>
 ### How do you validate form elements using the Constraint Validation API?
 
 <!-- Update here: /questions/how-do-you-validate-form-elements-using-the-constraint-validation-api/en-US.mdx -->
@@ -3514,6 +3643,7 @@ if (input.checkValidity()) {
 <br>
 ---
 
+<a id="how-do-you-use-windowhistory-api"></a>
 ### How do you use `window.history` API?
 
 <!-- Update here: /questions/how-do-you-use-windowhistory-api/en-US.mdx -->
@@ -3529,6 +3659,7 @@ The `window.history` API allows you to manipulate the browser's session history.
 <br>
 ---
 
+<a id="how-do-iframe-on-a-page-communicate"></a>
 ### How do `<iframe>` on a page communicate?
 
 <!-- Update here: /questions/how-do-iframe-on-a-page-communicate/en-US.mdx -->
@@ -3555,6 +3686,7 @@ window.addEventListener('message', (event) => {
 <br>
 ---
 
+<a id="difference-between-document-load-event-and-document-domcontentloaded-event"></a>
 ### Difference between document `load` event and document `DOMContentLoaded` event?
 
 <!-- Update here: /questions/difference-between-document-load-event-and-document-domcontentloaded-event/en-US.mdx -->
@@ -3580,6 +3712,7 @@ window.addEventListener('load', function () {
 <br>
 ---
 
+<a id="how-do-you-redirect-to-a-new-page-in-javascript"></a>
 ### How do you redirect to a new page in JavaScript?
 
 <!-- Update here: /questions/how-do-you-redirect-to-a-new-page-in-javascript/en-US.mdx -->
@@ -3603,6 +3736,7 @@ window.location.replace('https://www.example.com');
 <br>
 ---
 
+<a id="how-do-you-get-the-query-string-values-of-the-current-page-in-javascript"></a>
 ### How do you get the query string values of the current page in JavaScript?
 
 <!-- Update here: /questions/how-do-you-get-the-query-string-values-of-the-current-page-in-javascript/en-US.mdx -->
@@ -3625,6 +3759,7 @@ This will give you the value of the query parameter named `key`.
 <br>
 ---
 
+<a id="what-are-server-sent-events"></a>
 ### What are server-sent events?
 
 <!-- Update here: /questions/what-are-server-sent-events/en-US.mdx -->
@@ -3701,6 +3836,7 @@ In this example, the server sends a "Hello from server" message initially, and t
 <br>
 ---
 
+<a id="what-are-progressive-web-applications-pwas"></a>
 ### What are Progressive Web Applications (PWAs)?
 
 <!-- Update here: /questions/what-are-progressive-web-applications-pwas/en-US.mdx -->
@@ -3716,6 +3852,7 @@ Progressive Web Applications (PWAs) are web applications that use modern web cap
 <br>
 ---
 
+<a id="what-are-modules-and-why-are-they-useful"></a>
 ### What are modules and why are they useful?
 
 <!-- Update here: /questions/what-are-modules-and-why-are-they-useful/en-US.mdx -->
@@ -3742,6 +3879,7 @@ myFunction(); // Outputs: Hello, World!
 <br>
 ---
 
+<a id="explain-the-differences-between-commonjs-modules-and-es-modules-in-javascript"></a>
 ### Explain the differences between CommonJS modules and ES modules in JavaScript
 
 <!-- Update here: /questions/explain-the-differences-between-commonjs-modules-and-es-modules/en-US.mdx -->
@@ -3793,6 +3931,7 @@ console.log(value); // 42
 <br>
 ---
 
+<a id="how-do-you-import-and-export-modules-in-javascript"></a>
 ### How do you import and export modules in JavaScript?
 
 <!-- Update here: /questions/how-do-you-import-and-export-modules-in-javascript/en-US.mdx -->
@@ -3820,6 +3959,7 @@ import myFunction from './myModule';
 <br>
 ---
 
+<a id="what-are-the-benefits-of-using-a-module-bundler"></a>
 ### What are the benefits of using a module bundler?
 
 <!-- Update here: /questions/what-are-the-benefits-of-using-a-module-bundler/en-US.mdx -->
@@ -3835,6 +3975,7 @@ Using a module bundler like Webpack, Rollup, or Parcel helps manage dependencies
 <br>
 ---
 
+<a id="explain-the-concept-of-tree-shaking-in-module-bundling"></a>
 ### Explain the concept of tree shaking in module bundling
 
 <!-- Update here: /questions/explain-the-concept-of-tree-shaking-in-module-bundling/en-US.mdx -->
@@ -3850,6 +3991,7 @@ Tree shaking is a technique used in module bundling to eliminate dead code, whic
 <br>
 ---
 
+<a id="what-are-the-metadata-fields-of-a-module"></a>
 ### What are the metadata fields of a module?
 
 <!-- Update here: /questions/what-are-the-metadata-fields-of-a-module/en-US.mdx -->
@@ -3878,6 +4020,7 @@ Metadata fields of a module typically include information such as the module's n
 <br>
 ---
 
+<a id="what-do-you-think-of-amd-vs-commonjs"></a>
 ### What do you think of AMD vs CommonJS?
 
 <!-- Update here: /questions/what-do-you-think-of-amd-vs-commonjs/en-US.mdx -->
@@ -3893,6 +4036,7 @@ AMD (Asynchronous Module Definition) and CommonJS are two JavaScript module syst
 <br>
 ---
 
+<a id="what-are-the-different-types-of-errors-in-javascript"></a>
 ### What are the different types of errors in JavaScript?
 
 <!-- Update here: /questions/what-are-the-different-types-of-errors-in-javascript/en-US.mdx -->
@@ -3908,6 +4052,7 @@ In JavaScript, there are three main types of errors: syntax errors, runtime erro
 <br>
 ---
 
+<a id="how-do-you-handle-errors-using-trycatch-blocks"></a>
 ### How do you handle errors using `try...catch` blocks?
 
 <!-- Update here: /questions/how-do-you-handle-errors-using-trycatch-blocks/en-US.mdx -->
@@ -3933,6 +4078,7 @@ try {
 <br>
 ---
 
+<a id="what-is-the-purpose-of-the-finally-block"></a>
 ### What is the purpose of the `finally` block?
 
 <!-- Update here: /questions/what-is-the-purpose-of-the-finally-block/en-US.mdx -->
@@ -3958,6 +4104,7 @@ try {
 <br>
 ---
 
+<a id="how-can-you-create-custom-error-objects"></a>
 ### How can you create custom error objects?
 
 <!-- Update here: /questions/how-can-you-create-custom-error-objects/en-US.mdx -->
@@ -3989,6 +4136,7 @@ try {
 <br>
 ---
 
+<a id="explain-the-concept-of-error-propagation-in-javascript"></a>
 ### Explain the concept of error propagation in JavaScript
 
 <!-- Update here: /questions/explain-the-concept-of-error-propagation-in-javascript/en-US.mdx -->
@@ -4020,6 +4168,7 @@ try {
 <br>
 ---
 
+<a id="what-is-currying-and-how-does-it-work"></a>
 ### What is currying and how does it work?
 
 <!-- Update here: /questions/what-is-currying-and-how-does-it-work/en-US.mdx -->
@@ -4049,6 +4198,7 @@ const result = addOneAndTwo(3); // result is 6
 <br>
 ---
 
+<a id="explain-the-concept-of-partial-application"></a>
 ### Explain the concept of partial application
 
 <!-- Update here: /questions/explain-the-concept-of-partial-application/en-US.mdx -->
@@ -4073,6 +4223,7 @@ console.log(add5(10)); // Outputs 15
 <br>
 ---
 
+<a id="what-are-the-benefits-of-using-currying-and-partial-application"></a>
 ### What are the benefits of using currying and partial application?
 
 <!-- Update here: /questions/what-are-the-benefits-of-using-currying-and-partial-application/en-US.mdx -->
@@ -4088,6 +4239,7 @@ Currying transforms a function with multiple arguments into a sequence of functi
 <br>
 ---
 
+<a id="provide-some-examples-of-how-currying-and-partial-application-can-be-used"></a>
 ### Provide some examples of how currying and partial application can be used
 
 <!-- Update here: /questions/provide-some-examples-of-how-currying-and-partial-application-can-be-used/en-US.mdx -->
@@ -4115,6 +4267,7 @@ console.log(addTwo(3)); // 5
 <br>
 ---
 
+<a id="how-do-currying-and-partial-application-differ-from-each-other"></a>
 ### How do currying and partial application differ from each other?
 
 <!-- Update here: /questions/how-do-currying-and-partial-application-differ-from-each-other/en-US.mdx -->
@@ -4130,6 +4283,7 @@ Currying transforms a function with multiple arguments into a sequence of functi
 <br>
 ---
 
+<a id="what-are-sets-and-maps-and-how-are-they-used"></a>
 ### What are `Set`s and `Map`s and how are they used?
 
 <!-- Update here: /questions/what-are-sets-and-maps-and-how-are-they-used/en-US.mdx -->
@@ -4157,6 +4311,7 @@ console.log(myMap.get('key1')); // 'value1'
 <br>
 ---
 
+<a id="what-are-the-differences-between-mapset-and-weakmapweakset-in-javascript"></a>
 ### What are the differences between `Map`/`Set` and `WeakMap`/`WeakSet` in JavaScript?
 
 <!-- Update here: /questions/what-are-the-differences-between-map-set-and-weakmap-weakset/en-US.mdx -->
@@ -4203,6 +4358,7 @@ On the other hand, `WeakSet` only allows objects as elements, and these object e
 <br>
 ---
 
+<a id="how-do-you-convert-a-set-to-an-array-in-javascript"></a>
 ### How do you convert a `Set` to an array in JavaScript?
 
 <!-- Update here: /questions/how-do-you-convert-a-set-to-an-array-in-javascript/en-US.mdx -->
@@ -4225,6 +4381,7 @@ const myArray = [...mySet];
 <br>
 ---
 
+<a id="what-is-the-difference-between-a-map-object-and-a-plain-object-in-javascript"></a>
 ### What is the difference between a `Map` object and a plain object in JavaScript?
 
 <!-- Update here: /questions/what-is-the-difference-between-a-map-object-and-a-plain-object-in-javascript/en-US.mdx -->
@@ -4250,6 +4407,7 @@ Both `Map` objects and plain objects in JavaScript can store key-value pairs, bu
 <br>
 ---
 
+<a id="how-do-sets-and-maps-handle-equality-checks-for-objects"></a>
 ### How do `Set`s and `Map`s handle equality checks for objects?
 
 <!-- Update here: /questions/how-do-sets-and-maps-handle-equality-checks-for-objects/en-US.mdx -->
@@ -4276,6 +4434,7 @@ console.log(set.size); // Output: 2
 <br>
 ---
 
+<a id="what-are-some-common-performance-bottlenecks-in-javascript-applications"></a>
 ### What are some common performance bottlenecks in JavaScript applications?
 
 <!-- Update here: /questions/what-are-some-common-performance-bottlenecks-in-javascript-applications/en-US.mdx -->
@@ -4291,6 +4450,7 @@ Common performance bottlenecks in JavaScript applications include inefficient DO
 <br>
 ---
 
+<a id="explain-the-concept-of-debouncing-and-throttling"></a>
 ### Explain the concept of debouncing and throttling
 
 <!-- Update here: /questions/explain-the-concept-of-debouncing-and-throttling/en-US.mdx -->
@@ -4333,6 +4493,7 @@ function throttle(func, limit) {
 <br>
 ---
 
+<a id="how-can-you-optimize-dom-manipulation-for-better-performance"></a>
 ### How can you optimize DOM manipulation for better performance?
 
 <!-- Update here: /questions/how-can-you-optimize-dom-manipulation-for-better-performance/en-US.mdx -->
@@ -4348,6 +4509,7 @@ To optimize DOM manipulation for better performance, minimize direct DOM access 
 <br>
 ---
 
+<a id="what-are-some-techniques-for-reducing-reflows-and-repaints"></a>
 ### What are some techniques for reducing reflows and repaints?
 
 <!-- Update here: /questions/what-are-some-techniques-for-reducing-reflows-and-repaints/en-US.mdx -->
@@ -4363,6 +4525,7 @@ To reduce reflows and repaints, you can minimize DOM manipulations, batch DOM ch
 <br>
 ---
 
+<a id="explain-the-concept-of-lazy-loading-and-how-it-can-improve-performance"></a>
 ### Explain the concept of lazy loading and how it can improve performance
 
 <!-- Update here: /questions/explain-the-concept-of-lazy-loading-and-how-it-can-improve-performance/en-US.mdx -->
@@ -4382,6 +4545,7 @@ Lazy loading is a design pattern that delays the loading of resources until they
 <br>
 ---
 
+<a id="what-are-web-workers-and-how-can-they-be-used-to-improve-performance"></a>
 ### What are Web Workers and how can they be used to improve performance?
 
 <!-- Update here: /questions/what-are-web-workers-and-how-can-they-be-used-to-improve-performance/en-US.mdx -->
@@ -4413,6 +4577,7 @@ onmessage = function (event) {
 <br>
 ---
 
+<a id="explain-the-concept-of-caching-and-how-it-can-be-used-to-improve-performance"></a>
 ### Explain the concept of caching and how it can be used to improve performance
 
 <!-- Update here: /questions/explain-the-concept-of-caching-and-how-it-can-be-used-to-improve-performance/en-US.mdx -->
@@ -4428,6 +4593,7 @@ Caching is a technique used to store copies of files or data in a temporary stor
 <br>
 ---
 
+<a id="what-are-some-tools-that-can-be-used-to-measure-and-analyze-javascript-performance"></a>
 ### What are some tools that can be used to measure and analyze JavaScript performance?
 
 <!-- Update here: /questions/what-are-some-tools-that-can-be-used-to-measure-and-analyze-javascript-performance/en-US.mdx -->
@@ -4443,6 +4609,7 @@ To measure and analyze JavaScript performance, you can use tools like Chrome Dev
 <br>
 ---
 
+<a id="how-can-you-optimize-network-requests-for-better-performance"></a>
 ### How can you optimize network requests for better performance?
 
 <!-- Update here: /questions/how-can-you-optimize-network-requests-for-better-performance/en-US.mdx -->
@@ -4458,6 +4625,7 @@ To optimize network requests for better performance, you can minimize the number
 <br>
 ---
 
+<a id="what-are-the-different-types-of-testing-in-software-development"></a>
 ### What are the different types of testing in software development?
 
 <!-- Update here: /questions/what-are-the-different-types-of-testing-in-software-development/en-US.mdx -->
@@ -4473,6 +4641,7 @@ In software development, there are several types of testing to ensure the qualit
 <br>
 ---
 
+<a id="explain-the-difference-between-unit-testing-integration-testing-and-end-to-end-testing"></a>
 ### Explain the difference between unit testing, integration testing, and end-to-end testing
 
 <!-- Update here: /questions/explain-the-difference-between-unit-testing-integration-testing-and-end-to-end-testing/en-US.mdx -->
@@ -4488,6 +4657,7 @@ Unit testing focuses on testing individual components or functions in isolation 
 <br>
 ---
 
+<a id="what-are-some-popular-javascript-testing-frameworks"></a>
 ### What are some popular JavaScript testing frameworks?
 
 <!-- Update here: /questions/what-are-some-popular-javascript-testing-frameworks/en-US.mdx -->
@@ -4503,6 +4673,7 @@ Some popular JavaScript testing frameworks include Jest, Mocha, Jasmine, and Cyp
 <br>
 ---
 
+<a id="how-do-you-write-unit-tests-for-javascript-code"></a>
 ### How do you write unit tests for JavaScript code?
 
 <!-- Update here: /questions/how-do-you-write-unit-tests-for-javascript-code/en-US.mdx -->
@@ -4535,6 +4706,7 @@ test('adds 1 + 2 to equal 3', () => {
 <br>
 ---
 
+<a id="explain-the-concept-of-test-driven-development-tdd"></a>
 ### Explain the concept of test-driven development (TDD)
 
 <!-- Update here: /questions/explain-the-concept-of-test-driven-development-tdd/en-US.mdx -->
@@ -4550,6 +4722,7 @@ Test-driven development (TDD) is a software development approach where you write
 <br>
 ---
 
+<a id="what-are-mocks-and-stubs-and-how-are-they-used-in-testing"></a>
 ### What are mocks and stubs and how are they used in testing?
 
 <!-- Update here: /questions/what-are-mocks-and-stubs-and-how-are-they-used-in-testing/en-US.mdx -->
@@ -4565,6 +4738,7 @@ Mocks and stubs are tools used in testing to simulate the behavior of real objec
 <br>
 ---
 
+<a id="how-can-you-test-asynchronous-code-in-javascript"></a>
 ### How can you test asynchronous code in JavaScript?
 
 <!-- Update here: /questions/how-can-you-test-asynchronous-code-in-javascript/en-US.mdx -->
@@ -4589,6 +4763,7 @@ Alternatively, you can use callbacks and the `done` function to signal the end o
 <br>
 ---
 
+<a id="what-are-some-best-practices-for-writing-maintainable-and-effective-tests-in-javascript"></a>
 ### What are some best practices for writing maintainable and effective tests in JavaScript?
 
 <!-- Update here: /questions/what-are-some-best-practices-for-writing-maintainable-and-effective-tests/en-US.mdx -->
@@ -4604,6 +4779,7 @@ To write maintainable and effective tests, ensure they are clear, concise, and f
 <br>
 ---
 
+<a id="explain-the-concept-of-code-coverage-and-how-it-can-be-used-to-assess-test-quality"></a>
 ### Explain the concept of code coverage and how it can be used to assess test quality
 
 <!-- Update here: /questions/explain-the-concept-of-code-coverage-and-how-it-can-be-used-to-assess-test-quality/en-US.mdx -->
@@ -4619,6 +4795,7 @@ Code coverage is a metric that measures the percentage of code that is executed 
 <br>
 ---
 
+<a id="what-are-some-tools-that-can-be-used-for-javascript-testing"></a>
 ### What are some tools that can be used for JavaScript testing?
 
 <!-- Update here: /questions/what-are-some-tools-that-can-be-used-for-javascript-testing/en-US.mdx -->
@@ -4634,6 +4811,7 @@ For JavaScript testing, you can use tools like Jest, Mocha, Jasmine, and Cypress
 <br>
 ---
 
+<a id="what-are-design-patterns-and-why-are-they-useful"></a>
 ### What are design patterns and why are they useful?
 
 <!-- Update here: /questions/what-are-design-patterns-and-why-are-they-useful/en-US.mdx -->
@@ -4649,6 +4827,7 @@ Design patterns are reusable solutions to common problems in software design. Th
 <br>
 ---
 
+<a id="explain-the-concept-of-the-singleton-pattern"></a>
 ### Explain the concept of the Singleton pattern
 
 <!-- Update here: /questions/explain-the-concept-of-the-singleton-pattern/en-US.mdx -->
@@ -4680,6 +4859,7 @@ console.log(instance1 === instance2); // true
 <br>
 ---
 
+<a id="what-is-the-factory-pattern-and-how-is-it-used"></a>
 ### What is the Factory pattern and how is it used?
 
 <!-- Update here: /questions/what-is-the-factory-pattern-and-how-is-it-used/en-US.mdx -->
@@ -4710,6 +4890,7 @@ const cat = createAnimal('cat');
 <br>
 ---
 
+<a id="explain-the-observer-pattern-and-its-use-cases"></a>
 ### Explain the Observer pattern and its use cases
 
 <!-- Update here: /questions/explain-the-observer-pattern-and-its-use-cases/en-US.mdx -->
@@ -4725,6 +4906,7 @@ The Observer pattern is a design pattern where an object, known as the subject, 
 <br>
 ---
 
+<a id="what-is-the-module-pattern-and-how-does-it-help-with-encapsulation"></a>
 ### What is the Module pattern and how does it help with encapsulation?
 
 <!-- Update here: /questions/what-is-the-module-pattern-and-how-does-it-help-with-encapsulation/en-US.mdx -->
@@ -4758,6 +4940,7 @@ myModule.publicMethod(); // Logs: I am private
 <br>
 ---
 
+<a id="explain-the-concept-of-the-prototype-pattern"></a>
 ### Explain the concept of the Prototype pattern
 
 <!-- Update here: /questions/explain-the-concept-of-the-prototype-pattern/en-US.mdx -->
@@ -4784,6 +4967,7 @@ newObject.greet(); // Outputs: Hello, world!
 <br>
 ---
 
+<a id="what-is-the-decorator-pattern-and-how-is-it-used"></a>
 ### What is the Decorator pattern and how is it used?
 
 <!-- Update here: /questions/what-is-the-decorator-pattern-and-how-is-it-used/en-US.mdx -->
@@ -4829,6 +5013,7 @@ console.log(myCarWithGPS.drive()); // "Driving with GPS"
 <br>
 ---
 
+<a id="explain-the-concept-of-the-strategy-pattern"></a>
 ### Explain the concept of the Strategy pattern
 
 <!-- Update here: /questions/explain-the-concept-of-the-strategy-pattern/en-US.mdx -->
@@ -4872,6 +5057,7 @@ context.executeStrategy(data);
 <br>
 ---
 
+<a id="what-is-the-command-pattern-and-how-is-it-used"></a>
 ### What is the Command pattern and how is it used?
 
 <!-- Update here: /questions/what-is-the-command-pattern-and-how-is-it-used/en-US.mdx -->
@@ -4921,6 +5107,7 @@ lightOnCommand.undo(); // Light is off
 <br>
 ---
 
+<a id="why-is-extending-built-in-javascript-objects-not-a-good-idea"></a>
 ### Why is extending built-in JavaScript objects not a good idea?
 
 <!-- Update here: /questions/why-is-extending-built-in-javascript-objects-not-a-good-idea/en-US.mdx -->
@@ -4938,6 +5125,7 @@ The only time you may want to extend a native object is when you want to create 
 <br>
 ---
 
+<a id="what-is-cross-site-scripting-xss-and-how-can-you-prevent-it"></a>
 ### What is Cross-Site Scripting (XSS) and how can you prevent it?
 
 <!-- Update here: /questions/what-is-cross-site-scripting-xss-and-how-can-you-prevent-it/en-US.mdx -->
@@ -4953,6 +5141,7 @@ Cross-Site Scripting (XSS) is a security vulnerability that allows attackers to 
 <br>
 ---
 
+<a id="explain-the-concept-of-cross-site-request-forgery-csrf-and-its-mitigation-techniques"></a>
 ### Explain the concept of Cross-Site Request Forgery (CSRF) and its mitigation techniques
 
 <!-- Update here: /questions/explain-the-concept-of-cross-site-request-forgery-csrf-and-its-mitigation-techniques/en-US.mdx -->
@@ -4968,6 +5157,7 @@ Cross-Site Request Forgery (CSRF) is an attack where a malicious website tricks 
 <br>
 ---
 
+<a id="how-can-you-prevent-sql-injection-vulnerabilities-in-javascript-applications"></a>
 ### How can you prevent SQL injection vulnerabilities in JavaScript applications?
 
 <!-- Update here: /questions/how-can-you-prevent-sql-injection-vulnerabilities-in-javascript-applications/en-US.mdx -->
@@ -4983,6 +5173,7 @@ To prevent SQL injection vulnerabilities in JavaScript applications, always use 
 <br>
 ---
 
+<a id="what-are-some-best-practices-for-handling-sensitive-data-in-javascript"></a>
 ### What are some best practices for handling sensitive data in JavaScript?
 
 <!-- Update here: /questions/what-are-some-best-practices-for-handling-sensitive-data-in-javascript/en-US.mdx -->
@@ -4998,6 +5189,7 @@ Handling sensitive data in JavaScript requires careful attention to security pra
 <br>
 ---
 
+<a id="explain-the-concept-of-content-security-policy-csp-and-how-it-enhances-security"></a>
 ### Explain the concept of Content Security Policy (CSP) and how it enhances security
 
 <!-- Update here: /questions/explain-the-concept-of-content-security-policy-csp-and-how-it-enhances-security/en-US.mdx -->
@@ -5017,6 +5209,7 @@ Content-Security-Policy: script-src 'self'
 <br>
 ---
 
+<a id="what-are-some-common-security-headers-and-their-purpose"></a>
 ### What are some common security headers and their purpose?
 
 <!-- Update here: /questions/what-are-some-common-security-headers-and-their-purpose/en-US.mdx -->
@@ -5039,6 +5232,7 @@ Security headers are HTTP response headers that help protect web applications fr
 <br>
 ---
 
+<a id="how-can-you-prevent-clickjacking-attacks"></a>
 ### How can you prevent clickjacking attacks?
 
 <!-- Update here: /questions/how-can-you-prevent-clickjacking-attacks/en-US.mdx -->
@@ -5062,6 +5256,7 @@ Content-Security-Policy: frame-ancestors 'self'
 <br>
 ---
 
+<a id="explain-the-concept-of-input-validation-and-its-importance-in-security"></a>
 ### Explain the concept of input validation and its importance in security
 
 <!-- Update here: /questions/explain-the-concept-of-input-validation-and-its-importance-in-security/en-US.mdx -->
@@ -5077,6 +5272,7 @@ Input validation is the process of ensuring that user input is correct, safe, an
 <br>
 ---
 
+<a id="what-are-some-tools-and-techniques-for-identifying-security-vulnerabilities-in-javascript-code"></a>
 ### What are some tools and techniques for identifying security vulnerabilities in JavaScript code?
 
 <!-- Update here: /questions/what-are-some-tools-and-techniques-for-identifying-security-vulnerabilities-in-javascript-code/en-US.mdx -->
@@ -5092,6 +5288,7 @@ To identify security vulnerabilities in JavaScript code, you can use static code
 <br>
 ---
 
+<a id="how-can-you-implement-secure-authentication-and-authorization-in-javascript-applications"></a>
 ### How can you implement secure authentication and authorization in JavaScript applications?
 
 <!-- Update here: /questions/how-can-you-implement-secure-authentication-and-authorization-in-javascript-applications/en-US.mdx -->
@@ -5107,6 +5304,7 @@ To implement secure authentication and authorization in JavaScript applications,
 <br>
 ---
 
+<a id="explain-the-same-origin-policy-with-regards-to-javascript"></a>
 ### Explain the same-origin policy with regards to JavaScript
 
 <!-- Update here: /questions/explain-the-same-origin-policy-with-regards-to-javascript/en-US.mdx -->
@@ -5122,6 +5320,7 @@ The same-origin policy is a security measure implemented in web browsers to prev
 <br>
 ---
 
+<a id="what-is-use-strict-in-javascript-for"></a>
 ### What is `'use strict';` in JavaScript for?
 
 <!-- Update here: /questions/what-is-use-strict-what-are-the-advantages-and-disadvantages-to-using-it/en-US.mdx -->
@@ -5155,6 +5354,7 @@ Overall, the benefits outweigh the disadvantages and there is not really a need 
 <br>
 ---
 
+<a id="what-tools-and-techniques-do-you-use-for-debugging-javascript-code"></a>
 ### What tools and techniques do you use for debugging JavaScript code?
 
 <!-- Update here: /questions/what-tools-and-techniques-do-you-use-for-debugging-javascript-code/en-US.mdx -->
@@ -5188,6 +5388,7 @@ Some of the most commonly used tools and techniques for debugging JavaScript:
 <br>
 ---
 
+<a id="how-does-javascript-garbage-collection-work"></a>
 ### How does JavaScript garbage collection work?
 
 <!-- Update here: /questions/how-does-javascript-garbage-collection-work/en-US.mdx -->
@@ -5218,6 +5419,7 @@ Different JavaScript engines (differs according to browsers) implement different
 <br>
 ---
 
+<a id="explain-what-a-single-page-app-is-and-how-to-make-one-seo-friendly"></a>
 ### Explain what a single page app is and how to make one SEO-friendly
 
 <!-- Update here: /questions/explain-what-a-single-page-app-is-and-how-to-make-one-seo-friendly/en-US.mdx -->
@@ -5233,6 +5435,7 @@ A single page application (SPA) is a web application that loads a single HTML pa
 <br>
 ---
 
+<a id="how-can-you-share-code-between-javascript-files"></a>
 ### How can you share code between JavaScript files?
 
 <!-- Update here: /questions/how-can-you-share-code-between-files/en-US.mdx -->
@@ -5272,6 +5475,7 @@ greet();
 <br>
 ---
 
+<a id="how-do-you-organize-your-code"></a>
 ### How do you organize your code?
 
 <!-- Update here: /questions/how-do-you-organize-your-code-module-pattern-classical-inheritance/en-US.mdx -->
@@ -5287,6 +5491,7 @@ I organize my code by following a modular approach, using a clear folder structu
 <br>
 ---
 
+<a id="what-are-some-of-the-advantagesdisadvantages-of-writing-javascript-code-in-a-language-that-compiles-to-javascript"></a>
 ### What are some of the advantages/disadvantages of writing JavaScript code in a language that compiles to JavaScript?
 
 <!-- Update here: /questions/what-are-some-of-the-advantages-disadvantages-of-writing-javascript-code-in-a-language-that-compiles-to-javascript/en-US.mdx -->
@@ -5314,6 +5519,7 @@ Disadvantages:
 <br>
 ---
 
+<a id="when-would-you-use-documentwrite"></a>
 ### When would you use `document.write()`?
 
 <!-- Update here: /questions/when-would-you-use-document-write/en-US.mdx -->
