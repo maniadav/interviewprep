@@ -38,6 +38,8 @@
   
 ### React Native
 1. **[concept](reactnative/concept)**
+1. **[24 hours interview guide](reactnative/24-hours-interview-guide)**
+1. **[24 hours interviewprep](reactnative/24-hours-interviewprep)**
 
 ### Scripts
 1. **[toc](scripts/toc)**
