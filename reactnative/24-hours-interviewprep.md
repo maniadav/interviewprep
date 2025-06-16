@@ -1,5 +1,37 @@
 # React Native SDE-2 Interview Prep Guide (24-Hour Focus)
 
+## Table of Contents
+
+- [Top Critical React Native Concepts (40%)](#top-critical-react-native-concepts-40)
+  - [1. Core Architecture](#1-core-architecture)
+  - [2. Component Lifecycle](#2-component-lifecycle)
+  - [3. State Management](#3-state-management)
+  - [4. Navigation](#4-navigation)
+  - [5. Performance Optimization](#5-performance-optimization)
+  - [6. Native Module Integration](#6-native-module-integration)
+  - [7. Styling & Layout](#7-styling--layout)
+- [Most Common Interview Questions & Detailed Answers (30%)](#most-common-interview-questions--detailed-answers-30)
+  - [Architecture & Fundamentals](#architecture--fundamentals)
+  - [Component Patterns & State Management](#component-patterns--state-management)
+  - [Navigation & Data Flow](#navigation--data-flow)
+  - [Performance](#performance)
+  - [Testing & Development Workflow](#testing--development-workflow)
+- [Real-world Scenarios/Challenges with Solutions (15%)](#real-world-scenarioschallenges-with-solutions-15)
+  - [1. App Startup Optimization](#1-app-startup-optimization)
+  - [2. Offline-First Experience](#2-offline-first-experience)
+  - [3. Native Integration Complexity](#3-native-integration-complexity)
+  - [4. Cross-Platform UI Consistency](#4-cross-platform-ui-consistency)
+  - [5. Animation Performance](#5-animation-performance)
+- [Key Optimizations & Best Practices (10%)](#key-optimizations--best-practices-10)
+  - [1. Memory Management](#1-memory-management)
+  - [2. Bundle Size Optimization](#2-bundle-size-optimization)
+  - [3. UI Responsiveness](#3-ui-responsiveness)
+  - [4. Code Organization](#4-code-organization)
+  - [5. Error Handling](#5-error-handling)
+- [Advanced Talking Points (5%)](#advanced-talking-points-5)
+  - [1. React Native Internals](#1-react-native-internals)
+  - [2. Custom Renderer Implementation](#2-custom-renderer-implementation)
+
 ## Top Critical React Native Concepts (40%)
 
 ### 1. Core Architecture
@@ -1293,7 +1325,7 @@ export default codegenNativeComponent<NativeProps>('MyCustomView') as HostCompon
 
 This approach has been particularly valuable when integrating specialized UI components like custom charts, camera controls, or AR features that leverage platform-specific APIs."
 
-### 4. **React 18 Features in React Native Context**
+### 4. React 18 Features in React Native Context
 
 "React 18 introduces powerful new features that are gradually making their way into React Native, transforming how we build mobile applications.
 
@@ -1345,7 +1377,7 @@ function handleSubmit() {
 
 I'm particularly excited about how these features will address some long-standing challenges in React Native development, especially around handling expensive re-renders and providing better loading experiences. The ability to prioritize UI updates based on user interaction will significantly improve perceived performance on mid-range devices."
 
-### 5. **Scaling Development Teams**
+### 5. Scaling Development Teams
 
 "As React Native projects grow in size and complexity, deliberate strategies for scaling development teams become essential.
 
@@ -1444,14 +1476,3 @@ jobs:
 For code quality at scale, I implement automated code reviews with tools like SonarQube integrated into the PR process, along with standardized PR templates and review checklists to ensure consistency.
 
 These approaches have helped teams I've led scale from 5 to 30+ developers while maintaining code quality and release velocity."
-
-## Quick Reference: Related Topics
-
-- **State Management**: Redux, MobX, Context API, Recoil
-- **Navigation**: React Navigation, React Native Navigation
-- **Styling**: Styled Components, StyleSheet, CSS-in-JS
-- **Animation**: Animated API, Reanimated, Lottie
-- **Testing**: Jest, React Native Testing Library, Detox
-- **Native Modules**: Turbo Modules, Native Modules API
-- **Performance**: Hermes, Flipper, React DevTools
-- **Storage**: AsyncStorage, MMKV, Realm, SQLite
